@@ -16,6 +16,9 @@ in
         plenary-nvim
         undotree
         vim-fugitive
+        luasnip
+        cmp-git
+        cmp-nvim-lsp
         {
           plugin = harpoon;
           config = ''
@@ -56,10 +59,10 @@ in
           config = ''
           lua << EOF
           require'nvim-treesitter.configs'.setup {
-              highlight = {
-                  enable = true,
-                  additional_vim_regex_highlighting = false,
-              },
+            highlight = {
+              enable = true,
+                additional_vim_regex_highlighting = false,
+            },
           }
           EOF
           '';
@@ -79,7 +82,123 @@ in
           EOF
           '';
         }
-
+        {
+          plugin = nvim-cmp;
+          config = ''
+          lua << EOF
+          local cmp = require('cmp')
+          cmp.setup({
+            snippet = {
+              expand = function(args)
+                require('luasnip').lsp_expand(args.body)
+              end,
+            },
+            mapping = cmp.mapping.preset.insert({
+              ["<CR>"] = cmp.mapping.confirm({ select = false }),
+              ["<Tab>"] = cmp.mapping.select_next_item(),
+              ["<C-p>"] = cmp.mapping.select_prev_item(),
+              ["<C-n>"] = cmp.mapping.select_next_item(),
+              ["<C-Space>"] = cmp.mapping.complete(),
+              ["<C-e>"] = cmp.mapping.abort(),
+            }),
+            sources = cmp.config.sources({
+              { name = 'nvim_lsp' },
+              { name = 'luasnip' },
+              { name = 'buffer' },
+              { name = 'path' },
+            }),
+          })
+          cmp.setup.filetype('gitcommit', {
+            sources = cmp.config.sources({
+              { name = 'git' }, 
+            }, {
+              { name = 'buffer' },
+            })
+          })
+          cmp.setup.cmdline({ '/', '?' }, {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = {
+              { name = 'buffer' }
+            }
+          })
+          cmp.setup.cmdline(':', {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = cmp.config.sources({
+              { name = 'path' }
+            }, {
+              { name = 'cmdline' }
+            })
+          })
+          EOF
+          '';
+        }
+        {
+          plugin = nvim-lspconfig;
+          config = lib.mkIf config.editor.servers.enable ''
+          lua << EOF
+          local capabilities = require('cmp_nvim_lsp').default_capabilities()
+          require'lspconfig'.bashls.setup{
+            capabilities = capabilities,
+            filetypes = {"sh", "sh.in"},
+          }
+          require 'lspconfig'.pylsp.setup {
+            capabilities = capabilities,
+          }
+          require 'lspconfig'.yamlls.setup {
+            capabilities = capabilities,
+          }
+          require 'lspconfig'.marksman.setup {
+            capabilities = capabilities,
+          }
+          require 'lspconfig'.gopls.setup {
+            capabilities = capabilities,
+          } 
+          require 'lspconfig'.clangd.setup {
+            capabilities = capabilities,
+          }
+          require 'lspconfig'.cmake.setup {
+            capabilities = capabilities,
+          }
+          require 'lspconfig'.nixd.setup {
+            capabilities = capabilities,
+          }
+          require 'lspconfig'.lua_ls.setup {
+            on_init = function(client)
+              local path = client.workspace_folders[1].name
+                if not vim.loop.fs_stat(path .. '/.luarc.json') and not vim.loop.fs_stat(path .. '/.luarc.jsonc') then
+                  client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
+                    Lua = {
+                      runtime = {
+                        version = 'LuaJIT'
+                      },
+                      workspace = {
+                        checkThirdParty = false,
+                        library = {
+                          vim.env.VIMRUNTIME
+                        }
+                      }
+                    }
+                  })
+                  client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+                end
+                return true
+              end,
+              capabilities = capabilities,
+          }
+          EOF
+          '';
+        }
+        {
+          plugin = lsp-zero-nvim;
+          config = ''
+          lua << EOF
+          local lsp_zero = require('lsp-zero')
+          lsp_zero.on_attach(function(client, bufnr)
+            lsp_zero.default_keymaps({ buffer = bufnr })
+          end)
+          EOF
+          '';
+        }
       ];
     };
   };
