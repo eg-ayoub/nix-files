@@ -11,6 +11,12 @@ in
   config = lib.mkIf cfg.enable {
     programs.zsh = {
       enable = true;
+      shellAliases = {
+        gfpush = "ggpush --force";
+        lssh = "TERM=xterm ssh -F ssh_config";
+        lscp = "scp -F ssh_config";
+        nv = "nvim .";
+      };
       zplug = {
         enable = true;
         plugins = [

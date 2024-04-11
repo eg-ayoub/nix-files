@@ -12,4 +12,6 @@
 
   shell.zsh.enable = true;
   shell.starship.enable = true;
+
+  editor.nvim.enable = true;
 }
