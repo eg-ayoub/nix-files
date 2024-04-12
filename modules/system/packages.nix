@@ -6,4 +6,6 @@
     curl
   ];
 
+  programs.hyprland.enable = true;
+
 }

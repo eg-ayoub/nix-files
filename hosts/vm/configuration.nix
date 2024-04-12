@@ -16,5 +16,8 @@
     };
   };
 
+  system.grub-boot.enable = true;
+  system.grub-boot.boot-device = "/dev/vda";
+
   networking.hostName = "vm";
 }
