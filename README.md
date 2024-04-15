@@ -2,11 +2,10 @@
 My nixos configuration files.
 
 ## TODO
-- [] zsh functions spl, worktree
+- [x] zsh
 - [] secret management
-- [] ssh-agent, ssh-add keys
-- [] nvim
-- [] qtile + crafted "DE"
-- [] alacritty
-- [] browsers
-- [] extra apps
+- [-] nvim
+- [-] hyprland
+- [x] kitty
+- [x] browsers
+- [x] extra apps
