@@ -16,7 +16,13 @@
   editor.nvim.enable = true;
   editor.servers.enable = true;
 
-  hyprland.hyprland.enable = true;
+  # hyprland.hyprland.enable = true;
 
   kitty.enable = true;
+
+  # apps.chrome.enable = true;
+  # apps.slack.enable = true;
+  # apps.logseq.enable = true;
+  apps.spotify.enable = true;
+
 }

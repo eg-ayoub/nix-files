@@ -5,6 +5,7 @@
     ./editor
     ./hyprland
     ./kitty
+    ./apps
   ];
 
 }

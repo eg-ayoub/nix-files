@@ -11,6 +11,9 @@ in
   config = lib.mkIf cfg.enable {
     programs.kitty = {
       enable = true;
+      shellIntegration.enableZshIntegration = true;
+      font.name = "Inconsolata Nerd Font";
+      theme = "kanagawabones";
     };
   };
 }

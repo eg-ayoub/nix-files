@@ -35,10 +35,10 @@ in
           '';
         }
         {
-          plugin = tokyonight-nvim;
+          plugin = kanagawa-nvim;
           config = ''
           lua << EOF
-          vim.cmd[[colorscheme tokyonight-moon]]
+          vim.cmd[[colorscheme kanagawa]]
 
           -- transparent backgrounds
           vim.api.nvim_set_hl(0, "Normal", { bg = "none"})
