@@ -17,6 +17,7 @@ in
         lscp = "scp -F ssh_config";
         nv = "nvim .";
       };
+      historySubstringSearch.enable = true;
       zplug = {
         enable = true;
         plugins = [
@@ -26,6 +27,11 @@ in
           { name = "zsh-users/zsh-syntax-highlighting"; }
         ];
       };
+      initExtra = ''
+      export GPG_TTY="$(tty)"
+      export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+      gpgconf --launch gpg-agent
+      '';
     };
   };
 

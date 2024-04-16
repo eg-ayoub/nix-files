@@ -2,7 +2,6 @@
 
 {
   imports = [
-    # (modulesPath + "/virtualisation/qemu-vm.nix")
     ./hardware-configuration.nix
     ./../../modules/system
     inputs.home-manager.nixosModules.home-manager
@@ -23,11 +22,6 @@
   # system.grub-boot.boot-device = "/dev/vda";
   
   system.packages.plasma6.enable = true;
-
-  # virtualisation = {
-  #   qemu.guestAgent.enable = true;
-  #   qemu.options = [ "-display sdl,gl=on" "-vga virtio" ];
-  # };
 
   networking.hostName = "vm";
 }

@@ -8,5 +8,6 @@
     ./shell.nix
     ./gfx.nix
     ./fonts.nix
+    ./gpg.nix
   ];
 }

@@ -25,4 +25,5 @@
   # apps.logseq.enable = true;
   apps.spotify.enable = true;
 
+  git.enable = true;
 }

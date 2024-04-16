@@ -6,6 +6,7 @@
     ./hyprland
     ./kitty
     ./apps
+    ./git
   ];
 
 }
