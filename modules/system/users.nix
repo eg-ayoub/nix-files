@@ -4,7 +4,7 @@
     name = "ayoub";
     home = "/home/ayoub";
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
   };
 

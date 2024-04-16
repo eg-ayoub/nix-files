@@ -16,6 +16,7 @@ in
         lssh = "TERM=xterm ssh -F ssh_config";
         lscp = "scp -F ssh_config";
         nv = "nvim .";
+        v = "nvim";
       };
       historySubstringSearch.enable = true;
       zplug = {
@@ -25,6 +26,7 @@ in
           { name = "plugins/command-not-found"; tags = [ "from:oh-my-zsh" ]; }
           { name = "zsh-users/zsh-autosuggestions"; }
           { name = "zsh-users/zsh-syntax-highlighting"; }
+          { name = "zsh-users/zsh-history-substring-search"; }
         ];
       };
       initExtra = ''

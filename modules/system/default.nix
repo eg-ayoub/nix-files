@@ -9,5 +9,8 @@
     ./gfx.nix
     ./fonts.nix
     ./gpg.nix
+    ./sound.nix
+    ./networking.nix
+    ./locale.nix
   ];
 }
