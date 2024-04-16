@@ -4,5 +4,6 @@
     ./logseq.nix
     ./spotify.nix
     ./slack.nix
+    ./pass.nix
   ];
 }

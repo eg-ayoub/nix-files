@@ -24,6 +24,7 @@
   apps.slack.enable = true;
   apps.logseq.enable = true;
   apps.spotify.enable = true;
+  apps.pass.enable = true;
 
   git.enable = true;
   git.email = "ayoub.nasr@scality.com";

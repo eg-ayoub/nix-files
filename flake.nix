@@ -35,6 +35,13 @@
         ];
       };
       # 2 - mouse : (laptop) Tiling WM + dev tools
+      mouse = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs system; };
+
+        modules = [
+          ./hosts/mouse/configuration.nix
+        ];
+      };
       # 3 - tiger : (desktop) KDE + Gaming
     };
   };

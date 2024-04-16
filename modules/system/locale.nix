@@ -1,4 +1,6 @@
 { ... }: {
+  
+  time.timeZone = "Europe/Paris";
 
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -13,5 +15,7 @@
     LC_TELEPHONE = "fr_FR.UTF-8";
     LC_TIME = "fr_FR.UTF-8";
   };
+  
+  console.keyMap = "fr";
 
 }
