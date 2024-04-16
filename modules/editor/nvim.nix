@@ -9,6 +9,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [
+      ripgrep
+    ];
     programs.neovim = {
       enable = true;
       extraConfig = lib.fileContents ./init.vim;
