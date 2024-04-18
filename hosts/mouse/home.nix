@@ -29,4 +29,6 @@
   git.enable = true;
   git.email = "ayoub.nasr@scality.com";
   git.enable-signing = true;
+
+  ssh.enable = true;
 }

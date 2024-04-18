@@ -7,6 +7,7 @@
     ./kitty
     ./apps
     ./git
+    ./ssh
   ];
 
 }

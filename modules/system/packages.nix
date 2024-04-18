@@ -16,6 +16,7 @@ in
       git
       curl
       firefox
+      neofetch
     ];}
     (lib.mkIf cfg.hyprland.enable {
       programs.hyprland.enable = true;
