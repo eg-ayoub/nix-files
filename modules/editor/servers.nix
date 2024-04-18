@@ -13,6 +13,13 @@ in
       nixd
       shellcheck
       nodePackages.bash-language-server
+      nodePackages.pyright
+      yaml-language-server
+      marksman
+      gopls
+      clang-tools
+      cmake-language-server
+      lua-language-server
     ];
   };
 }

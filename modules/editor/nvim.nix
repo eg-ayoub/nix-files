@@ -136,6 +136,17 @@ in
           '';
         }
         {
+          plugin = lsp-zero-nvim;
+          config = ''
+          lua << EOF
+          local lsp_zero = require('lsp-zero')
+          lsp_zero.on_attach(function(client, bufnr)
+            lsp_zero.default_keymaps({ buffer = bufnr })
+          end)
+          EOF
+          '';
+        }
+        {
           plugin = nvim-lspconfig;
           config = lib.mkIf config.editor.servers.enable ''
           lua << EOF
@@ -144,7 +155,7 @@ in
             capabilities = capabilities,
             filetypes = {"sh", "sh.in"},
           }
-          require 'lspconfig'.pylsp.setup {
+          require 'lspconfig'.pyright.setup {
             capabilities = capabilities,
           }
           require 'lspconfig'.yamlls.setup {
@@ -188,17 +199,6 @@ in
               end,
               capabilities = capabilities,
           }
-          EOF
-          '';
-        }
-        {
-          plugin = lsp-zero-nvim;
-          config = ''
-          lua << EOF
-          local lsp_zero = require('lsp-zero')
-          lsp_zero.on_attach(function(client, bufnr)
-            lsp_zero.default_keymaps({ buffer = bufnr })
-          end)
           EOF
           '';
         }
