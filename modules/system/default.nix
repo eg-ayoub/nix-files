@@ -12,5 +12,6 @@
     ./sound.nix
     ./networking.nix
     ./locale.nix
+    ./docker.nix
   ];
 }

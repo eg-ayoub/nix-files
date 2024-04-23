@@ -12,6 +12,7 @@
 
   shell.zsh.enable = true;
   shell.starship.enable = true;
+  shell.direnv.enable = true;
 
   editor.nvim.enable = true;
   editor.servers.enable = true;
@@ -25,6 +26,7 @@
   apps.logseq.enable = true;
   apps.spotify.enable = true;
   apps.pass.enable = true;
+  apps.devcontainer.enable = true;
 
   git.enable = true;
   git.email = "ayoub.nasr@scality.com";

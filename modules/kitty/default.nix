@@ -14,6 +14,7 @@ in
       shellIntegration.enableZshIntegration = true;
       font.name = "Inconsolata Nerd Font";
       theme = "kanagawabones";
+      extraConfig = "enable_audio_bell no";
     };
   };
 }

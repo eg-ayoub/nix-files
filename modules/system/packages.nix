@@ -17,6 +17,7 @@ in
       curl
       firefox
       neofetch
+      wl-clipboard
     ];}
     (lib.mkIf cfg.hyprland.enable {
       programs.hyprland.enable = true;
