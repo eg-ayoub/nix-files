@@ -15,12 +15,17 @@ in
       vim
       git
       curl
+      lshw
       firefox
       neofetch
       wl-clipboard
     ];}
     (lib.mkIf cfg.hyprland.enable {
       programs.hyprland.enable = true;
+      services.displayManager.sddm = {
+        enable = true;
+        wayland.enable = true;
+      };
     })
     (lib.mkIf cfg.plasma6.enable {
       services.displayManager.sddm.enable = true;

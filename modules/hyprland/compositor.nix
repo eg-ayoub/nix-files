@@ -13,8 +13,14 @@ in
       enable = true;
       xwayland.enable = true;
       package = pkgs.hyprland;
-      extraConfig =  lib.fileContents ./hyprland.conf;
+      # too big
+      settings = import ./config.nix;
+      systemd = {
+        enable = true;
+        variables = [ "--all" ];
+      };
     };
+    programs.wofi.enable = true;
   };
 
 }
