@@ -13,6 +13,6 @@
     ./networking.nix
     ./locale.nix
     ./docker.nix
-    ./nvidia.nix
+    ./gpu
   ];
 }
