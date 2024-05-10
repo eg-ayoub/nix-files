@@ -9,6 +9,28 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    home.sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+    };
+    systemd = {
+      user.services.polkit-kde-authentication-agent-1 = {
+        Unit = {
+          Description = "polkit-kde-authentication-agent-1";
+        };
+        Install = {
+          WantedBy = [ "graphical-session.target" ];
+          Wants = [ "graphical-session.target" ];
+          After = [ "graphical-session.target" ];
+        };
+        Service = {
+          Type = "simple";
+          ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-gnome-authentication-agent-1";
+          Restart = "on-failure";
+          RestartSec = 1;
+          TimeoutStopSec = 10;
+        };
+      };
+    };
     wayland.windowManager.hyprland = {
       enable = true;
       xwayland.enable = true;
@@ -20,7 +42,6 @@ in
         variables = [ "--all" ];
       };
     };
-    programs.wofi.enable = true;
   };
 
 }

@@ -28,8 +28,8 @@
     in
       mouseCfg;
 
-  system.packages.plasma6.enable = true;
-  # system.packages.hyprland.enable = true;
+  # system.packages.plasma6.enable = true;
+  system.packages.hyprland.enable = true;
 
   networking.hostName = "mouse";
 }

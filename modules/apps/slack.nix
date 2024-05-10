@@ -12,9 +12,6 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       slack
-    ];
-    home.sessionVariables = lib.mkIf cfg.wl {
-      NIXOS_OZONE_WL = "1";
-    };
+    ]; 
   };
 }

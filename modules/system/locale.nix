@@ -17,5 +17,7 @@
   };
   
   console.keyMap = "fr";
+  services.xserver.xkb.layout = "fr,us";
+  services.xserver.xkb.options = "terminate:ctrl_alt_bksp,grp:win_space_toggle";
 
 }
