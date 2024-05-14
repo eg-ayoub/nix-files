@@ -11,6 +11,7 @@ in
       hyprpaper
       hypridle
       hyprlock
+      grimblast
       networkmanagerapplet
       xfce.ristretto
     ];
