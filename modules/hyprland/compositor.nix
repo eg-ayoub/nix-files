@@ -6,6 +6,11 @@ in
 {
   options.hyprland.hyprland = {
     enable = lib.mkEnableOption "enable hyprland";
+    monitors = lib.mkOption {
+      default = [];
+      description = "Monitors setup for hyprland";
+      type = lib.types.listOf lib.types.str;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -36,7 +41,10 @@ in
       xwayland.enable = true;
       package = pkgs.hyprland;
       # too big
-      settings = import ./config.nix;
+      settings = let 
+        monitors = cfg.monitors; 
+      in 
+        import ./config.nix { inherit monitors; } ;
       systemd = {
         enable = true;
         variables = [ "--all" ];

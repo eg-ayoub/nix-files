@@ -1,4 +1,4 @@
-{
+{ monitors, ... } : {
   general = {
     gaps_in = 5;
     gaps_out = 5;
@@ -8,10 +8,7 @@
     kb_options = "grp:win_space_toggle";
     resolve_binds_by_sym = 1;
   };
-  monitor = [
-    "eDP-1, preferred, auto-right, auto"
-    "DP-1,  preferred, auto, auto"
-  ];
+  monitor = monitors; 
   exec-once = [
     "waybar"
     "swaync"

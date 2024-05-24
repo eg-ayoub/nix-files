@@ -176,6 +176,9 @@ in
           require 'lspconfig'.nixd.setup {
             capabilities = capabilities,
           }
+          require 'lspconfig'.helm_ls.setup {
+            capabilities = capabilities,
+          }
           require 'lspconfig'.lua_ls.setup {
             on_init = function(client)
               local path = client.workspace_folders[1].name

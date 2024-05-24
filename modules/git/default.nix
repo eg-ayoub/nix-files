@@ -19,7 +19,7 @@ in
       enable = true;
       diff-so-fancy.enable = true;
       signing = lib.mkIf cfg.enable-signing {
-        key = "56EF30D2785FCA80!";
+        key = "B5A7EEEDCB6DD46E";
         signByDefault = true;
       };
       userEmail = cfg.email;

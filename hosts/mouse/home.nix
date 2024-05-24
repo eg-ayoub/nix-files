@@ -18,6 +18,10 @@
   editor.servers.enable = true;
 
   hyprland.hyprland.enable = true;
+  hyprland.hyprland.monitors = [
+    "eDP-1, preferred, 1920x0, 1.5"
+    "DP-1,  preferred, 0x0, 1.0"
+  ];
 
   kitty.enable = true;
 
