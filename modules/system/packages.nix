@@ -25,16 +25,16 @@ in
     ];}
     (lib.mkIf cfg.hyprland.enable {
       programs.hyprland.enable = true;
-#      programs.thunar = {
-#        enable = true;
-#        plugins = with pkgs.xfce; [
-#          thunar-archive-plugin
-#          thunar-volman
-#        ];
-#      };
-#      services.gvfs.enable = true;
-#      services.tumbler.enable = true;
-#      programs.xfconf.enable = true;
+      programs.thunar = {
+        enable = true;
+        plugins = with pkgs.xfce; [
+          thunar-archive-plugin
+          thunar-volman
+        ];
+      };
+      services.gvfs.enable = true;
+      services.tumbler.enable = true;
+      programs.xfconf.enable = true;
       services.displayManager.sddm = {
         enable = true;
         package = pkgs.libsForQt5.sddm;

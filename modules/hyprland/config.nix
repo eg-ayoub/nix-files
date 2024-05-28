@@ -17,7 +17,7 @@
   "$mod" = "SUPER";
   "$terminal" = "kitty";
   "$menu" = "fuzzel";
-  "$pass" = "tessen";
+  "$pass" = "tessen -d fuzzel -a copy";
   "$clip" = "copyq show";
   "$scr" = "grimblast --notify copysave area";
   bind = 
