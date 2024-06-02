@@ -1,5 +1,5 @@
 { ... } : {
-  
+
   imports = [
     ./../../modules
   ];
@@ -16,6 +16,7 @@
 
   editor.nvim.enable = true;
   editor.servers.enable = true;
+  editor.zed.enable = true;
 
   hyprland.hyprland.enable = true;
   hyprland.hyprland.monitors = [

@@ -7,7 +7,7 @@ in
   # options = {};
 
   config = lib.mkIf cfg.enable { 
-    services.copyq = {
+    services.cliphist = {
       enable = true;
     };
   };

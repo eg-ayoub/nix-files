@@ -13,12 +13,14 @@
     "waybar"
     "swaync"
     "nm-applet"
+    "wl-paste --type text  --watch cliphist store"
+    "wl-paste --type image --watch cliphist store"
   ];
   "$mod" = "SUPER";
   "$terminal" = "kitty";
   "$menu" = "fuzzel";
   "$pass" = "tessen -d fuzzel -a copy";
-  "$clip" = "copyq show";
+  "$clip" = "cliphist list | fuzzel -d | cliphist decode | wl-copy";
   "$scr" = "grimblast --notify copysave area";
   bind = 
     [
