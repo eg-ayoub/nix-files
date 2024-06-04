@@ -7,7 +7,7 @@
   home.username = "ayoub";
   home.homeDirectory = "/home/ayoub";
 
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.05";
   programs.home-manager.enable = true;
 
   shell.zsh.enable = true;
