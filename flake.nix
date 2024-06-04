@@ -11,9 +11,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = { nixpkgs, ... }@inputs: 
+  outputs = { nixpkgs, nixos-hardware, ... }@inputs:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -42,7 +44,16 @@
           ./hosts/mouse/configuration.nix
         ];
       };
-      # 3 - tiger : (desktop) KDE + Gaming
+      # 3 - kitty : (laptop)  KDE + Gaming
+      tom = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs system; };
+
+        modules = [
+          ./hosts/tom/configuration.nix
+          nixos-hardware.nixosModules.lenovo-legion-16ach6h
+        ];
+      };
+      # 4 - tiger : (desktop) KDE + Gaming
     };
   };
 }
