@@ -3,7 +3,7 @@ My nixos configuration files.
 
 ## TODO
 - [x] zsh
-- [] secret management
+- [x] secret management
 - [-] nvim
 - [-] hyprland
 - [x] kitty

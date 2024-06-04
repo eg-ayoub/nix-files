@@ -17,11 +17,38 @@ in
       extraConfig = lib.fileContents ./init.vim;
       plugins = with pkgs.vimPlugins; [
         plenary-nvim
+        nui-nvim
         undotree
         vim-fugitive
         luasnip
         cmp-git
         cmp-nvim-lsp
+        nvim-web-devicons
+        gitsigns-nvim
+        {
+          plugin = barbar-nvim;
+          config = ''
+          lua << EOF
+          require("barbar").setup()
+          EOF
+          '';
+        }
+        {
+          plugin = hardtime-nvim;
+          config = ''
+          lua << EOF
+          require("hardtime").setup()
+          EOF
+          '';
+        }
+        {
+          plugin = lualine-nvim;
+          config = ''
+          lua << EOF
+          require("lualine").setup()
+          EOF
+          '';
+        }
         {
           plugin = harpoon;
           config = ''
