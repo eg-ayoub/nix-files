@@ -15,7 +15,8 @@ in
         gfpush = "ggpush --force";
         lssh = "TERM=xterm ssh -F ssh_config";
         lscp = "scp -F ssh_config";
-        nv = "nvim .";
+        lv = "nvim .";
+        fv = "fzf --bind 'enter:become(nvim {})'";
         v = "nvim";
       };
       historySubstringSearch.enable = true;
