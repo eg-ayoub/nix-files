@@ -9,6 +9,7 @@ in
   options.system.packages = {
     hyprland.enable = lib.mkEnableOption "install hyprland";
     plasma6.enable = lib.mkEnableOption "install plasma6";
+    gaming.enable = lib.mkEnableOption "install steam and gaming utilities"; 
   };
 
   config = lib.mkMerge [
@@ -61,6 +62,22 @@ in
       services.displayManager.sddm.enable = true;
       services.desktopManager.plasma6.enable = true;
       services.displayManager.sddm.wayland.enable = true;
+    })
+    (lib.mkIf cfg.gaming.enable {
+      programs.steam = {
+        enable = true;
+        remotePlay.openFirewall = true;
+        dedicatedServer.openFirewall = true;
+        gamescopeSession.enable = true;
+      };
+      environment.systemPackages = with pkgs; [
+        mangohud
+        protonup
+      ];
+      environment.sessionVariables = {
+        STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/ayoub/.steam/root/compatibilitytools.d";
+      };
+      programs.gamemode.enable = true;
     })
   ];
 }

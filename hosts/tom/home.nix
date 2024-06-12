@@ -13,6 +13,7 @@
   shell.zsh.enable = true;
   shell.starship.enable = true;
   shell.direnv.enable = true;
+  shell.extras.enable=true; 
 
   editor.nvim.enable = true;
   editor.servers.enable = true;
@@ -24,7 +25,7 @@
 
   git.enable = true;
   git.email = "ayoub.nasr@proton.me";
-  git.enable-signing = true;
+  #git.enable-signing = true;
 
   ssh.enable = true;
 }

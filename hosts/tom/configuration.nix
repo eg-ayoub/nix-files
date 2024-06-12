@@ -23,6 +23,7 @@
   hardware.nvidia.prime.amdgpuBusId = "PCI:6:0:0";
 
   system.packages.plasma6.enable = true;
+  system.packages.gaming.enable = true;
   # system.packages.hyprland.enable = true;
 
   networking.hostName = "tom";
