@@ -71,6 +71,7 @@ in
         gamescopeSession.enable = true;
       };
       environment.systemPackages = with pkgs; [
+        goverlay
         mangohud
         protonup
       ];

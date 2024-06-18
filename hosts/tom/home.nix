@@ -22,6 +22,7 @@
   kitty.enable = true;
 
   apps.spotify.enable = true;
+  apps.discord.enable = true;
 
   git.enable = true;
   git.email = "ayoub.nasr@proton.me";

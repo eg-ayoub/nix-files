@@ -14,5 +14,6 @@
     ./locale.nix
     ./docker.nix
     ./gpu
+    ./legion.nix
   ];
 }

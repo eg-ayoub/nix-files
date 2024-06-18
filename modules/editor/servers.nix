@@ -12,8 +12,8 @@ in
     home.packages = with pkgs; [
       nixd
       shellcheck
-      nodePackages.bash-language-server
-      nodePackages.pyright
+      # nodePackages.bash-language-server
+      pyright
       yaml-language-server
       marksman
       gopls

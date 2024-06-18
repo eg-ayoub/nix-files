@@ -6,5 +6,6 @@
     ./slack.nix
     ./pass.nix
     ./devcontainer.nix
+    ./discord.nix
   ];
 }
