@@ -4,7 +4,7 @@
     name = "ayoub";
     home = "/home/ayoub";
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "gamemode" ];
     shell = pkgs.zsh;
   };
 
