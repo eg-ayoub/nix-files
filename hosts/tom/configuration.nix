@@ -27,5 +27,7 @@
   # system.packages.hyprland.enable = true;
   system.legion.enable = true;
 
+  system.virt.enable = true;
+
   networking.hostName = "tom";
 }

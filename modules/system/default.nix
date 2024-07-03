@@ -15,5 +15,6 @@
     ./docker.nix
     ./gpu
     ./legion.nix
+    ./virt.nix
   ];
 }

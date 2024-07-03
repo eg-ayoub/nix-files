@@ -29,7 +29,6 @@
 
   apps.chrome.enable = true;
   apps.slack.enable = true;
-  apps.logseq.enable = true;
   apps.spotify.enable = true;
   apps.pass.enable = true;
   # apps.devcontainer.enable = true;
@@ -37,6 +36,8 @@
   git.enable = true;
   git.email = "ayoub.nasr@scality.com";
   git.enable-signing = true;
+
+  virt.enable = true;
 
   ssh.enable = true;
 }

@@ -42,6 +42,7 @@
 
         modules = [
           ./hosts/mouse/configuration.nix
+          nixos-hardware.nixosModules.dell-xps-15-7590
         ];
       };
       # 3 - kitty : (laptop)  KDE + Gaming

@@ -28,5 +28,7 @@
   git.email = "ayoub.nasr@proton.me";
   #git.enable-signing = true;
 
+  virt.enable = true;
+
   ssh.enable = true;
 }

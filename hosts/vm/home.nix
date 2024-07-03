@@ -22,7 +22,6 @@
 
   # apps.chrome.enable = true;
   # apps.slack.enable = true;
-  # apps.logseq.enable = true;
   apps.spotify.enable = true;
 
   git.enable = true;

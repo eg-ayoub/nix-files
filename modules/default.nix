@@ -8,6 +8,7 @@
     ./apps
     ./git
     ./ssh
+    ./virt
   ];
 
 }
