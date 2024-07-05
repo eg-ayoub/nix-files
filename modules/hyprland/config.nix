@@ -1,4 +1,8 @@
-{ monitors, ... } : {
+{ ... } : {
+  env = [
+    "HYPRCURSOR_THEME,rose-pine-hyprcursor"
+    "HYPRCURSOR_SIZE,24"
+  ];
   general = {
     gaps_in = 5;
     gaps_out = 5;
@@ -8,7 +12,6 @@
     kb_options = "grp:win_space_toggle";
     resolve_binds_by_sym = 1;
   };
-  monitor = monitors; 
   exec-once = [
     "waybar"
     "swaync"

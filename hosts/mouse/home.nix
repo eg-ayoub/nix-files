@@ -20,9 +20,33 @@
   editor.zed.enable = true;
 
   hyprland.hyprland.enable = true;
-  hyprland.hyprland.monitors = [
-    "eDP-1, preferred, 1920x0, 1.5"
-    "DP-1,  preferred, 0x0, 1.0"
+  hyprland.kanshi.enable = true;
+  hyprland.kanshi.profiles = [
+    { 
+      output.criteria = "eDP-1";
+      output.scale = 1.25;
+    }
+    { output.criteria = "DP-1"; }
+    {
+      profile.name = "undocked";
+      profile.outputs = [
+        { criteria = "eDP-1"; }
+      ];
+    }
+    {
+      profile.name = "docked";
+      profile.outputs = [
+        {
+          criteria = "eDP-1";
+          scale = 1.5;
+          position = "1920,0";
+        }
+        { 
+          criteria = "DP-1";
+          position = "0,0";
+        }
+      ];
+    }
   ];
 
   kitty.enable = true;

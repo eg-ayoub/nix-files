@@ -13,6 +13,8 @@
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
   };
 
   outputs = { nixpkgs, nixos-hardware, ... }@inputs:

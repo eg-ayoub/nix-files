@@ -8,6 +8,8 @@
     ./clip.nix
     ./utils.nix
     ./scripts.nix
+    ./kanshi.nix
+    ./gtk.nix
   ];
 
 }
