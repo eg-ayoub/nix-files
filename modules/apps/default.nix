@@ -6,5 +6,6 @@
     ./pass.nix
     ./devcontainer.nix
     ./discord.nix
+    ./lutris.nix
   ];
 }

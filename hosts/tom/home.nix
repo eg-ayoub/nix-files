@@ -23,6 +23,7 @@
 
   apps.spotify.enable = true;
   apps.discord.enable = true;
+  apps.lutris.enable = true;
 
   git.enable = true;
   git.email = "ayoub.nasr@proton.me";
