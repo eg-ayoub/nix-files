@@ -47,6 +47,7 @@ in
         theme = "Elegant";
       };
       environment.systemPackages = with pkgs; [
+        pavucontrol
         inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
         xdg-desktop-portal-hyprland
         xdg-desktop-portal-gtk

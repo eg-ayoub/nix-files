@@ -18,6 +18,7 @@
     "nm-applet"
     "wl-paste --type text  --watch cliphist store"
     "wl-paste --type image --watch cliphist store"
+    "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
   ];
   "$mod" = "SUPER";
   "$terminal" = "kitty";
@@ -25,6 +26,10 @@
   "$pass" = "tessen -d fuzzel -a copy";
   "$clip" = "cliphist list | fuzzel -d | cliphist decode | wl-copy";
   "$scr" = "grimblast --notify copysave area";
+  bindr =
+    [
+      "CAPS, Caps_Lock, exec, swayosd-client --caps-lock"
+    ];
   bind = 
     [
       "$mod, Return, exec, $terminal"
@@ -33,10 +38,11 @@
       "$mod, v, exec, $clip"
       "$mod SHIFT, q, killactive"
       "$mod, TAB, fullscreen, 1"
-      ", XF86MonBrightnessDown, exec, brightnessctl s 5%- --min-value=240 -e"
-      ", XF86MonBrightnessDown, exec, notify_brightness"
-      ", XF86MonBrightnessUp, exec, brightnessctl s +5% -e"
-      ", XF86MonBrightnessUp, exec, notify_brightness"
+      ", XF86MonBrightnessDown, exec, swayosd-client --brightness lower"
+      ", XF86MonBrightnessUp, exec, swayosd-client --brightness raise"
+      ", XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
+      ", XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
+      ", XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
       ", Print, exec, $scr"
     ] ++ (
       builtins.concatLists (builtins.genList (

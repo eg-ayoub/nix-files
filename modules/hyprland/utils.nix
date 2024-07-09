@@ -15,6 +15,8 @@ in
       networkmanagerapplet
       xfce.ristretto
     ];
+
+    services.swayosd.enable = true;
   };
 
 }
