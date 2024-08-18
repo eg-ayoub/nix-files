@@ -8,6 +8,9 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.fuzzel.enable = true;
+    home.sessionVariables = {
+      DMENU_PATH = "fuzzel";
+    };
   };
 
 }
