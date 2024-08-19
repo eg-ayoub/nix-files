@@ -1,6 +1,5 @@
 { ... } : {
   imports = [
-    ./ardour.nix
     ./bitwarden.nix
     ./chrome.nix
     ./devcontainer.nix
