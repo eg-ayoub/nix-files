@@ -54,7 +54,7 @@
   apps.chrome.enable = true;
   apps.slack.enable = true;
   apps.spotify.enable = true;
-  # apps.pass.enable = true;
+  apps.pass.enable = true;
   apps.bitwarden.enable = true;
   # apps.devcontainer.enable = true;
 

@@ -22,10 +22,14 @@
   ];
   "$mod" = "SUPER";
   "$terminal" = "kitty";
-  "$menu" = "fuzzel";
-  "$pass" = "tessen -d fuzzel -a copy";
-  "$clip" = "cliphist list | fuzzel -d | cliphist decode | wl-copy";
+  "$menu" = "rofi -show drun -show-icons";
+  "$pass" = "ROFI_PASS_BACKEND=wtype rofi-pass";
+  "$clip" = "cliphist list | rofi -dmenu | cliphist decode | wl-copy";
   "$scr" = "grimblast --notify copysave area";
+  windowrule =
+    [
+      "float, ^(Rofi)$"
+    ];
   bindr =
     [
       "CAPS, Caps_Lock, exec, swayosd-client --caps-lock"

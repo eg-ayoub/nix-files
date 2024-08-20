@@ -7,9 +7,15 @@ in
   options.hyprland.menu = {};
 
   config = lib.mkIf cfg.enable {
-    programs.fuzzel.enable = true;
-    home.sessionVariables = {
-      DMENU_PATH = "fuzzel";
+    programs.rofi = {
+      enable = true;
+      package = pkgs.rofi-wayland;
+      font = "Inconsolata Nerd Font 12";
+      pass = {
+        enable = true;
+        package = pkgs.rofi-pass-wayland;
+      };
+      theme = "Arc-Dark";
     };
   };
 
