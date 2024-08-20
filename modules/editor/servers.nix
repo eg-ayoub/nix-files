@@ -12,7 +12,7 @@ in
     home.packages = with pkgs; [
       nixd
       shellcheck
-      # nodePackages.bash-language-server
+      bash-language-server
       pyright
       yaml-language-server
       marksman
