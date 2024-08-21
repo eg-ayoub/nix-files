@@ -57,6 +57,14 @@
         ];
       };
       # 4 - tiger : (desktop) KDE + Gaming
+      # 5 - pup : (server) HomeLab 
+      pup = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs system; };
+
+        modules = [
+          ./hosts/pup/configuration.nix
+        ];
+      };
     };
   };
 }
