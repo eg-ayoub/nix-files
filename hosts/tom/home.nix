@@ -24,6 +24,8 @@
   apps.spotify.enable = true;
   apps.discord.enable = true;
   apps.lutris.enable = true;
+  apps.deluge.enable = true;
+  apps.protonvpn.enable = true;
 
   git.enable = true;
   git.email = "ayoub.nasr@proton.me";
