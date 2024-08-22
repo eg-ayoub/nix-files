@@ -19,9 +19,7 @@
 
   git.enable = true;
   git.email = "ayoub.nasr@proton.me";
-  git.enable-signing = true;
-
-  svc.jellyfin.enable = true;
+  # git.enable-signing = true;
 
   virt.enable = true;
 

@@ -9,7 +9,6 @@
     ./git
     ./ssh
     ./virt
-    ./svc
   ];
 
 }

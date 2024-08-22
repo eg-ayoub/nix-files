@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./../../modules/system
+    ./../../modules/svc
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -20,6 +21,8 @@
 
   system.ssh-server.enable = true;
   system.ssh-server.passwordAuth = true;
+
+  svc.jellyfin.enable = true;
 
   system.virt.enable = true;
   networking.hostName = "pup";
