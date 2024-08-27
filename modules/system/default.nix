@@ -17,5 +17,6 @@
     ./legion.nix
     ./virt.nix
     ./ssh-server.nix
+    ./wine.nix
   ];
 }

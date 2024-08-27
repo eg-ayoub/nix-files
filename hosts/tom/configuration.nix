@@ -28,6 +28,7 @@
   system.legion.enable = true;
 
   system.virt.enable = true;
+  system.wine.enable = true;
 
   networking.hostName = "tom";
 }

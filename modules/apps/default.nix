@@ -1,6 +1,7 @@
 { ... } : {
   imports = [
     ./bitwarden.nix
+    ./carla.nix
     ./chrome.nix
     ./deluge.nix
     ./devcontainer.nix
