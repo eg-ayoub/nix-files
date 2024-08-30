@@ -26,7 +26,11 @@ in
       brightnessctl
     ];}
     (lib.mkIf cfg.hyprland.enable {
-      programs.hyprland.enable = true;
+      programs.hyprland = {
+        enable = true;
+        xwayland.enable = true;
+        portalPackage = pkgs.xdg-desktop-portal-wlr;
+      };
       programs.thunar = {
         enable = true;
         plugins = with pkgs.xfce; [
@@ -49,7 +53,7 @@ in
       environment.systemPackages = with pkgs; [
         pavucontrol
         inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
-        xdg-desktop-portal-hyprland
+        xdg-desktop-portal-wlr
         xdg-desktop-portal-gtk
         kdePackages.polkit-kde-agent-1
         (elegant-sddm.override {
