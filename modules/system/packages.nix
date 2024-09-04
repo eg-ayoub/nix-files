@@ -76,6 +76,10 @@ in
         remotePlay.openFirewall = true;
         dedicatedServer.openFirewall = true;
         gamescopeSession.enable = true;
+        package = pkgs.steam.override {
+          extraLibraries = pkgs: [ pkgs.pkgsi686Linux.pipewire.jack ]; # Adds pipewire jack (32-bit)
+          extraPkgs = pkgs: [ pkgs.wineasio ]; # Adds wineasio
+        };
       };
       environment.systemPackages = with pkgs; [
         goverlay

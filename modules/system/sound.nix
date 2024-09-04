@@ -5,10 +5,18 @@
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
+    jack.enable = true;
     pulse.enable = true;
     wireplumber.enable = true;
   };
-#  environment.systemPackages = with pkgs; [
-#    pavucontrol
-#  ];
+# according to https://github.com/theNizo/linux_rocksmith/tree/main/guides
+  security.pam.loginLimits = [
+    { domain = "@audio"; item = "memlock"; type = "-"; value = "unlimited"; }
+    { domain = "@audio"; item = "rtprio"; type = "-"; value = "99"; }
+  ];
+  users.users.ayoub.extraGroups = [ "audio" "rtkit" ];
+  environment.systemPackages = with pkgs; [
+    qjackctl
+    rtaudio
+  ];
 }
