@@ -111,6 +111,15 @@ map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
 
 -- LINES
 
+--list
+vim.opt.list = true
+vim.opt.listchars.eol = '↵'
+vim.opt.listchars.space = '␣'
+vim.opt.listchars.lead = '·'
+vim.opt.listchars.trail = '✕'
+vim.opt.listchars.extends = '⇥'
+vim.opt.listchars.precedes = '⇤'
+
 -- tabspaces
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
