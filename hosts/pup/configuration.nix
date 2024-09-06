@@ -1,4 +1,4 @@
-{ config, inputs, modulesPath, ... }:
+{ pkgs, config, inputs, modulesPath, ... }:
 
 {
   imports = [
@@ -16,6 +16,8 @@
       ayoub = import ./home.nix;
     };
   };
+
+  boot.kernelPackages = pkgs.linuxPackages_6_1;
 
   system.systemd-boot.enable = true;
 
