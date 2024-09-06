@@ -23,6 +23,7 @@
   system.ssh-server.passwordAuth = true;
 
   svc.jellyfin.enable = true;
+  svc.calibre-web.enable = true;
 
   system.virt.enable = true;
   networking.hostName = "pup";
