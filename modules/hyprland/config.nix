@@ -27,9 +27,9 @@
   "$pass" = "ROFI_PASS_BACKEND=wtype rofi-pass";
   "$clip" = "cliphist list | rofi -dmenu | cliphist decode | wl-copy";
   "$scr" = "grimblast --notify copysave area";
-  windowrule =
+  windowrulev2 =
     [
-      "float, ^(Rofi)$"
+      "opacity 0.9, focus:0"
     ];
   bindr =
     [

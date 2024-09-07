@@ -43,6 +43,7 @@ in
           "on-click" = "pavucontrol";
         };
       };
+      style = lib.fileContents ./bar_style.css;
     };
   };
 
