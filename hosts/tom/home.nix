@@ -27,6 +27,7 @@
   apps.deluge.enable = true;
   apps.protonvpn.enable = true;
   apps.carla.enable = true;
+  apps.rpcs3.enable = true;
 
   git.enable = true;
   git.email = "ayoub.nasr@proton.me";

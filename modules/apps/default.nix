@@ -9,6 +9,7 @@
     ./lutris.nix
     ./pass.nix
     ./protonvpn.nix
+    ./rpcs3.nix
     ./slack.nix
     ./spotify.nix
   ];
