@@ -18,6 +18,8 @@
   };
 
   boot.kernelPackages = pkgs.linuxPackages_6_1;
+  boot.kernel.sysctl."kernel.softlock_panic" = "1";
+  boot.kernel.sysctl."kernel.panic" = "60";
 
   system.systemd-boot.enable = true;
 
