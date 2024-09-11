@@ -20,17 +20,20 @@ in
         v = "nvim";
       };
       historySubstringSearch.enable = true;
-      zplug = {
+      antidote = {
         enable = true;
         plugins = [
-          { name = "plugins/git"; tags = [ "from:oh-my-zsh" ]; }
-          { name = "plugins/command-not-found"; tags = [ "from:oh-my-zsh" ]; }
-          { name = "zsh-users/zsh-autosuggestions"; }
-          { name = "zsh-users/zsh-syntax-highlighting"; }
-          { name = "zsh-users/zsh-history-substring-search"; }
+          "getantidote/use-omz"
+          "ohmyzsh/ohmyzsh path:lib"
+          "ohmyzsh/ohmyzsh path:plugins/git"
+          "zsh-users/zsh-autosuggestions"
+          "zsh-users/zsh-syntax-highlighting"
         ];
       };
       initExtra = ''
+      bindkey '^[OA' history-beginning-search-backward
+      bindkey '^[OB' history-beginning-search-forward
+
       export GPG_TTY="$(tty)"
       export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
       gpgconf --launch gpg-agent
