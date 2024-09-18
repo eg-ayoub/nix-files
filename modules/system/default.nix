@@ -1,22 +1,23 @@
 { inputs, pkgs, config, ... }: {
   imports = [
+    ./docker.nix
+    ./fonts.nix
+    ./gfx.nix
+    ./gpg.nix
+    ./gpu
     ./grub-boot.nix
-    ./systemd-boot.nix
-    ./users.nix
+    ./ld.nix
+    ./legion.nix
+    ./locale.nix
     ./misc.nix
+    ./networking.nix
     ./packages.nix
     ./shell.nix
-    ./gfx.nix
-    ./fonts.nix
-    ./gpg.nix
     ./sound.nix
-    ./networking.nix
-    ./locale.nix
-    ./docker.nix
-    ./gpu
-    ./legion.nix
-    ./virt.nix
     ./ssh-server.nix
+    ./systemd-boot.nix
+    ./users.nix
+    ./virt.nix
     ./wine.nix
   ];
 }
