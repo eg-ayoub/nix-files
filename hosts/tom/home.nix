@@ -28,6 +28,7 @@
   apps.protonvpn.enable = true;
   apps.carla.enable = true;
   apps.rpcs3.enable = true;
+  apps.jmp.enable = true;
 
   git.enable = true;
   git.email = "ayoub.nasr@proton.me";

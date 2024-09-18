@@ -57,6 +57,7 @@
   apps.pass.enable = true;
   apps.bitwarden.enable = true;
   # apps.devcontainer.enable = true;
+  apps.jmp.enable = true;
 
   git.enable = true;
   git.email = "ayoub.nasr@scality.com";
