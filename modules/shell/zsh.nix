@@ -13,6 +13,7 @@ in
       enable = true;
       shellAliases = {
         gfpush = "ggpush --force";
+        glc = "git log --format='%H' -n 1";
         lssh = "TERM=xterm ssh -F ssh_config";
         lscp = "scp -F ssh_config";
         lv = "nvim .";
