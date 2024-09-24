@@ -26,7 +26,7 @@
       output.criteria = "eDP-1";
       output.scale = 1.25;
     }
-    { output.criteria = "DP-1"; }
+    { output.criteria = "Dell Inc. DELL S2421HS FFG9123"; }
     {
       profile.name = "undocked";
       profile.outputs = [
@@ -42,7 +42,7 @@
           position = "1920,0";
         }
         { 
-          criteria = "DP-1";
+          criteria = "Dell Inc. DELL S2421HS FFG9123";
           position = "0,0";
         }
       ];
