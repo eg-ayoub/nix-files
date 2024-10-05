@@ -29,6 +29,8 @@
   apps.carla.enable = true;
   apps.rpcs3.enable = true;
   apps.jmp.enable = true;
+  apps.vlc.enable = true;
+  apps.handbrake.enable = true;
 
   git.enable = true;
   git.email = "ayoub.nasr@proton.me";

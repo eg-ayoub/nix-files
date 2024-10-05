@@ -6,6 +6,7 @@
     ./deluge.nix
     ./devcontainer.nix
     ./discord.nix
+    ./handbrake.nix
     ./jmp.nix
     ./lutris.nix
     ./pass.nix
@@ -13,5 +14,6 @@
     ./rpcs3.nix
     ./slack.nix
     ./spotify.nix
+    ./vlc.nix
   ];
 }
