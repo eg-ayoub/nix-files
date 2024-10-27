@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ./../../modules/system
     ./../../modules/svc
+    ./../../modules/cont
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -28,6 +29,9 @@
 
   svc.jellyfin.enable = true;
   svc.calibre-web.enable = true;
+
+  cont.calibre.enable = true;
+  cont.calibre.listen.port = 8084;
 
   system.virt.enable = true;
   networking.hostName = "pup";

@@ -1,6 +1,7 @@
 { pkgs, ... }: {
 
   users.users.ayoub = {
+    uid = 1000;
     name = "ayoub";
     home = "/home/ayoub";
     isNormalUser = true;
