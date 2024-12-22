@@ -10,12 +10,15 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    i18n.inputMethod.enabled = "fcitx5";
-    i18n.inputMethod.fcitx5.addons = [
-      pkgs.fcitx5-mozc
-      pkgs.fcitx5-gtk
-      pkgs.fcitx5-configtool
-    ];
+    i18n.inputMethod = {
+      type = "fcitx5";
+      enable = true;
+      fcitx5.addons = with pkgs; [
+        fcitx5-mozc
+        fcitx5-gtk
+        fcitx5-configtool
+      ];
+    };
 
     # Would normally set this to fcitx, but kitty only supports ibus, and fcitx
     # provides an ibus interface. Can't use ibus for e.g. QT_IM_MODULE though,

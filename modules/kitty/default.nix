@@ -13,7 +13,7 @@ in
       enable = true;
       shellIntegration.enableZshIntegration = true;
       font.name = "Inconsolata Nerd Font";
-      theme = "kanagawabones";
+      themeFile = "kanagawabones";
       extraConfig = "enable_audio_bell no";
     };
   };

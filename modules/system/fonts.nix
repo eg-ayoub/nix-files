@@ -1,6 +1,9 @@
 { pkgs, ... }: {
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "InconsolataGo" "JetBrainsMono" "Noto" "Recursive" ]; })
+    nerd-fonts.inconsolata-go
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.noto
+    nerd-fonts.recursive-mono
     # needed for sddm theme
     open-sans
   ];
