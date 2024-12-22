@@ -31,6 +31,7 @@
   apps.jmp.enable = true;
   apps.vlc.enable = true;
   apps.handbrake.enable = true;
+  apps.musescore.enable = true;
 
   git.enable = true;
   git.email = "ayoub.nasr@proton.me";

@@ -9,6 +9,7 @@
     ./handbrake.nix
     ./jmp.nix
     ./lutris.nix
+    ./musescore.nix
     ./pass.nix
     ./protonvpn.nix
     ./rpcs3.nix
