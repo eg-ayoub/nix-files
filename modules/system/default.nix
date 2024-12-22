@@ -1,6 +1,7 @@
 { inputs, pkgs, config, ... }: {
   imports = [
     ./docker.nix
+    ./fcitx.nix
     ./fonts.nix
     ./gfx.nix
     ./gpg.nix
