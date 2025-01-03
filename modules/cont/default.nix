@@ -2,6 +2,7 @@
 
   imports = [
     ./calibre-docker.nix
+    ./home-assistant.nix
   ];
 
 }

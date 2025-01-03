@@ -32,6 +32,7 @@
 
   cont.calibre.enable = true;
   cont.calibre.listen.port = 8084;
+  cont.homeassistant.enable = true;
 
   system.virt.enable = true;
   networking.hostName = "pup";
