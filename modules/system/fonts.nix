@@ -6,5 +6,7 @@
     nerd-fonts.recursive-mono
     # needed for sddm theme
     open-sans
+    # cjk font
+    noto-fonts-cjk-sans
   ];
 }
