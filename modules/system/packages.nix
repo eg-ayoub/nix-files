@@ -69,6 +69,7 @@ in
       services.displayManager.sddm.enable = true;
       services.desktopManager.plasma6.enable = true;
       services.displayManager.sddm.wayland.enable = true;
+      environment.systemPackages = [ mywalls ];
     })
     (lib.mkIf cfg.gaming.enable {
       programs.steam = {

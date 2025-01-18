@@ -4,10 +4,16 @@
     pname = "mywalls";
     version = "0.2";
     dontBuild = true;
+    preInstall = ''
+      mkdir -p $out/share/wallpapers/aesthetic $out/share/wallpapers/nixos
+    '';
     installPhase = ''
-      mkdir -p $out/aesthetic $out/nixos
-      cp -a aesthetic/images/* $out/aesthetic
-      cp -a nixos/wallpapers/* $out/nixos
+      runHook preInstall
+      cp -a aesthetic/images/* $out/share/wallpapers/aesthetic
+      cp -a nixos/wallpapers/* $out/share/wallpapers/nixos
+      runHook postInstall
+    '';
+    postInstall = ''
       find $out -name "*arch*" -exec rm {} \;
       find $out -name "*ubuntu*" -exec rm {} \;
       find $out -name "*debian*" -exec rm {} \;
