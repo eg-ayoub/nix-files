@@ -1,4 +1,4 @@
-{ config, inputs, modulesPath, ... }:
+{ pkgs, config, inputs, modulesPath, ... }:
 
 {
   imports = [
@@ -16,11 +16,11 @@
     };
   };
 
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   system.systemd-boot.enable = true;
-  # TODO: set device here
-  # boot.initrd.luks.devices."luks-a4902d23-9f67-4052-8212-315152738a9b".device = "/dev/disk/by-uuid/a4902d23-9f67-4052-8212-315152738a9b";
 
   hardware.nvidia.prime.amdgpuBusId = "PCI:6:0:0";
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
 
   system.packages.plasma6.enable = true;
   system.packages.gaming.enable = true;
