@@ -3,9 +3,7 @@
     ./docker.nix
     ./fcitx.nix
     ./fonts.nix
-    ./gfx.nix
     ./gpg.nix
-    ./gpu
     ./grub-boot.nix
     ./ld.nix
     ./legion.nix

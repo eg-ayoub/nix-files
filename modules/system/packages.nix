@@ -15,7 +15,6 @@ in
   config = lib.mkMerge [
     {environment.systemPackages = with pkgs; [
       vim
-      # python3
       git
       curl
       lshw

@@ -1,8 +1,0 @@
-{ ... } : {
-
-  imports = [
-    ./nvidia
-    ./intel
-  ];
-
-}
