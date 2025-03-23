@@ -7,6 +7,7 @@
     ./devcontainer.nix
     ./discord.nix
     ./handbrake.nix
+    ./ipod.nix
     ./jmp.nix
     ./lutris.nix
     ./musescore.nix
