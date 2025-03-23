@@ -22,6 +22,7 @@
   kitty.enable = true;
 
   apps.carla.enable = true;
+  apps.anytype.enable = true;
   apps.deluge.enable = true;
   apps.discord.enable = true;
   apps.handbrake.enable = true;
@@ -33,6 +34,7 @@
   apps.spotify.enable = true;
   apps.vlc.enable = true;
   apps.zen-browser.enable = true;
+  apps.ipod.enable = true;
 
   git.enable = true;
   git.email = "ayoub.nasr@proton.me";
