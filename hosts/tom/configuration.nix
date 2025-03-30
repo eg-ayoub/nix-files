@@ -30,7 +30,7 @@
   system.virt.enable = true;
   system.wine.enable = true;
 
-  system.fcitx.enable = true;
+  #  system.fcitx.enable = true;
 
   networking.hostName = "tom";
 }
