@@ -26,7 +26,7 @@ in
 
   config = lib.mkIf cfg.enable {
     virtualisation.oci-containers.containers.calibre = {
-      image = "lscr.io/linuxserver/calibre:latest";
+      image = "quay.io/linuxserver.io/calibre:latest";
       environment = {
         PUID=toString config.users.users.ayoub.uid;
         PGID=toString config.users.groups.users.gid;
