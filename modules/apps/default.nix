@@ -12,6 +12,7 @@
     ./jmp.nix
     ./lutris.nix
     ./musescore.nix
+    ./obs.nix
     ./pass.nix
     ./protonvpn.nix
     ./rpcs3.nix

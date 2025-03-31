@@ -35,6 +35,7 @@
   apps.vlc.enable = true;
   apps.zen-browser.enable = true;
   apps.ipod.enable = true;
+  apps.obs.enable = true;
 
   git.enable = true;
   git.email = "ayoub.nasr@proton.me";
