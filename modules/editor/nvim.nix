@@ -11,6 +11,10 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       ripgrep
+      # needed for copilot
+      luajitPackages.tiktoken_core
+      copilot-language-server
+      nodejs
     ];
     programs.neovim = {
       enable = true;
@@ -50,14 +54,14 @@ in
           '';
         }
         {
-          plugin = kanagawa-nvim;
+          plugin = onedarkpro-nvim;
           config = ''
           lua << EOF
-          vim.cmd[[colorscheme kanagawa]]
+          vim.cmd[[colorscheme onedark]]
 
           -- transparent backgrounds
-          vim.api.nvim_set_hl(0, "Normal", { bg = "none"})
-          vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none"})
+          -- vim.api.nvim_set_hl(0, "Normal", { bg = "none"})
+          -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none"})
           EOF
           '';
         }
@@ -68,6 +72,51 @@ in
           require('colorizer').setup()
           EOF
           '';
+        }
+        {
+          plugin = copilot-lua;
+          config = ''
+          lua << EOF
+          require('copilot').setup({
+            suggestion = { enabled = false },
+            panel = { enabled = false },
+            server = {
+              type = "binary",
+              custom_server_filepath = "${pkgs.copilot-language-server}/bin/copilot-language-server",
+            },
+          })
+          EOF
+          '';
+        }
+        {
+          plugin = copilot-lualine;
+        }
+        {
+          plugin = copilot-cmp;
+          config = ''
+          lua << EOF
+          require('copilot_cmp').setup()
+          EOF
+          '';
+        }
+        {
+          plugin = CopilotChat-nvim;
+          config = ''
+          lua << EOF
+          require('CopilotChat').setup()
+          EOF
+          '';
+        }
+        {
+          plugin = guess-indent-nvim;
+          config = ''
+          lua << EOF
+          require('guess-indent').setup()
+          EOF
+          '';
+        }
+        {
+          plugin = lsp-format-nvim;
         }
         {
           plugin = nvim-treesitter.withAllGrammars;
@@ -96,11 +145,27 @@ in
           '';
         }
         {
+          plugin = lspkind-nvim;
+        }
+        {
           plugin = nvim-cmp;
           config = ''
           lua << EOF
           local cmp = require('cmp')
+          local lspkind = require('lspkind')
           cmp.setup({
+            formatting = {
+              format = lspkind.cmp_format({
+                mode = 'symbol',
+                maxwidth = {
+                  menu = 50,
+                  abbr = 50,
+                },
+                symbol_map = { Copilot ="" },
+                ellipsis_char = '...',
+                show_labelDetails = true,
+              })
+            },
             snippet = {
               expand = function(args)
                 require('luasnip').lsp_expand(args.body)
@@ -115,6 +180,9 @@ in
               ["<C-e>"] = cmp.mapping.abort(),
             }),
             sources = cmp.config.sources({
+              -- Copilot
+              { name = 'copilot' },
+              -- Other Sources
               { name = 'nvim_lsp' },
               { name = 'luasnip' },
               { name = 'buffer' },
