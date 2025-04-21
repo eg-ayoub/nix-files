@@ -55,7 +55,8 @@
 
         modules = [
           ./hosts/tom/configuration.nix
-          nixos-hardware.nixosModules.lenovo-legion-16ach6h
+          # no need for ddg
+          nixos-hardware.nixosModules.lenovo-legion-16ach6h-hybrid
         ];
       };
       # 4 - tiger : (desktop) KDE + Gaming
