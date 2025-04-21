@@ -84,7 +84,7 @@ in
       environment.systemPackages = with pkgs; [
         goverlay
         mangohud
-        protonup
+        nvtopPackages.full
       ];
       environment.sessionVariables = {
         STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/ayoub/.steam/root/compatibilitytools.d";
