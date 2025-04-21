@@ -29,11 +29,15 @@ in
           "ohmyzsh/ohmyzsh path:plugins/git"
           "zsh-users/zsh-autosuggestions"
           "zsh-users/zsh-syntax-highlighting"
+          "joshskidmore/zsh-fzf-history-search"
         ];
       };
       initExtra = ''
       bindkey '^[OA' history-beginning-search-backward
       bindkey '^[OB' history-beginning-search-forward
+
+      bindkey -r '<Right>'
+      bindkey '^ ' autosuggest-accept
 
       export GPG_TTY="$(tty)"
       export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
