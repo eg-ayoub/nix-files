@@ -2,6 +2,11 @@
 
 let
   cfg = config.editor.nvim;
+  fromGitHub = name: repo: pkgs.vimUtils.buildVimPlugin {
+    pname = "${lib.strings.sanitizeDerivationName name}";
+    version = repo.rev;
+    src = repo;
+  };
 in
 {
   options.editor.nvim = {
@@ -28,12 +33,15 @@ in
         cmp-git
         cmp-nvim-lsp
         nvim-web-devicons
-        gitsigns-nvim
+        mini-nvim
+        vim-be-good
+        copilot-lualine
+        (fromGitHub "auto-dark-nvim" inputs.auto-dark-nvim)
         {
-          plugin = barbar-nvim;
+          plugin = gitsigns-nvim;
           config = ''
           lua << EOF
-          require("barbar").setup()
+          require("gitsigns").setup()
           EOF
           '';
         }
@@ -46,10 +54,41 @@ in
           '';
         }
         {
+          plugin = oil-nvim;
+          config = ''
+          lua << EOF
+          require("oil").setup()
+          EOF
+          '';
+        }
+        {
           plugin = lualine-nvim;
           config = ''
           lua << EOF
-          require("lualine").setup()
+          require("lualine").setup({
+            options = {
+              theme = "auto",
+              icons_enabled = true,
+              component_separators = '|',
+              section_separators = ''',
+            },
+            sections = {
+              lualine_a = {'mode'},
+              lualine_b = {'branch', 'diff', 'diagnostics'},
+              lualine_c = {'filename'},
+              lualine_x = {'encoding', 'fileformat', 'filetype', 'copilot'},
+              lualine_y = {'progress'},
+              lualine_z = {'location'}
+            },
+          })
+          EOF
+          '';
+        }
+        {
+          plugin = guess-indent-nvim;
+          config = ''
+          lua << EOF
+          require('guess-indent').setup()
           EOF
           '';
         }
@@ -57,7 +96,18 @@ in
           plugin = onedarkpro-nvim;
           config = ''
           lua << EOF
-          vim.cmd[[colorscheme onedark]]
+          vim.o.termguicolors = true
+
+          vim.api.nvim_create_autocmd("OptionSet", {
+            pattern = "background",
+            callback = function()
+              if vim.o.background == "dark" then
+                vim.cmd[[colorscheme onedark]]
+              else
+                vim.cmd[[colorscheme onelight]]
+              end
+            end,
+          })
 
           -- transparent backgrounds
           -- vim.api.nvim_set_hl(0, "Normal", { bg = "none"})
@@ -89,9 +139,6 @@ in
           '';
         }
         {
-          plugin = copilot-lualine;
-        }
-        {
           plugin = copilot-cmp;
           config = ''
           lua << EOF
@@ -108,10 +155,12 @@ in
           '';
         }
         {
-          plugin = guess-indent-nvim;
+          plugin = render-markdown-nvim;
           config = ''
           lua << EOF
-          require('guess-indent').setup()
+          local mk = require('render-markdown')
+          mk.setup()
+          mk.disable()
           EOF
           '';
         }
@@ -135,6 +184,16 @@ in
           plugin = telescope-nvim;
           config = ''
           lua << EOF
+          local telescope = require('telescope')
+          telescope.setup {
+            pickers = {
+              find_files = {
+                find_command = { 'rg', '--files', '--hidden', '--follow', '-g', '!.git' },
+              },
+            },
+          }
+
+          -- mappings
           vim.g.mapleader = " "
           local ts_builtin = require('telescope.builtin')
           vim.keymap.set('n', '<leader>pf', ts_builtin.find_files, {})
@@ -146,6 +205,30 @@ in
         }
         {
           plugin = lspkind-nvim;
+        }
+        {
+          plugin = harpoon2;
+          config = ''
+          lua << EOF
+          local harpoon = require('harpoon')
+          harpoon:setup()
+
+          -- REQUIRED
+          vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+          vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+          vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
+          vim.keymap.set("n", "<C-t>", function() harpoon:list():select(2) end)
+          vim.keymap.set("n", "<C-n>", function() harpoon:list():select(3) end)
+          vim.keymap.set("n", "<C-s>", function() harpoon:list():select(4) end)
+
+          -- Toggle previous & next buffers stored within Harpoon list
+          vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
+          vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
+
+
+          EOF
+          '';
         }
         {
           plugin = nvim-cmp;
@@ -187,6 +270,7 @@ in
               { name = 'luasnip' },
               { name = 'buffer' },
               { name = 'path' },
+              { name = 'render_markdown' },
             }),
           })
           cmp.setup.filetype('gitcommit', {

@@ -17,6 +17,12 @@
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
+    # non flake inputs
+    auto-dark-nvim = {
+      url = "github:f-person/auto-dark-mode.nvim";
+      flake = false;
+    };
   };
 
   outputs = { nixpkgs, nixos-hardware, ... }@inputs:
