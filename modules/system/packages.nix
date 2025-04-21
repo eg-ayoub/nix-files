@@ -68,7 +68,9 @@ in
       services.displayManager.sddm.enable = true;
       services.desktopManager.plasma6.enable = true;
       services.displayManager.sddm.wayland.enable = true;
-      environment.systemPackages = [ mywalls ];
+      environment.systemPackages = with pkgs;[
+        kdePackages.koi
+      ] ++ [ mywalls ];
     })
     (lib.mkIf cfg.gaming.enable {
       programs.steam = {
