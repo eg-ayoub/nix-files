@@ -16,6 +16,7 @@
     ./ssh-server.nix
     ./systemd-boot.nix
     ./users.nix
+    ./vial.nix
     ./virt.nix
     ./wine.nix
   ];
