@@ -10,6 +10,7 @@
     ./locale.nix
     ./misc.nix
     ./networking.nix
+    ./ns-usb.nix
     ./packages.nix
     ./shell.nix
     ./sound.nix

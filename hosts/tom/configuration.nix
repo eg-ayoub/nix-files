@@ -30,6 +30,7 @@
   system.virt.enable = true;
   system.vial.enable = true;
   system.wine.enable = true;
+  system.ns-usbloader.enable = true;
 
   #  system.fcitx.enable = true;
 
