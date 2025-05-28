@@ -2,7 +2,7 @@
 vim.g.mapleader = " "
 
 -- file explorer key
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", "<Cmd>Oil<CR>")
 
 -- telescope
 local ts_builtin = require('telescope.builtin')
