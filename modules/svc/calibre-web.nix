@@ -1,6 +1,9 @@
 { pkgs, lib, config, ... }:
 let
   cfg = config.svc.calibre-web;
+  calibre-package = pkgs.calibre-web.overridePythonAttrs (oldAttrs: {
+    dependencies = oldAttrs.dependencies ++ [ pkgs.calibre-web.optional-dependencies.kobo];
+  });
 in
 {
   options.svc.calibre-web = {
@@ -9,9 +12,10 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [
-      pkgs.calibre-web
+      calibre-package
     ];
     services.calibre-web = {
+      package = calibre-package;
       enable = true;
       listen.ip = "192.168.1.45";
       openFirewall = true;
