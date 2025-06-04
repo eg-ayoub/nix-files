@@ -20,10 +20,10 @@
   - [x] git stuff
   - [x] copilot + chat + integrations 
   - [ ] harpoon
-  - [ ] keymaps
-  - [ ] core config
+  - [x] keymaps
+  - [x] core config
   - [ ] vim be good
-  - [ ] look and feel
+  - [x] look and feel
   - [ ] jinja / salt-vim
   - [ ] dashboard
   - [ ] commentary
