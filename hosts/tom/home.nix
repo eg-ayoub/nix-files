@@ -21,11 +21,11 @@
 
   kitty.enable = true;
 
-  apps.carla.enable = true;
-  apps.anytype.enable = true;
+  # apps.carla.enable = true;
+  # apps.anytype.enable = true;
   apps.deluge.enable = true;
   apps.discord.enable = true;
-  apps.handbrake.enable = true;
+  # apps.handbrake.enable = true;
   apps.jmp.enable = true;
   apps.lutris.enable = true;
   apps.musescore.enable = true;

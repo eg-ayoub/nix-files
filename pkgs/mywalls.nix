@@ -33,7 +33,7 @@
         repo = "nixos-artwork";
         rev = "de03e887f03037e7e781a678b57fdae603c9ca20";
         name = "nixos";
-        sha256 = "sha256-6prGU+tfGf6GjyYqzZAnocKom6VgoxS8E+6TXy8YrRA=";
+        sha256 = "sha256-78FyNyGtDZogJUWcCT6A/T2MK87nGN/muC7ANH1b1V8=";
       })
     ];
   };
