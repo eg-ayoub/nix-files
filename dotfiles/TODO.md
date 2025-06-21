@@ -29,9 +29,9 @@
   - [ ] commentary
   - [ ] treesitter textobjects
   - [ ] parentheses
-  - [ ] twilight nvim
+  - [x] twilight nvim
   - [ ] trouble
-  - [ ] pywal
+  - [x] pywal
   - [ ] which key
 - [ ] alacritty
 - [ ] starship

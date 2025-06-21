@@ -22,3 +22,5 @@ auto_dark_mode.setup({
 })
 
 auto_dark_mode.init()
+
+require("twilight").setup()
