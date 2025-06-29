@@ -25,14 +25,14 @@
   system.systemd-boot.enable = true;
 
   system.ssh-server.enable = true;
-  system.ssh-server.passwordAuth = true;
+  # system.ssh-server.passwordAuth = true;
 
   svc.jellyfin.enable = true;
   svc.calibre-web.enable = true;
 
   cont.calibre.enable = true;
   cont.calibre.listen.port = 8084;
-  cont.homeassistant.enable = true;
+  # cont.homeassistant.enable = true;
 
   system.virt.enable = true;
   networking.hostName = "pup";
