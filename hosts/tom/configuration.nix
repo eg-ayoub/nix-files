@@ -14,6 +14,7 @@
     users = {
       ayoub = import ./home.nix;
     };
+    backupFileExtension = "backup";
   };
 
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
