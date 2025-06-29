@@ -16,8 +16,6 @@
   editor.nvim.enable = true;
   editor.servers.enable = true;
 
-  # hyprland.hyprland.enable = true;
-
   kitty.enable = true;
 
   # apps.chrome.enable = true;

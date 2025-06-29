@@ -24,7 +24,6 @@
 
   system.packages.plasma6.enable = true;
   system.packages.gaming.enable = true;
-  # system.packages.hyprland.enable = true;
   system.legion.enable = true;
 
   system.virt.enable = true;
