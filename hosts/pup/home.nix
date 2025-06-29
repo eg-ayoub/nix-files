@@ -15,6 +15,7 @@
   shell.extras.enable = true;
 
   editor.nvim.enable = true;
+  editor.nvim.fake_wal = true;
   editor.servers.enable = true;
 
   git.enable = true;
