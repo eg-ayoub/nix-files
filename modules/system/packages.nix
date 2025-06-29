@@ -29,6 +29,7 @@ in
       services.displayManager.sddm.wayland.enable = true;
       environment.systemPackages = with pkgs;[
         kdePackages.koi
+        python313Packages.kde-material-you-colors
       ] ++ [ mywalls ];
     })
     (lib.mkIf cfg.gaming.enable {

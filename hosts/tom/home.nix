@@ -16,7 +16,6 @@
   shell.extras.enable=true; 
 
   editor.nvim.enable = true;
-  editor.nvim.fake_wal = true;
   editor.servers.enable = true;
   # editor.zed.enable = true;
 
@@ -37,6 +36,8 @@
   apps.zen-browser.enable = true;
   apps.ipod.enable = true;
   apps.obs.enable = true;
+  apps.wal.enable = true;
+  apps.wal.kde-wal-reload = true;
 
   git.enable = true;
   git.email = "ayoub.nasr@proton.me";

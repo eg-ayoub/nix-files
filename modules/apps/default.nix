@@ -19,6 +19,7 @@
     ./slack.nix
     ./spotify.nix
     ./vlc.nix
+    ./wal.nix
     ./zen.nix
   ];
 }
