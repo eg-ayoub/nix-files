@@ -16,6 +16,7 @@
   shell.extras.enable=true; 
 
   editor.nvim.enable = true;
+  editor.nvim.fake_wal = true;
   editor.servers.enable = true;
   # editor.zed.enable = true;
 
