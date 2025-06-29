@@ -9,31 +9,13 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.kitty = {
-      enable = true;
-      shellIntegration.enableZshIntegration = true;
-      font.name = "Inconsolata Nerd Font";
-      extraConfig = ''
-        enable_audio_bell no
-        # remove mouse actions
-        # clear_all_mouse_actions yes
-        mouse_map left click ungrabbed
-      '';
-    };
+    home.packages = with pkgs; [
+      kitty
+    ];
     home.file = {
-
-      "${config.xdg.configHome}/kitty/dark-theme.auto.conf" = {
-        text = ''
-          include ${pkgs.kitty-themes}/share/kitty-themes/themes/adwaita_dark.conf
-          '';
+      ".config/kitty" = {
+        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/repos/nix-files/dotfiles/kitty/dot-config/kitty";
       };
-
-      "${config.xdg.configHome}/kitty/light-theme.auto.conf" = {
-        text = ''
-          include ${pkgs.kitty-themes}/share/kitty-themes/themes/adwaita_light.conf
-          '';
-      };
-
     };
   };
 
