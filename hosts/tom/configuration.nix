@@ -26,6 +26,7 @@
   system.packages.plasma6.enable = true;
   system.packages.gaming.enable = true;
   system.legion.enable = true;
+  system.networkmanager.enable = true;
 
   system.virt.enable = true;
   system.vial.enable = true;

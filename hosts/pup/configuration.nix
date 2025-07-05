@@ -37,23 +37,43 @@
 
   system.virt.enable = true;
 
-  # configure pup with a static ip address for adguardhome
+  # set hostname
   networking = {
     hostName = "pup";
     useDHCP = false;
-    interfaces.enp1s0f0 = {
-      useDHCP = false;
-      ipv4.addresses = [
-      {
-        address = "192.168.1.45";
-        prefixLength = 24;
-      }
-      ];
+  };
+
+  # make a bridge interface
+  systemd.network = {
+    enable = true;
+    wait-online.enable = true;
+    netdevs = {
+      "10-br0" = {
+        netdevConfig = {
+          Kind = "bridge";
+          Name = "br0";
+        };
+      };
     };
-    defaultGateway = "192.168.1.254";
-    nameservers = [
-      "8.8.8.8"
-        "1.1.1.1"
-    ];
+    networks = {
+      "20-enp1s0f0" = {
+        matchConfig.Name = "enp1s0f0";
+        networkConfig.Bridge = "br0";
+        linkConfig.RequiredForOnline = "enslaved";
+      };
+      "30-br0" = {
+        matchConfig.Name = "br0";
+        networkConfig = {
+          DHCP = "no";
+          Address = [ "192.168.1.45/24" ];
+          Gateway = [ "192.168.1.254" ];
+          DNS = [
+            "127.0.0.1"
+            "8.8.8.8"
+          ];
+        };
+        linkConfig.RequiredForOnline = "routable";
+      };
+    };
   };
 }
