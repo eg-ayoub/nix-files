@@ -17,6 +17,9 @@ in
       copilot-language-server
       nodejs
     ];
+    home.sessionVariables = {
+      COPILOT_LS = "${pkgs.copilot-language-server}/bin/copilot-language-server";
+    };
     programs.neovim = {
       enable = true;
     };

@@ -21,6 +21,7 @@ in
       cmake-language-server
       lua-language-server
       helm-ls
+      copilot-language-server
     ];
   };
 }
