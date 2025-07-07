@@ -33,6 +33,7 @@
 
   cont.calibre.enable = true;
   cont.calibre.listen.port = 8084;
+  cont.nginx-proxy-manager.enable = true;
 
   system.virt.enable = true;
 

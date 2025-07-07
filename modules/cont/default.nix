@@ -2,6 +2,7 @@
 
   imports = [
     ./calibre-docker.nix
+    ./nginx-proxy-manager.nix
   ];
 
 }
