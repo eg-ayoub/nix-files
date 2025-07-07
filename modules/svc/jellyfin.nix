@@ -8,6 +8,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    networking.firewall.interfaces.podman0.allowedTCPPorts = [ 8096 ];
     environment.systemPackages = [
       pkgs.jellyfin
       pkgs.jellyfin-web
@@ -15,7 +16,7 @@ in
     ];
     services.jellyfin = {
       enable = true;
-      openFirewall = true;
+      # openFirewall = true;
       user="ayoub";
     };
   };
