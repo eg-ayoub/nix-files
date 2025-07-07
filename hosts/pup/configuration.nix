@@ -43,6 +43,8 @@
     useDHCP = false;
   };
 
+  # dont use resolved
+  services.resolved.enable = false;
   # make a bridge interface
   systemd.network = {
     enable = true;

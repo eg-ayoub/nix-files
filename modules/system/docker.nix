@@ -5,9 +5,11 @@
     podman = {
       enable = true;
       dockerCompat = true;
-      defaultNetwork.settings.dns_enabled = true;
+      dockerSocket.enable = true;
     };
+    oci-containers.backend = "podman";
   };
+
   # Useful other development tools
   environment.systemPackages = with pkgs; [
     dive # look into docker image layers
