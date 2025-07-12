@@ -27,13 +27,11 @@ cmp.setup({
     ["<C-e>"] = cmp.mapping.abort(),
   }),
   sources = cmp.config.sources({
-    -- Copilot
-    { name = 'copilot' },
-    -- Other Sources
-    { name = 'git' },
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'buffer' },
+    { name = 'copilot' },
+    { name = 'git' },
     { name = 'path' },
     { name = 'render_markdown' },
     { name = 'nvim_lua' },
