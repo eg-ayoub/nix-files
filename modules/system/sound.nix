@@ -16,7 +16,9 @@
   ];
   users.users.ayoub.extraGroups = [ "audio" "rtkit" ];
   environment.systemPackages = with pkgs; [
-    qjackctl
+    qpwgraph
+    pavucontrol
+    unzip # needed for rocksmith patch-nixos.sh
     rtaudio
   ];
 }
