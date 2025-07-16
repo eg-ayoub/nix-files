@@ -22,6 +22,7 @@ in
       lua-language-server
       helm-ls
       copilot-language-server
+      llvmPackages.clang
     ];
   };
 }

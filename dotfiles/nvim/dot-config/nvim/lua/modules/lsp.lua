@@ -6,6 +6,9 @@ require'lspconfig'.bashls.setup{
 require 'lspconfig'.pyright.setup {
   capabilities = capabilities,
 }
+require 'lspconfig'.clangd.setup {
+  capabilities = capabilities,
+}
 require 'lspconfig'.yamlls.setup {
   capabilities = capabilities,
 }
@@ -14,7 +17,7 @@ require 'lspconfig'.marksman.setup {
 }
 require 'lspconfig'.gopls.setup {
   capabilities = capabilities,
-} 
+}
 require 'lspconfig'.clangd.setup {
   capabilities = capabilities,
 }
