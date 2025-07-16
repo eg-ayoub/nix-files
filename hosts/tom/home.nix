@@ -34,7 +34,7 @@
   apps.spotify.enable = true;
   apps.vlc.enable = true;
   apps.zen-browser.enable = true;
-  apps.ipod.enable = true;
+  # apps.ipod.enable = true;
   apps.obs.enable = true;
   apps.wal.enable = true;
   apps.wal.kde-wal-reload = true;
