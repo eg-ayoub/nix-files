@@ -42,6 +42,7 @@ in
           extraLibraries = pkgs: [ pkgs.pkgsi686Linux.pipewire.jack ]; # Adds pipewire jack (32-bit)
           extraPkgs = pkgs: [ pkgs.wineasio ]; # Adds wineasio
         };
+        protontricks.enable = true;
       };
       environment.systemPackages = with pkgs; [
         goverlay
