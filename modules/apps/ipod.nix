@@ -2,6 +2,9 @@
 
 let
   cfg = config.apps.ipod;
+  clementine-pkg = pkgs.clementine.override {
+    config.clementine.ipod = true;
+  };
 in
 {
   options.apps.ipod = {
@@ -12,6 +15,7 @@ in
     home.packages = with pkgs; [
       rockbox-utility
       strawberry
+      clementine-pkg
     ];
   };
 }
