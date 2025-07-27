@@ -1,4 +1,4 @@
-{ lib, config, ... }: 
+{ pkgs, lib, config, ... }: 
 let
   cfg = config.system.virt;
 in
@@ -10,5 +10,8 @@ in
   config = lib.mkIf cfg.enable {
     virtualisation.libvirtd.enable = true;
     programs.virt-manager.enable = true;
+    environment.systemPackages = with pkgs; [
+      virtiofsd
+    ];
   };
 }
