@@ -7,6 +7,7 @@
     ./deluge.nix
     ./devcontainer.nix
     ./discord.nix
+    ./godot.nix
     ./handbrake.nix
     ./ipod.nix
     ./jmp.nix

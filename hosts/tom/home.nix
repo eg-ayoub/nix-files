@@ -38,6 +38,7 @@
   apps.obs.enable = true;
   apps.wal.enable = true;
   apps.wal.kde-wal-reload = true;
+  apps.godot.enable = true;
 
   git.enable = true;
   git.email = "ayoub.nasr@proton.me";
