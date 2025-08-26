@@ -19,6 +19,7 @@ modules=(
     "nvim"
     "scripts"
     "kitty"
+    "qtile"
 )
 
 # if arguments have been passed, check if they're part of modules,

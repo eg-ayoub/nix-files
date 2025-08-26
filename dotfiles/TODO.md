@@ -1,42 +1,10 @@
 # stow packages to implement
 - [ ] zsh
-- [-] NVIM improved
-  - [x] lazy
-  - [x] oil
-  - [x] telescope
-  - [x] treesitter
-  - [x] hardtime
-  - [x] cmp
-    - [x] luasnip
-    - [x] cmp git
-    - [x] render markdown
-    - [x] copilot
-  - [x] lsp stuff
-    - [x] cmp lsp
-    - [x] lspkind
-    - [x] lsp format
-  - [x] lualine
-  - [x] undotree
-  - [x] git stuff
-  - [x] copilot + chat + integrations 
-  - [ ] harpoon
-  - [x] keymaps
-  - [x] core config
-  - [ ] vim be good
-  - [x] look and feel
-  - [ ] jinja / salt-vim
-  - [ ] dashboard
-  - [ ] commentary
-  - [ ] treesitter textobjects
-  - [ ] parentheses
-  - [x] twilight nvim
-  - [ ] trouble
-  - [x] pywal
-  - [ ] which key
-- [ ] alacritty
+- [x] NVIM improved
+- [x] kitty
 - [ ] starship
 - [ ] zsh
-- [ ] qtile
+- [-] qtile
 - [ ] rofi
 - [ ] variety/feh
 - [ ] misc
