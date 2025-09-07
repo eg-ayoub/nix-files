@@ -1,36 +1,57 @@
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-require'lspconfig'.bashls.setup{
+
+vim.lsp.config('bashls', {
   capabilities = capabilities,
   filetypes = {"sh", "sh.in"},
-}
-require 'lspconfig'.pyright.setup {
+})
+vim.lsp.enable('bashls')
+
+vim.lsp.config('pyright', {
   capabilities = capabilities,
-}
-require 'lspconfig'.clangd.setup {
+})
+vim.lsp.enable('pyright')
+
+vim.lsp.config('clangd', {
   capabilities = capabilities,
-}
-require 'lspconfig'.yamlls.setup {
+})
+vim.lsp.enable('clangd')
+
+vim.lsp.config('yamlls', {
   capabilities = capabilities,
-}
-require 'lspconfig'.marksman.setup {
+})
+vim.lsp.enable('yamlls')
+
+vim.lsp.config('marksman', {
   capabilities = capabilities,
-}
-require 'lspconfig'.gopls.setup {
+})
+vim.lsp.enable('marksman')
+
+vim.lsp.config('gopls', {
   capabilities = capabilities,
-}
-require 'lspconfig'.clangd.setup {
+})
+vim.lsp.enable('gopls')
+
+vim.lsp.config('clangd', {
   capabilities = capabilities,
-}
-require 'lspconfig'.cmake.setup {
+})
+vim.lsp.enable('clangd')
+
+vim.lsp.config('cmake', {
   capabilities = capabilities,
-}
-require 'lspconfig'.nixd.setup {
+})
+vim.lsp.enable('cmake')
+
+vim.lsp.config('nixd', {
   capabilities = capabilities,
-}
-require 'lspconfig'.helm_ls.setup {
+})
+vim.lsp.enable('nixd')
+
+vim.lsp.config('helm_ls', {
   capabilities = capabilities,
-}
-require 'lspconfig'.lua_ls.setup {
+})
+vim.lsp.enable('helm_ls')
+
+vim.lsp.config('lua_ls', {
   on_init = function(client)
     local path = client.workspace_folders[1].name
       if not vim.loop.fs_stat(path .. '/.luarc.json') and not vim.loop.fs_stat(path .. '/.luarc.jsonc') then
@@ -38,6 +59,9 @@ require 'lspconfig'.lua_ls.setup {
           Lua = {
             runtime = {
               version = 'LuaJIT'
+            },
+            diagnostics = {
+              globals = {'vim'}
             },
             workspace = {
               checkThirdParty = false,
@@ -52,4 +76,5 @@ require 'lspconfig'.lua_ls.setup {
       return true
     end,
     capabilities = capabilities,
-}
+})
+vim.lsp.enable('lua_ls')
