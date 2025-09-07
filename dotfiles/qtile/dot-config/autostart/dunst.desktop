@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Dunst
+Comment=Dunst is a lightweight notification daemon
+Exec=dunst
+Terminal=false
+Type=Application

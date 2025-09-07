@@ -1,36 +1,44 @@
+from enum import Enum
+
 from libqtile import bar, widget
 
-# define some default widget settings
-widget_defaults = dict(
-    font="sans",
-    fontsize=12,
-    padding=3,
-)
+from .widget_defaults import *
 
-# add more defaults for extension widgets
-extension_defaults = widget_defaults.copy()
+class WidgetPlacement(Enum):
+    ONLY_MAIN = 1
+    ONLY_SECONDARY = 2
+    BOTH = 3
+
+# enum defines two styles of bars: main and secondary
+class BarStyle(Enum):
+    MAIN = 1
+    SECONDARY = 2
+
+    def supports(self, placement: WidgetPlacement) -> bool:
+        if self == BarStyle.MAIN:
+            return placement in (WidgetPlacement.ONLY_MAIN, WidgetPlacement.BOTH)
+        elif self == BarStyle.SECONDARY:
+            return placement in (WidgetPlacement.ONLY_SECONDARY, WidgetPlacement.BOTH)
+        return False
+
+status_notifier_widget = widget.StatusNotifier(**status_notifier_options)
+clock_widget = widget.Clock(**clock_options)
+keyboard_layout_widget = widget.KeyboardLayout(**keyboard_layout_options)
 
 # crafts a default bar
-def make_bar() -> bar.Bar:
+def make_bar(style: BarStyle) -> bar.Bar:
+    widgets: list[tuple[WidgetPlacement, widget._Widget]] = [
+            (WidgetPlacement.BOTH, widget.GroupBox(**group_box_options)),
+            (WidgetPlacement.BOTH, widget.TaskList(**task_list_options)),
+            (WidgetPlacement.ONLY_MAIN, status_notifier_widget),
+            (WidgetPlacement.ONLY_MAIN, clock_widget),
+            (WidgetPlacement.ONLY_MAIN, keyboard_layout_widget),
+            (WidgetPlacement.BOTH, widget.CurrentLayout(**current_layout_options)),
+         ]
+
     return bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
+                widget for placement, widget in widgets if style.supports(placement)
             ],
             24,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders

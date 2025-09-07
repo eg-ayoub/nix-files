@@ -4,14 +4,14 @@ from libqtile.backend.wayland.output import Output
 from libqtile import qtile
 from libqtile.log_utils import logger
 
-from .bars import make_bar
+from .bars import make_bar, BarStyle
 
 screens = []
 
 screen_matcher = {
-        "Sharp Corporation 0x14BA": Screen(bottom=make_bar()),
-        "Dell Inc. DELL S2421HS FFG9123": Screen(bottom=make_bar()),
-        "Lenovo Group Limited R27qe UP333352": Screen(bottom=make_bar()),
+        "Sharp Corporation 0x14BA": Screen(bottom=make_bar(BarStyle.MAIN)),
+        "Dell Inc. DELL S2421HS FFG9123": Screen(bottom=make_bar(BarStyle.SECONDARY)),
+        "Lenovo Group Limited R27qe UP333352": Screen(bottom=make_bar(BarStyle.MAIN)),
 }
 
 # this is called to generate screens from a list of outputs
@@ -26,7 +26,7 @@ def generate_screens(outputs: list[Output]) -> list[Screen]:
                 matched_screen = screen
         if matched_screen is None:
             logger.warning(f"No match for output {output.wlr_output.description}, using default screen")
-            ret.append(Screen(bottom=make_bar()))
+            ret.append(Screen(bottom=make_bar(BarStyle.MAIN)))
         else:
             logger.info(f"Using matched screen for output {output.wlr_output.description}")
             ret.append(matched_screen)

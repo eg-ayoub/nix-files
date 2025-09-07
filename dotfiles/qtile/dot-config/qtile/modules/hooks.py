@@ -2,7 +2,7 @@ from libqtile import hook
 from libqtile.utils import send_notification
 
 from .screens import call_generate_screens
-from .utils import run_script
+from .utils import finalize_uwsm #run_script
 
 @hook.subscribe.screen_change
 def screen_change(_):
@@ -13,4 +13,4 @@ def screen_change(_):
 def autostart():
     """Run once on startup"""
     send_notification("Qtile starting", "Running autostart script...")
-    run_script(script="autostart.sh")
+    finalize_uwsm()

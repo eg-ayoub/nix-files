@@ -4,6 +4,7 @@ from libqtile.lazy import lazy
 
 from .groups import make_group_keys
 from . import constants
+from .utils import uwsm_lazy_spawn
 
 # modifier key is the Super/Windows key
 mod = "mod4"
@@ -51,7 +52,7 @@ keys = [
     # close window
     Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
     Key(
-        [mod],
+        [mod, "shift"],
         "f",
         lazy.window.toggle_fullscreen(),
         desc="Toggle fullscreen on the focused window",
@@ -61,11 +62,13 @@ keys = [
     # misc
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod], "space", lazy.widget["keyboardlayout"].next_keyboard(), desc="Next keyboard layout"),
     # TODO: add brightness controls
 
     # spawn applications
-    Key([mod], "d", lazy.spawn(constants.DRUN_COMMAND), desc="App launcher"),
-    Key([mod], "Return", lazy.spawn(constants.TERMINAL), desc="Launch terminal"),
+    Key([mod], "d", lazy.spawn(constants.UWSM_DRUN_COMMAND), desc="App launcher"),
+    Key([mod], "Return", uwsm_lazy_spawn(constants.TERMINAL), desc="Launch terminal"),
+    Key([mod], "v", uwsm_lazy_spawn(constants.CLIPHIST_COMMAND), desc="Clipboard history manager"),
 ]
 
 # Add key bindings to switch VTs in Wayland.

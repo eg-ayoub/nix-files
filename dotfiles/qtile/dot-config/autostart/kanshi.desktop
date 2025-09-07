@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Kanshi
+Comment=Kanshi is a Wayland display configuration daemon
+Exec=kanshi
+Terminal=false
+Type=Application

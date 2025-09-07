@@ -45,9 +45,9 @@ def make_group_keys(mod) -> list[Key]:
         group_keys.extend([
             # fr keyboard bindings
             Key([mod], group_shortcuts_fr[i], lazy.group[group.name].toscreen(), desc=f"Switch to group {group.name}"),
-            Key([mod, "shift"], group_shortcuts_fr[i], lazy.window.togroup(group.name, switch_group=True), desc=f"Switch to & move focused window to group {group.name}"),
+            Key([mod, "shift"], group_shortcuts_fr[i], lazy.window.togroup(group.name, switch_group=False), desc=f"Switch to & move focused window to group {group.name}"),
             # us keyboard bindings
             Key([mod], group_shortcuts_en[i], lazy.group[group.name].toscreen(), desc=f"Switch to group {group.name}"),
-            Key([mod, "shift"], group_shortcuts_en[i], lazy.window.togroup(group.name, switch_group=True), desc=f"Switch to & move focused window to group {group.name}"),
+            Key([mod, "shift"], group_shortcuts_en[i], lazy.window.togroup(group.name, switch_group=False), desc=f"Switch to & move focused window to group {group.name}"),
         ])
     return group_keys

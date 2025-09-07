@@ -2,4 +2,6 @@ TERMINAL = "kitty"
 
 FILE_MANAGER = "thunar"
 
-DRUN_COMMAND = "rofi -show drun -show-icons"
+UWSM_DRUN_COMMAND = "rofi -show drun -show-icons -run-command \"uwsm-app -- {cmd}\""
+
+CLIPHIST_COMMAND = "rofi -modi clipboard:cliphist-rofi -show clipboard"

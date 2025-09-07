@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Qtile (Wayland)
+Comment=Qtile Session with Wayland backend
+Exec=qtile start -b wayland
+Type=Application
+Keywords=wm;tiling
+X-UWSM-Environment=
