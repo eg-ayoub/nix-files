@@ -19,6 +19,7 @@
     ./rpcs3.nix
     ./slack.nix
     ./spotify.nix
+    ./unity.nix
     ./vlc.nix
     ./wal.nix
     ./zen.nix

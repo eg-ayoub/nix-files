@@ -26,7 +26,7 @@
   apps.deluge.enable = true;
   apps.discord.enable = true;
   # apps.handbrake.enable = true;
-  apps.jmp.enable = true;
+  # apps.jmp.enable = true;
   apps.lutris.enable = true;
   apps.musescore.enable = true;
   apps.protonvpn.enable = true;
@@ -40,6 +40,7 @@
   apps.wal.kde-wal-reload = true;
   apps.godot.enable = true;
   apps.godot.script = true;
+  apps.unityhub.enable = true;
 
   git.enable = true;
   git.email = "ayoub.nasr@proton.me";

@@ -26,7 +26,7 @@
         repo = "aesthetic-wallpapers";
         rev = "b87620b9188a512fe5c81a4688fc1bca1bfb4a41";
         name = "aesthetic";
-        sha256 = "sha256-JVX7QznK6a4Iq3z+g+SZdvHQLzmR30HJNrdDldptpKU=";
+        sha256 = "sha256-NpNjtMYQNZw1rpOVTOdltAdbh5LxHO786huLkW63yQ0=";
       })
       (fetchFromGitHub {
         owner = "NixOS";
