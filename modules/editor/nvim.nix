@@ -27,9 +27,9 @@ in
       ".config/nvim" = {
         source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/repos/nix-files/dotfiles/nvim/dot-config/nvim";
       };
-      ".cache/wal/colors-wal.vim" = lib.mkIf cfg.fake_wal {
-        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/repos/nix-files/dotfiles/nvim/fake-wal.vim";
-      };
+      #".cache/wal/colors-wal.vim" = lib.mkIf cfg.fake_wal {
+      #  source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/repos/nix-files/dotfiles/nvim/fake-wal.vim";
+      #};
     };
   };
 }

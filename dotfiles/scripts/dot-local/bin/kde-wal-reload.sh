@@ -9,7 +9,6 @@ log "Fetching current wallpaper path..."
 WALLPAPER=$(qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.wallpaper 0 | grep 'Image: file:' | sed -E 's|Image: file://||')
 log "Wallpaper: $WALLPAPER"
 
-sleep 2 # Give some time for koi to actually set color scheme
 log "Fetching color scheme mode..."
 # Fetch light/dark mode setting
 MODE_NUM=$(qdbus org.freedesktop.portal.Desktop /org/freedesktop/portal/desktop org.freedesktop.portal.Settings.Read "org.freedesktop.appearance" "color-scheme" | sed -E 's/^[^ ]+ //')
@@ -19,6 +18,12 @@ elif [ "$MODE_NUM" -eq 2 ]; then
     MODE="light"
 else
     MODE="unknown"
+fi
+# overlwrite if arg 1 is given
+# only if arg is light or dark
+# only second expression uses [[ for pattern matching
+if [ $# -gt 0 ] && [[ "$1" == @(light|dark) ]] ; then
+    MODE="$1"
 fi
 log "Mode: $MODE"
 
