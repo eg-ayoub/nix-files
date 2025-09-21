@@ -72,6 +72,9 @@
 
         modules = [
           ./hosts/pup/configuration.nix
+          # needed for amd gpu support
+          nixos-hardware.nixosModules.common-cpu-amd
+          nixos-hardware.nixosModules.common-gpu-amd
         ];
       };
     };
