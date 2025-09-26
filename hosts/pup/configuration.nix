@@ -30,6 +30,7 @@
   svc.jellyfin.enable = true;
   svc.calibre-web.enable = true;
   svc.adguardhome.enable = true;
+  svc.dnsmasq.enable = true;
 
   cont.calibre.enable = true;
   cont.calibre.listen.port = 8084;
@@ -66,13 +67,16 @@
       "30-br0" = {
         matchConfig.Name = "br0";
         networkConfig = {
-          DHCP = "no";
-          Address = [ "192.168.1.45/24" ];
-          Gateway = [ "192.168.1.254" ];
-          DNS = [
-            "127.0.0.1"
-            "8.8.8.8"
-          ];
+          DHCP = "ipv6";
+          Address = [ "192.168.1.45/24" "fd00:1337:acab::45/64" ];
+          Gateway = [ "192.168.1.254" "fe80::8a0f:a2ff:fedd:f345%br0" ];
+          IPv6AcceptRA = true;
+        };
+        ipv6AcceptRAConfig.UseDNS = false;
+        dhcpV6Config = {
+          PrefixDelegationHint = "::/56";
+          UseAddress = true;
+          UseDNS = false;
         };
         linkConfig.RequiredForOnline = "routable";
       };

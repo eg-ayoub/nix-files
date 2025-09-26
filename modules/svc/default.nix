@@ -1,9 +1,10 @@
 { inputs, pkgs, config, ... }: {
 
   imports = [
-    ./jellyfin.nix
-    ./calibre-web.nix
     ./adguardhome.nix
+    ./calibre-web.nix
+    ./dnsmasq.nix
+    ./jellyfin.nix
   ];
 
 }

@@ -11,12 +11,16 @@ in
     environment.systemPackages = [
       pkgs.adguardhome
     ];
-    networking.firewall.allowedUDPPorts = [ 53 67 68 546 547 ];
     services.adguardhome = {
       enable = true;
       mutableSettings = true;
       openFirewall = true;
-      allowDHCP = true;
+      settings = {
+        dns = {
+          bind_hosts = [ "127.0.0.1" "::1" ];
+          port = 53;
+        };
+      };
     };
   };
 }
