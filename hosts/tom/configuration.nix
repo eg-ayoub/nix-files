@@ -36,7 +36,6 @@
   #  openSha256 = "sha256-mcbMVEyRxNyRrohgwWNylu45vIqF+flKHnmt47R//KU=";
   #  settingsSha256 = "sha256-o2zUnYFUQjHOcCrB0w/4L6xI1hVUXLAWgG2Y26BowBE=";
   #  persistencedSha256 = "sha256-2g5z7Pu8u2EiAh5givP5Q1Y4zk4Cbb06W37rf768NFU=";
-  #};
 
   system.packages.plasma6.enable = true;
   system.packages.gaming.enable = true;
@@ -47,6 +46,7 @@
   system.vial.enable = true;
   system.wine.enable = true;
   system.ns-usbloader.enable = true;
+  system.razer.enable = true;
 
   #  system.fcitx.enable = true;
 

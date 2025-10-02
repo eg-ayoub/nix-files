@@ -12,6 +12,7 @@
     ./networking.nix
     ./ns-usb.nix
     ./packages.nix
+    ./razer.nix
     ./shell.nix
     ./sound.nix
     ./ssh-server.nix
