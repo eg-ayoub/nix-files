@@ -19,9 +19,10 @@ in
       enable = true;
       alwaysKeepRunning = true;
       settings = {
-        bind-interfaces = true;
-        interface = [ "br0" ];
-        except-interface = [ "lo" ];
+        port = 0; # Disable DNS, handled by AdGuard Home
+        # bind-interfaces = true;
+        # interface = [ "br0" ];
+        # except-interface = [ "lo" ];
 
         listen-address = [
           "192.168.1.45"

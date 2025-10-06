@@ -15,12 +15,12 @@ in
       enable = true;
       mutableSettings = true;
       openFirewall = true;
-      settings = {
-        dns = {
-          bind_hosts = [ "127.0.0.1" "::1" ];
-          port = 53;
-        };
-      };
+      # settings = {
+      #   dns = {
+      #     bind_hosts = [ "127.0.0.1" "::1" ];
+      #     port = 53;
+      #   };
+      # };
     };
   };
 }
