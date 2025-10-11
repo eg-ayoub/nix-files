@@ -77,6 +77,17 @@
           nixos-hardware.nixosModules.common-gpu-amd
         ];
       };
+      # 6- tyke : (server) HomeLab evolution of pup
+      tyke = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs system; };
+
+        modules = [
+          ./hosts/tyke/configuration.nix
+
+          # intel cpu i5 - 8500T
+          "${nixos-hardware}/common/cpu/intel/coffee-lake"
+        ];
+      };
     };
   };
 }
