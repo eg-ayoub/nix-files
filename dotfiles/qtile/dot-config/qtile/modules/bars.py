@@ -21,18 +21,14 @@ class BarStyle(Enum):
             return placement in (WidgetPlacement.ONLY_SECONDARY, WidgetPlacement.BOTH)
         return False
 
-status_notifier_widget = widget.StatusNotifier(**status_notifier_options)
-clock_widget = widget.Clock(**clock_options)
-keyboard_layout_widget = widget.KeyboardLayout(**keyboard_layout_options)
-
 # crafts a default bar
 def make_bar(style: BarStyle) -> bar.Bar:
     widgets: list[tuple[WidgetPlacement, widget._Widget]] = [
             (WidgetPlacement.BOTH, widget.GroupBox(**group_box_options)),
             (WidgetPlacement.BOTH, widget.TaskList(**task_list_options)),
-            (WidgetPlacement.ONLY_MAIN, status_notifier_widget),
-            (WidgetPlacement.ONLY_MAIN, clock_widget),
-            (WidgetPlacement.ONLY_MAIN, keyboard_layout_widget),
+            (WidgetPlacement.ONLY_MAIN, widget.StatusNotifier(**status_notifier_options)),
+            (WidgetPlacement.ONLY_MAIN, widget.Clock(**clock_options)),
+            (WidgetPlacement.ONLY_MAIN, widget.KeyboardLayout(**keyboard_layout_options)),
             (WidgetPlacement.BOTH, widget.CurrentLayout(**current_layout_options)),
          ]
 
