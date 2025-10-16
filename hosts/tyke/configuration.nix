@@ -59,8 +59,8 @@
       };
     };
     networks = {
-      "20-enp1s0f0" = {
-        matchConfig.Name = "enp1s0f0";
+      "20-enp2s0" = {
+        matchConfig.Name = "enp2s0";
         networkConfig.Bridge = "br0";
         linkConfig.RequiredForOnline = "enslaved";
       };
@@ -81,5 +81,18 @@
         linkConfig.RequiredForOnline = "routable";
       };
     };
+  };
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+  };
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      intel-compute-runtime
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
   };
 }

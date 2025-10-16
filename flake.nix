@@ -82,7 +82,7 @@
         modules = [
           ./hosts/tyke/configuration.nix
           # intel cpu i5 - 8500T
-          "${nixos-hardware}/common/cpu/intel/coffee-lake"
+          "${nixos-hardware}/common/cpu/intel/coffee-lake/cpu-only.nix"
           # ssd
           nixos-hardware.nixosModules.common-pc-ssd
         ];

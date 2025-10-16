@@ -19,5 +19,6 @@ in
       # openFirewall = true;
       user="ayoub";
     };
+    users.users.ayoub.extraGroups = [ "render" ];
   };
 }
