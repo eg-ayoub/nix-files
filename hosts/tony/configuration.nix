@@ -17,7 +17,10 @@
     backupFileExtension = "backup";
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  hardware.enableAllFirmware = true;
+
+  # boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   system.systemd-boot.enable = true;
 
   system.packages.plasma6.enable = true;

@@ -22,13 +22,14 @@ in
       wl-clipboard
       wtype
       brightnessctl
+      pciutils
     ];}
     (lib.mkIf cfg.plasma6.enable {
       services.displayManager.sddm.enable = true;
       services.desktopManager.plasma6.enable = true;
       services.displayManager.sddm.wayland.enable = true;
       environment.systemPackages = with pkgs;[
-        kdePackages.koi
+        # kdePackages.koi
         kdePackages.kconfig
         variety
       ] ++ [ mywalls ];
@@ -48,7 +49,8 @@ in
       environment.systemPackages = with pkgs; [
         goverlay
         mangohud
-        nvtopPackages.full
+        # TODO: move this out of here
+        # nvtopPackages.full
       ];
       environment.sessionVariables = {
         STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/ayoub/.steam/root/compatibilitytools.d";

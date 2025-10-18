@@ -27,6 +27,7 @@
   apps.discord.enable = true;
   # apps.handbrake.enable = true;
   # apps.jmp.enable = true;
+  apps.kodi.enable = true;
   apps.lutris.enable = true;
   apps.musescore.enable = true;
   apps.protonvpn.enable = true;

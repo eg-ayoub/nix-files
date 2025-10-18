@@ -11,6 +11,7 @@
     ./handbrake.nix
     ./ipod.nix
     ./jmp.nix
+    ./kodi.nix
     ./lutris.nix
     ./musescore.nix
     ./obs.nix
