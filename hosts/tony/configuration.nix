@@ -31,7 +31,6 @@
   system.vial.enable = true;
   system.wine.enable = true;
   system.ns-usbloader.enable = true;
-  system.razer.enable = true;
 
   networking.hostName = "tony";
 }

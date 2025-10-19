@@ -23,7 +23,8 @@ in
       wtype
       brightnessctl
       pciutils
-    ];}
+    ];
+    }
     (lib.mkIf cfg.plasma6.enable {
       services.displayManager.sddm.enable = true;
       services.desktopManager.plasma6.enable = true;
