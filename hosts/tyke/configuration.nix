@@ -33,7 +33,7 @@
   svc.dnsmasq.enable = true;
 
   cont.calibre.enable = true;
-  cont.calibre.listen.port = 8084;
+  cont.calibre.listen.https_port = 8184;
   cont.nginx-proxy-manager.enable = true;
 
   system.virt.enable = true;

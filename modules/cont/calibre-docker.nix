@@ -6,11 +6,6 @@ in
   options.cont.calibre = {
     enable = lib.mkEnableOption "enable Calibre";
     listen = {
-      port = lib.mkOption {
-        default = 8080;
-        description = "calibre desktop gui http";
-        type = lib.types.port;
-      };
       https_port = lib.mkOption {
         default = 8181;
         description = "calibre desktop gui https";
@@ -33,7 +28,6 @@ in
         TZ="Etc/CET";
       };
       ports = [
-        "${toString cfg.listen.port}:8080"
         "${toString cfg.listen.https_port}:8181"
         "${toString cfg.listen.webserver_port}:8081"
       ];
