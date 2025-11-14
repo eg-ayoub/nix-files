@@ -1,1 +1,79 @@
 @import "~/.cache/wal/colors-rofi-dark.rasi"
+
+configuration {
+    font: "JetBrainsMono Nerd Font 12";
+    show-icons: true;
+    icon-theme: "Papirus-Dark";
+    display-drun: " ";
+    display-run: " ";
+    display-window: " ";
+    drun-display-format: "{name}";
+}
+
+* {
+    border-radius: 8px;
+}
+
+window {
+    transparency: "real";
+    background-color: @background;
+    border: 2px;
+    border-color: @selected-normal-background;
+    border-radius: 8px;
+    width: 600px;
+    padding: 10px;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [inputbar, listview];
+    spacing: 10px;
+}
+
+inputbar {
+    background-color: @background-alt;
+    text-color: @foreground;
+    border-radius: 8px;
+    padding: 8px 12px;
+    children: [prompt, entry];
+}
+
+prompt {
+    background-color: transparent;
+    text-color: @selected-normal-background;
+    padding: 0 8px 0 0;
+}
+
+entry {
+    background-color: transparent;
+    text-color: @foreground;
+    placeholder: "Search...";
+}
+
+listview {
+    background-color: transparent;
+    lines: 8;
+    spacing: 4px;
+}
+
+element {
+    background-color: transparent;
+    text-color: @foreground;
+    border-radius: 6px;
+    padding: 6px 10px;
+}
+
+element selected {
+    background-color: @selected;
+    text-color: @background;
+}
+
+element-icon {
+    size: 24px;
+    padding: 0 8px 0 0;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+}
