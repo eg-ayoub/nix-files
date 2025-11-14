@@ -76,6 +76,11 @@ window-rule {
     open-floating true
 }
 
+window-rule {
+    match app-id="kitty"
+    draw-border-with-background false
+}
+
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 

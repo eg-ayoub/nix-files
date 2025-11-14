@@ -1,0 +1,38 @@
+# Include pywal colors
+include=~/.cache/wal/colors-mako
+
+# Font
+font=JetBrainsMono Nerd Font 11
+
+# Border and styling
+border-size=2
+border-radius=8
+padding=12
+margin=10
+
+# Behavior
+default-timeout=5000
+ignore-timeout=0
+max-visible=3
+sort=-time
+
+# Positioning
+anchor=top-right
+
+# Icons
+icon-path=/usr/share/icons/Papirus-Dark
+max-icon-size=48
+
+# Opacity (dd = ~87% opacity)
+background-color=#0b0b19dd
+
+# Urgency levels
+[urgency=low]
+default-timeout=3000
+
+[urgency=normal]
+default-timeout=5000
+
+[urgency=high]
+border-color=#ff5555
+default-timeout=0
