@@ -21,6 +21,7 @@ modules=(
     "kitty"
     "qtile"
     "niri"
+    "rofi"
 )
 
 # if arguments have been passed, check if they're part of modules,

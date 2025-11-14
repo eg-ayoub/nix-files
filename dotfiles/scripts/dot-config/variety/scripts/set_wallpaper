@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+WP=$1
+
+detect_desktop() {
+    if [ -n "$XDG_CURRENT_DESKTOP" ]; then
+        case "${XDG_CURRENT_DESKTOP,,}" in
+        *"niri"*) echo "niri" ;;
+        *"qtile"*) echo "qtile" ;;
+        *) echo "$XDG_CURRENT_DESKTOP" | tr '[:upper:]' '[:lower:]' ;;
+        esac
+        return
+    fi
+    echo "unknown"
+}
+
+DE=$(detect_desktop)
+
+if [ "$DE" == "niri" ]; then
+    # If swaybg is available, use it as prevents system freeze.
+    # See https://github.com/swaywm/sway/issues/5606
+    if command -v "swaybg" >/dev/null 2>&1; then
+        # Grey background flicker is prevented by killing old swaybg process after new one.
+        # See https://github.com/swaywm/swaybg/issues/17#issuecomment-851680720
+        PID=$(pidof swaybg)
+        swaybg -i "$WP" -m fill &
+        if [ -n "$PID" ]; then
+            sleep 1
+            kill "$PID" 2>/dev/null
+        fi
+    else
+        notify-send -u normal "swaybg not found" "Please install swaybg to set wallpapers in Niri."
+    fi
+
+elif [ "$DE" == "qtile" ]; then
+    # Use qtile's built-in wallpaper setter
+    qtile cmd-obj -o cmd -f set_wallpaper "$WP" 2>/dev/null
+
+else
+    # For simple WMs, use either feh or nitrogen
+    # TODO: These should take the scaling parameter $4 into account and use other options than --bg-fill
+    if command -v "feh" >/dev/null 2>&1; then
+        feh --bg-fill "$WP" 2>/dev/null
+    elif command -v "nitrogen" >/dev/null 2>&1; then
+        nitrogen --set-zoom-fill --save "$WP" 2>/dev/null
+    fi
+fi
+
+if command -v "wal"; then
+    wal -n -i "$WP"
+fi
+
+exit 0

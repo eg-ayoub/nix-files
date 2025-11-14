@@ -1,0 +1,92 @@
+@import url("../../.cache/wal/colors-waybar.css");
+
+* {
+    font-family: Hack, Roboto, sans-serif;
+    font-size: 12px;
+}
+
+window#waybar {
+    background-color: @background;
+    /* border-bottom: 3px solid @cursor; */
+    border: none;
+    color: @foreground;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: @foreground
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+#workspaces button.focused, #workspaces button.active {
+    background-color: @color1;
+    box-shadow: inset 0 -3px @cursor;
+}
+
+#workspaces button.urgent {
+    background-color: @color6;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#mpd {
+    padding: 0 4px;
+    color: @foreground;
+}
+
+#window,
+#workspaces {
+    margin: 0 0px;
+}
+
+#idle_inhibitor {
+    box-shadow: inset 0 -3px @cursor;
+}
+
+#pulseaudio {
+    box-shadow: inset 0 -3px @color1;
+}
+
+#language,
+#power-profiles-daemon {
+    box-shadow: inset 0 -3px @cursor;
+}
+
+#cpu,
+#memory,
+#temperature,
+#battery {
+    box-shadow: inset 0 -3px @color2;
+}
+
+#clock {
+    box-shadow: inset 0 -3px @color4;
+}
