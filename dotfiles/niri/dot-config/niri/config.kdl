@@ -62,6 +62,7 @@ layout {
 
 spawn-at-startup "/usr/bin/kanshi"
 spawn-at-startup "/usr/bin/variety"
+spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
 
 hotkey-overlay {
 }
