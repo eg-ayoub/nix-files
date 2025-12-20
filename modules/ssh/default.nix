@@ -13,8 +13,11 @@ in
   config = lib.mkIf cfg.enable {
     programs.ssh = {
       enable = true;
-      controlMaster = "yes";
-      controlPath = "~/.ssh/sockets/%r@%h-%p";
+      enableDefaultConfig = false;
+      matchBlocks."*" = {
+        controlMaster = "yes";
+        controlPath = "~/.ssh/sockets/%r@%h-%p";
+      };
     };
   };
 

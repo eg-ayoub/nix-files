@@ -17,18 +17,23 @@ in
   config = lib.mkIf cfg.enable {
     programs.git = {
       enable = true;
-      diff-so-fancy.enable = true;
       signing = lib.mkIf cfg.enable-signing {
         key = "B5A7EEEDCB6DD46E";
         signByDefault = true;
       };
-      userEmail = cfg.email;
-      userName = "Ayoub Nasr";
-      extraConfig = lib.mkIf config.editor.nvim.enable {
+      settings = lib.mkIf config.editor.nvim.enable {
         core = {
           editor = "nvim";
         };
+        user = {
+          email = cfg.email;
+          name = "Ayoub Nasr";
+        };
       };
+    };
+    programs.diff-so-fancy = {
+      enable = true;
+      enableGitIntegration = true;
     };
   };
 
