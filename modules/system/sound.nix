@@ -18,5 +18,6 @@
     pavucontrol
     unzip # needed for rocksmith patch-nixos.sh
     rtaudio
+    helvum
   ];
 }

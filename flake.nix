@@ -15,6 +15,12 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
+    # rocksmith patch
+    nixos-rocksmith = {
+      url = "github:re1n0/nixos-rocksmith";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, nixos-hardware, ... }@inputs:
@@ -44,6 +50,7 @@
       tony = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          inputs.nixos-rocksmith.nixosModules.default
           ./hosts/tony/configuration.nix
           # ryzen 5 9600x
           nixos-hardware.nixosModules.common-cpu-amd
