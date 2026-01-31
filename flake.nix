@@ -71,6 +71,9 @@
       tyke = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          # this needs to be here because of the way I wrote packages.nix, which is very stupid
+          # must fix it later
+          inputs.nixos-rocksmith.nixosModules.default
           ./hosts/tyke/configuration.nix
           # intel cpu i5 - 8500T
           "${nixos-hardware}/common/cpu/intel/coffee-lake/cpu-only.nix"
