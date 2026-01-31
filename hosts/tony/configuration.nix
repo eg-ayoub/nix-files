@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./../../modules/system
+    ./../../modules/svc
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -31,6 +32,8 @@
   system.vial.enable = true;
   system.wine.enable = true;
   system.ns-usbloader.enable = true;
+
+  svc.tailscale.enable = true;
 
   networking.hostName = "tony";
 }
