@@ -19,7 +19,7 @@ in
 
   config = lib.mkIf cfg.enable {
     # only listen through NPM
-    networking.firewall.interfaces.podman0.allowedTCPPorts = [ cfg.listen.port ];
+    # networking.firewall.interfaces.podman0.allowedTCPPorts = [ cfg.listen.port ];
     environment.systemPackages = [
       calibre-package
     ];
@@ -28,7 +28,7 @@ in
       enable = true;
       listen.ip = "0.0.0.0";
       listen.port = cfg.listen.port;
-      # openFirewall = true;
+      openFirewall = true;
       user="ayoub";
       group="users";
       options = {

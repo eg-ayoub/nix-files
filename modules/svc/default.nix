@@ -5,6 +5,7 @@
     ./calibre-web.nix
     ./dnsmasq.nix
     ./jellyfin.nix
+    ./tailscale.nix
   ];
 
 }
