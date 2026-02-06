@@ -25,7 +25,7 @@
   apps.deluge.enable = true;
   apps.discord.enable = true;
   # apps.handbrake.enable = true;
-  # apps.jmp.enable = true;
+  apps.jmp.enable = true;
   apps.lutris.enable = true;
   # apps.musescore.enable = true;
   apps.protonvpn.enable = true;
