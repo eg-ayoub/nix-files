@@ -24,6 +24,8 @@
   # apps.anytype.enable = true;
   apps.deluge.enable = true;
   apps.discord.enable = true;
+  apps.element.enable = true;
+  apps.teamspeak.enable = true;
   # apps.handbrake.enable = true;
   apps.jmp.enable = true;
   apps.lutris.enable = true;

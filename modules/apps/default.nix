@@ -7,6 +7,7 @@
     ./deluge.nix
     ./devcontainer.nix
     ./discord.nix
+    ./element.nix
     ./godot.nix
     ./handbrake.nix
     ./ipod.nix
@@ -20,6 +21,7 @@
     ./rpcs3.nix
     ./slack.nix
     ./spotify.nix
+    ./teamspeak.nix
     ./unity.nix
     ./vlc.nix
     ./wal.nix
