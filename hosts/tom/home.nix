@@ -32,7 +32,6 @@
   apps.musescore.enable = true;
   apps.protonvpn.enable = true;
   apps.rpcs3.enable = true;
-  apps.spotify.enable = true;
   apps.vlc.enable = true;
   apps.zen-browser.enable = true;
   # apps.ipod.enable = true;

@@ -20,7 +20,6 @@
     ./protonvpn.nix
     ./rpcs3.nix
     ./slack.nix
-    ./spotify.nix
     ./teamspeak.nix
     ./unity.nix
     ./vlc.nix
