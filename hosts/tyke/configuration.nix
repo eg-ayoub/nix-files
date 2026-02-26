@@ -28,7 +28,8 @@
   # system.ssh-server.passwordAuth = true;
 
   svc.jellyfin.enable = true;
-  svc.calibre-web.enable = true;
+  # temporarily disabled until package is fixed
+  # svc.calibre-web.enable = true;
   svc.adguardhome.enable = true;
   # svc.dnsmasq.enable = true;
   svc.tailscale.enable = true;
