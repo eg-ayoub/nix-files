@@ -6,6 +6,7 @@
       enable = true;
       dockerCompat = true;
       dockerSocket.enable = true;
+      autoPrune.enable = true;
     };
     oci-containers.backend = "podman";
   };
@@ -15,6 +16,7 @@
     dive # look into docker image layers
     podman-tui # status of containers in the terminal
     docker-compose # start group of containers for dev
+    compose2nix
     #podman-compose # start group of containers for dev
   ];
 
