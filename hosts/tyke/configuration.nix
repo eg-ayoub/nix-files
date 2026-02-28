@@ -27,6 +27,7 @@
   system.ssh-server.enable = true;
   # system.ssh-server.passwordAuth = true;
 
+  svc.invidious.enable = true;
   svc.jellyfin.enable = true;
   # temporarily disabled until package is fixed
   # svc.calibre-web.enable = true;
@@ -37,6 +38,8 @@
   cont.calibre.enable = true;
   cont.calibre.listen.https_port = 8184;
   # cont.nginx-proxy-manager.enable = true;
+  cont.yattee-server.enable = true;
+  cont.invidious-companion.enable = true;
 
   system.virt.enable = true;
 
