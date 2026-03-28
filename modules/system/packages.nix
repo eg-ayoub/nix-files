@@ -18,7 +18,7 @@ in
       curl
       lshw
       firefox
-      neofetch
+      fastfetch
       wl-clipboard
       wtype
       brightnessctl
