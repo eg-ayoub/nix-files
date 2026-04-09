@@ -1,4 +1,5 @@
 spawn-at-startup "/usr/bin/kanshi"
+spawn-at-startup "/usr/bin/nm-applet"
 spawn-sh-at-startup "qs -c noctalia-shell"
 // spawn-at-startup "/usr/bin/variety"
 // spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
