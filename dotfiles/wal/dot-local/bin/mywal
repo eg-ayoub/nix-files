@@ -1,0 +1,180 @@
+#!/bin/bash
+
+set -e
+
+wal "$@"
+
+python3 - << 'EOF'
+import json
+import os
+
+colors_file = os.path.expanduser("~/.cache/wal/colors.json")
+output_file = os.path.expanduser("~/.config/zellij/themes/wal.kdl")
+
+with open(colors_file) as f:
+    data = json.load(f)
+
+def rgb(hex_color):
+    h = hex_color.lstrip('#')
+    return f"{int(h[0:2], 16)} {int(h[2:4], 16)} {int(h[4:6], 16)}"
+
+c = data["colors"]
+s = data["special"]
+
+bg  = rgb(s["background"])
+fg  = rgb(s["foreground"])
+c1  = rgb(c["color1"])
+c2  = rgb(c["color2"])
+c3  = rgb(c["color3"])
+c4  = rgb(c["color4"])
+c5  = rgb(c["color5"])
+c6  = rgb(c["color6"])
+c7  = rgb(c["color7"])
+c8  = rgb(c["color8"])
+c9  = rgb(c["color9"])
+c11 = rgb(c["color11"])
+c13 = rgb(c["color13"])
+c14 = rgb(c["color14"])
+
+theme = f"""\
+themes {{
+    wal {{
+        text_unselected {{
+            base {fg}
+            background {bg}
+            emphasis_0 {c3}
+            emphasis_1 {c6}
+            emphasis_2 {c2}
+            emphasis_3 {c5}
+        }}
+        text_selected {{
+            base {fg}
+            background {c8}
+            emphasis_0 {c3}
+            emphasis_1 {c6}
+            emphasis_2 {c2}
+            emphasis_3 {c5}
+        }}
+        ribbon_selected {{
+            base {bg}
+            background {c2}
+            emphasis_0 {c1}
+            emphasis_1 {c3}
+            emphasis_2 {c5}
+            emphasis_3 {c4}
+        }}
+        ribbon_unselected {{
+            base {bg}
+            background {c7}
+            emphasis_0 {c1}
+            emphasis_1 {fg}
+            emphasis_2 {c4}
+            emphasis_3 {c5}
+        }}
+        table_title {{
+            base {c2}
+            background 0
+            emphasis_0 {c3}
+            emphasis_1 {c6}
+            emphasis_2 {c2}
+            emphasis_3 {c5}
+        }}
+        table_cell_selected {{
+            base {fg}
+            background {c8}
+            emphasis_0 {c3}
+            emphasis_1 {c6}
+            emphasis_2 {c2}
+            emphasis_3 {c5}
+        }}
+        table_cell_unselected {{
+            base {fg}
+            background {bg}
+            emphasis_0 {c3}
+            emphasis_1 {c6}
+            emphasis_2 {c2}
+            emphasis_3 {c5}
+        }}
+        list_selected {{
+            base {fg}
+            background {c8}
+            emphasis_0 {c3}
+            emphasis_1 {c6}
+            emphasis_2 {c2}
+            emphasis_3 {c5}
+        }}
+        list_unselected {{
+            base {fg}
+            background {bg}
+            emphasis_0 {c3}
+            emphasis_1 {c6}
+            emphasis_2 {c2}
+            emphasis_3 {c5}
+        }}
+        frame_unselected {{
+            base {c8}
+            background 0
+            emphasis_0 {c3}
+            emphasis_1 {c6}
+            emphasis_2 {c5}
+            emphasis_3 0
+        }}
+        frame_selected {{
+            base {c2}
+            background 0
+            emphasis_0 {c3}
+            emphasis_1 {c6}
+            emphasis_2 {c5}
+            emphasis_3 0
+        }}
+        frame_highlight {{
+            base {c3}
+            background 0
+            emphasis_0 {c5}
+            emphasis_1 {c3}
+            emphasis_2 {c3}
+            emphasis_3 {c3}
+        }}
+        exit_code_success {{
+            base {c2}
+            background 0
+            emphasis_0 {c6}
+            emphasis_1 {bg}
+            emphasis_2 {c5}
+            emphasis_3 {c4}
+        }}
+        exit_code_error {{
+            base {c1}
+            background 0
+            emphasis_0 {c3}
+            emphasis_1 0
+            emphasis_2 0
+            emphasis_3 0
+        }}
+        multiplayer_user_colors {{
+            player_1 {c5}
+            player_2 {c4}
+            player_3 {c6}
+            player_4 {c3}
+            player_5 {c1}
+            player_6 {c2}
+            player_7 {c9}
+            player_8 {c13}
+            player_9 {c11}
+            player_10 {c14}
+        }}
+    }}
+}}
+"""
+
+os.makedirs(os.path.dirname(output_file), exist_ok=True)
+with open(output_file, 'w') as f:
+    f.write(theme)
+
+print(f"[mywal] Zellij theme written to {output_file}")
+
+config_file = os.path.expanduser("~/.config/zellij/config.kdl")
+if os.path.exists(config_file):
+    os.utime(config_file)
+    print(f"[mywal] Touched {config_file} to trigger zellij reload")
+EOF
