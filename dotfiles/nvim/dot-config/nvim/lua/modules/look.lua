@@ -1,7 +1,9 @@
 -- vim.o.termguicolors = true
 
 local neopywal = require("neopywal")
-neopywal.setup()
+neopywal.setup({
+    notify = "error",
+})
 
 -- always use the dark theme
 -- that is because the light theme and auto mode will flip fg and bg colors
