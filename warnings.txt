@@ -1,0 +1,20 @@
+evaluation warning: The default value of `programs.neovim.withRuby` has changed from `true` to `false`.
+                    You are currently using the legacy default (`true`) because `home.stateVersion` is less than "26.05".
+                    To silence this warning and keep legacy behavior, set:
+                      programs.neovim.withRuby = true;
+                    To adopt the new default behavior, set:
+                      programs.neovim.withRuby = false;
+evaluation warning: The default value of `programs.neovim.withPython3` has changed from `true` to `false`.
+                    You are currently using the legacy default (`true`) because `home.stateVersion` is less than "26.05".
+                    To silence this warning and keep legacy behavior, set:
+                      programs.neovim.withPython3 = true;
+                    To adopt the new default behavior, set:
+                      programs.neovim.withPython3 = false;
+evaluation warning: The default value of `programs.git.signing.format` has changed from `"openpgp"` to `null`.
+                    You are currently using the legacy default (`"openpgp"`) because `home.stateVersion` is less than "25.05".
+                    To silence this warning and keep legacy behavior, set:
+                      programs.git.signing.format = "openpgp";
+                    To adopt the new default behavior, set:
+                      programs.git.signing.format = null;
+evaluation warning: 'protonvpn-gui' has been renamed to/replaced by 'proton-vpn'
+evaluation warning: 'wineWowPackages' is deprecated as it is no longer preferred by upstream. Use wineWow64Packages instead

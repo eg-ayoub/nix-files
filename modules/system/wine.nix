@@ -10,7 +10,7 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       # wineWowPackages.waylandFull
-      wineWowPackages.stable
+      wineWow64Packages.stable
       winetricks
     ];
   };

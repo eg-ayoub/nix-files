@@ -22,6 +22,9 @@ in
     };
     programs.neovim = {
       enable = true;
+      withPython3 = true;
+      withRuby = true;
+      withNodeJs = true;
     };
     home.file = {
       ".config/nvim" = {
