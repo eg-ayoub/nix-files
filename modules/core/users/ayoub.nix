@@ -1,10 +1,13 @@
-{ ... }:
+{ self, ... }:
 {
   flake.nixosModules.ayoub-user =
     { pkgs, ... }:
     {
-      config = {
+      imports = [
+        self.nixosModules.zsh
+      ];
 
+      config = {
         users.users.ayoub = {
           uid = 1000;
           name = "ayoub";
@@ -19,7 +22,7 @@
             # "libvirtd"
             # "podman"
           ];
-          # shell = pkgs.zsh;
+          shell = pkgs.zsh;
         };
 
         nix.settings.trusted-users = [

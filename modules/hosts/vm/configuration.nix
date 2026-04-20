@@ -17,6 +17,7 @@
         self.nixosModules.ayoub-user
         self.nixosModules.nix
         self.nixosModules.audio
+        self.nixosModules.zsh
       ];
 
       core.boot.grub-boot.boot-device = "/dev/vda";
