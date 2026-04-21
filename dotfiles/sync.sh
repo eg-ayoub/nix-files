@@ -26,6 +26,7 @@ modules=(
     "zellij"
     "godot"
     "variety"
+    "zsh"
 )
 
 # if arguments have been passed, check if they're part of modules,
