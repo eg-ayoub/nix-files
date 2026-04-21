@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.nixosModules.gpg = 
+  flake.nixosModules.gpg =
     { ... }:
     {
       config = {

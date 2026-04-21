@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.nixosModules.yubikey = 
+  flake.nixosModules.yubikey =
     { pkgs, ... }:
     {
       config = {

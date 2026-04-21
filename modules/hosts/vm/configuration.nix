@@ -10,34 +10,60 @@
     { pkgs, ... }:
     {
 
-      imports = [
-        self.nixosModules.grub-boot
-        self.nixosModules.networking
-        self.nixosModules.locale
-        self.nixosModules.ayoub-user
-        self.nixosModules.nix
-        self.nixosModules.audio
-        self.nixosModules.zsh
-        self.nixosModules.clamav
-        self.nixosModules.polkit
-        self.nixosModules.gpg
+      imports = with self.nixosModules; [
+        grub-boot
+        networking
+        audio
+        locale
+        ayoub-user
+        nix
+        zsh
+        ssh
+        clamav
+        polkit
+        gpg
+
+        # utils
+        # wine
+        terminal-toolbox
+
+        # virt
+        containers
+        libvirt
+
+        # dev
+        nvim
+        language-servers
+
+        # term
+        starship-zsh
+
+        # desktop
+        xfce
+
+        # apps
+        godot
+        virt-manager
+        vial
+        nsusb
+        kitty
+        jellyfin-desktop
+        obs
+        vlc
+        discord
+        element
+        chromium
+        # steam
+        deluge
+        vpn
+        rpcs3
+        lutris
+        zen-browser
       ];
 
       core.boot.grub-boot.boot-device = "/dev/vda";
 
       networking.hostName = "vm";
-
-      services.xserver.enable = true;
-      services.xserver.displayManager.lightdm.enable = true;
-      services.xserver.desktopManager.xfce.enable = true;
-      services.pulseaudio.enable = false;
-
-      programs.firefox.enable = true;
-      environment.systemPackages = with pkgs; [
-        vim
-        wget
-        virtiofsd
-      ];
 
       system.stateVersion = "25.11";
     };
