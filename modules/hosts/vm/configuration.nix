@@ -18,6 +18,9 @@
         self.nixosModules.nix
         self.nixosModules.audio
         self.nixosModules.zsh
+        self.nixosModules.clamav
+        self.nixosModules.polkit
+        self.nixosModules.gpg
       ];
 
       core.boot.grub-boot.boot-device = "/dev/vda";
