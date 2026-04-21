@@ -1,0 +1,24 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+format = "$line_break$username$hostname$directory$direnv$git_branch$git_status$git_state$line_break$character"
+
+[character]
+error_symbol = "[\\$](bold red)"
+success_symbol = "[\\$](bold green)"
+
+[directory]
+format = "[:](bold green)[$path]($style)[$read_only]($read_only_style) "
+
+[direnv]
+format = '[$symbol\[$loaded/$allowed\]]($style) '
+disabled = false
+symbol = ""
+loaded_msg = ""
+unloaded_msg= ""
+allowed_msg = ""
+denied_msg = ""
+not_allowed_msg = "!"
