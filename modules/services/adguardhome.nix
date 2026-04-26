@@ -8,11 +8,11 @@
       ...
     }:
     let
-      cfg = config.services.adguardhome;
+      cfg = config.svc.adguardhome;
     in
     {
 
-      options.services.adguardhome.dns = {
+      options.svc.adguardhome.dns = {
         hosts = lib.mkOption {
           type = lib.types.listOf lib.types.str;
           description = "the hosts on which to serve dns";

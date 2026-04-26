@@ -3,19 +3,19 @@
   flake.nixosModules.invidious =
     { lib, config, ... }:
     let
-      cfg = config.services.invidious;
+      cfg = config.svc.invidious;
     in
     {
 
-      options.services.invidious = {
+      options.svc.invidious = {
         port = lib.mkOption {
           type = lib.types.port;
           default = 8090;
-          descritption = "the port on which to serve invidious";
+          description = "the port on which to serve invidious";
         };
         domain = lib.mkOption {
           type = lib.types.str;
-          descritption = "domain name so invidious can craft absolute URLs";
+          description = "domain name so invidious can craft absolute URLs";
         };
       };
 

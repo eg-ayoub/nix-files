@@ -3,10 +3,10 @@
   flake.nixosModules.openssh =
     { lib, config, ... }:
     let
-      cfg = config.services.openssh;
+      cfg = config.svc.openssh;
     in
     {
-      options.services.openssh = {
+      options.svc.openssh = {
         password-auth = lib.mkEnableOption "enable SSH password auth";
       };
 

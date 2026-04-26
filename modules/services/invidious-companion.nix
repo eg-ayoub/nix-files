@@ -1,17 +1,21 @@
-{ ... }:
+{ self, ... }:
 {
   flake.nixosModules.invidious-companion =
     { lib, config, ... }:
     let
-      cfg = config.services.invidious-companion;
+      cfg = config.svc.invidious-companion;
     in
     {
+      imports = [
+        self.nixosModules.containers
+      ];
 
-      options.services.invidious-companion = {
+
+      options.svc.invidious-companion = {
         port = lib.mkOption {
           type = lib.types.port;
           default = 8090;
-          descritption = "the port on which to serve invidious-companion";
+          description = "the port on which to serve invidious-companion";
         };
       };
 

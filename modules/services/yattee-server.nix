@@ -1,4 +1,4 @@
-{ ... }:
+{ self, ... }:
 {
   flake.nixosModules.yattee-server =
     {
@@ -7,11 +7,15 @@
       ...
     }:
     let
-      cfg = config.services.yattee-server;
+      cfg = config.svc.yattee-server;
     in
     {
+      imports = [
+        self.nixosModules.containers
+      ];
 
-      options.services.yattee-server = {
+
+      options.svc.yattee-server = {
         port = lib.mkOption {
           type = lib.types.port;
           default = 8085;

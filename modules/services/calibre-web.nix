@@ -8,13 +8,13 @@
       ...
     }:
     let
-      cfg = config.services.calibre-web;
+      cfg = config.svc.calibre-web;
       calibre-pkg = pkgs.calibre-web.overridePythonAttrs (oldAttrs: {
         dependencies = oldAttrs.dependencies ++ [ pkgs.calibre-web.optional-dependencies.kobo ];
       });
     in
     {
-      options.services.calibre-web = {
+      options.svc.calibre-web = {
         host = lib.mkOption {
           type = lib.types.str;
           default = "0.0.0.0";

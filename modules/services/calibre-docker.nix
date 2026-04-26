@@ -7,14 +7,14 @@
       ...
     }:
     let
-      cfg = config.services.calibre-docker;
+      cfg = config.svc.calibre-docker;
     in
     {
       imports = [
         self.nixosModules.containers
       ];
 
-      options.services.calibre-docker = {
+      options.svc.calibre-docker = {
         webserve-port = lib.mkOption {
           type = lib.types.port;
           default = 8083;
@@ -37,7 +37,7 @@
           };
           ports = [
             "${toString cfg.https-port}:8181"
-            "${toString cfg.webserver-port}:8081"
+            "${toString cfg.webserve-port}:8081"
           ];
           volumes = [
             "/home/ayoub/cal:/config"

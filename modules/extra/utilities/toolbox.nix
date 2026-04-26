@@ -12,6 +12,7 @@
           fastfetch
           stow
           ripgrep
+          fzf
         ];
       };
     };
