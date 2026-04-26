@@ -10,7 +10,6 @@
         self.nixosModules.containers
       ];
 
-
       options.svc.invidious-companion = {
         port = lib.mkOption {
           type = lib.types.port;

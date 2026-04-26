@@ -12,16 +12,14 @@
       ];
 
       boot.initrd.availableKernelModules = [
-        "ehci_pci"
-        "nvme"
         "xhci_pci"
         "ahci"
+        "nvme"
         "usbhid"
-        "usb_storage"
         "sd_mod"
       ];
       boot.initrd.kernelModules = [ ];
-      boot.kernelModules = [ "kvm-amd" ];
+      boot.kernelModules = [ "kvm-intel" ];
       boot.extraModulePackages = [ ];
 
       fileSystems."/" = {
@@ -38,6 +36,11 @@
         ];
       };
 
+      fileSystems."/mnt/drive" = {
+        device = "/dev/disk/by-uuid/39a4a878-26f1-4da2-a22d-5bbd861197fe";
+        fsType = "ext4";
+      };
+
       swapDevices = [
         { device = "/dev/disk/by-uuid/7e897898-fc9b-4d9e-a27f-03c1ce6a8a5f"; }
       ];
@@ -47,9 +50,9 @@
       # still possible to use this option, but it's recommended to use it in conjunction
       # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
       networking.useDHCP = lib.mkDefault true;
-      # networking.interfaces.enp1s0f0.useDHCP = lib.mkDefault true;
 
       nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-      hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+      hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
     };
 }

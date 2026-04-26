@@ -14,7 +14,6 @@
         self.nixosModules.containers
       ];
 
-
       options.svc.yattee-server = {
         port = lib.mkOption {
           type = lib.types.port;
