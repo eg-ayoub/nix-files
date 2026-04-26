@@ -12,10 +12,10 @@
 
       imports = with self.nixosModules; [
         grub-boot
+        ayoub-user
         networking
         audio
         locale
-        ayoub-user
         nix
         zsh
         ssh

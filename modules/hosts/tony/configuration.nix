@@ -20,10 +20,10 @@
 
       imports = with self.nixosModules; [
         systemd-boot
+        ayoub-user
         networking
         audio
         locale
-        ayoub-user
         nix
         zsh
         ssh
@@ -67,6 +67,9 @@
         rpcs3
         lutris
         zen-browser
+
+        # services
+        tailscale
       ];
 
       hardware.enableAllFirmware = true;

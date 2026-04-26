@@ -1,11 +1,28 @@
 { self, ... }:
 {
   flake.nixosModules.ayoub-user =
-    { pkgs, ... }:
     {
+      lib,
+      config,
+      pkgs,
+      ...
+    }:
+    let
+      cfg = config.core.users.ayoub;
+    in
+    {
+
       imports = [
         self.nixosModules.zsh
       ];
+
+      options.core.users.ayoub = {
+        extra-groups = lib.mkOption {
+          type = lib.types.listOf lib.types.str;
+          description = "extra groups to add ayoub user to";
+          default = [ ];
+        };
+      };
 
       config = {
         users.users.ayoub = {
@@ -17,11 +34,8 @@
           extraGroups = [
             "networkmanager"
             "wheel"
-            # "docker"
-            # "gamemode"
-            # "libvirtd"
-            # "podman"
-          ];
+          ]
+          ++ cfg.extra-groups;
           shell = pkgs.zsh;
         };
 

@@ -24,6 +24,7 @@
         # STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/ayoub/.steam/root/compatibilitytools.d";
         # };
         programs.gamemode.enable = true;
+        core.users.ayoub.extra-groups = [ "gamemode" ];
       };
     };
 }

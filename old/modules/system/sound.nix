@@ -13,7 +13,7 @@
   };
 
   security.rtkit.enable = true;
-  users.users.ayoub.extraGroups = [
+  core.users.ayoub.extra-groups = [
     "audio"
     "rtkit"
   ];

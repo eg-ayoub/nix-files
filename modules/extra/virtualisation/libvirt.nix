@@ -15,6 +15,7 @@
         environment.systemPackages = with pkgs; [
           virtiofsd
         ];
+        core.users.ayoub.extra-groups = [ "libvirtd" ];
       };
     };
 }
