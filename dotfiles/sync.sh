@@ -17,6 +17,7 @@ _process() {
 
 modules=(
     "nvim"
+    "fakewal"
     "kitty"
     "qtile"
     "niri"
