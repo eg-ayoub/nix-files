@@ -7,7 +7,7 @@
   };
 
   flake.nixosModules.hostVM =
-    { pkgs, ... }:
+    { ... }:
     {
 
       imports = with self.nixosModules; [
