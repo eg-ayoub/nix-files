@@ -17,7 +17,7 @@ _process() {
 
 modules=(
     "nvim"
-    "scripts"
+    "fakewal"
     "kitty"
     "qtile"
     "niri"
@@ -25,6 +25,10 @@ modules=(
     "mako"
     "wal"
     "zellij"
+    "godot"
+    "variety"
+    "zsh"
+    "starship"
 )
 
 # if arguments have been passed, check if they're part of modules,

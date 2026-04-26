@@ -1,4 +1,3 @@
-require("oil-git-status").setup()
 require("oil").setup({
   view_options = {
     show_hidden = true,
@@ -7,3 +6,4 @@ require("oil").setup({
     signcolumn = "yes:2",
   },
 })
+require("oil-git-status").setup()
