@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # CHANGE IF NEEDED: 
 # - replace with your Terminal Emulator executable
