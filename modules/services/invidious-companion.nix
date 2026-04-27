@@ -13,7 +13,7 @@
       options.svc.invidious-companion = {
         port = lib.mkOption {
           type = lib.types.port;
-          default = 8090;
+          default = 8282;
           description = "the port on which to serve invidious-companion";
         };
       };
