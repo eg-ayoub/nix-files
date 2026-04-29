@@ -53,6 +53,9 @@
         openssh
         yattee-server
 
+        # temp: install godot for remote work
+        godot
+
       ];
 
       svc.adguardhome.dns.hosts = [

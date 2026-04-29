@@ -5,7 +5,7 @@
     {
       config = {
         environment.systemPackages = with pkgs; [
-          make
+          gnumake
         ];
       };
     };
