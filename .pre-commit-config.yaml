@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+    - id: nixfmt
+      name: Format NIX files
+      description: This hook runs nixfmt-tree on the project
+      language: unsupported
+      files: '.*.nix'
+      entry: treefmt --quiet
