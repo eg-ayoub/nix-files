@@ -11,7 +11,6 @@
       config = {
         environment.systemPackages = with pkgs; [
           godot-mono
-          godotPackages.export-templates-mono-bin
           gdtoolkit_4
         ];
       };
