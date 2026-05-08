@@ -17,7 +17,7 @@
       options.svc.calibre-docker = {
         webserve-port = lib.mkOption {
           type = lib.types.port;
-          default = 8083;
+          default = 8081;
           description = "port on which ot serve calibre webserve gui";
         };
         https-port = lib.mkOption {
@@ -28,6 +28,12 @@
       };
 
       config = {
+
+        networking.firewall.allowedTCPPorts = [
+          cfg.https-port
+          cfg.webserve-port
+        ];
+
         virtualisation.oci-containers.containers.calibre = {
           image = "quay.io/linuxserver.io/calibre:latest";
           environment = {
