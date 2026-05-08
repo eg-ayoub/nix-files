@@ -45,7 +45,7 @@
         # services
         tailscale
         adguardhome
-        # calibre-web # CALIBRE-WEB is broken
+        calibre-web # CALIBRE-WEB is broken
         # calibre-docker
         invidious
         invidious-companion
