@@ -2,7 +2,7 @@ require("oil").setup({
   view_options = {
     show_hidden = false,
     is_hidden_file = function (name, _)
-      return vim.startswith(name, ".") or vim.endswith(name, ".uid")
+      return vim.endswith(name, ".uid")
     end
   },
   win_options = {

@@ -12,5 +12,8 @@ telescope.setup {
     find_files = {
       find_command = { 'rg', '--files', '--hidden', '--follow', '-g', '!.git' },
     },
+    live_grep = {
+      additional_args = { '--hidden', '--follow', '-g', '!.git' },
+    },
   },
 }
