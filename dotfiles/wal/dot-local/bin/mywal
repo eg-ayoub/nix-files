@@ -198,15 +198,29 @@ if os.path.exists(config_file):
     os.utime(config_file)
     print(f"[mywal] Touched {config_file} to trigger zellij reload")
 
-# --- Git diff colors ---
+# --- Git diff colors (diff-so-fancy, fixed hex per light/dark mode) ---
 import subprocess
 
 is_light = os.environ.get("IS_LIGHT", "0") == "1"
-red_hex, green_hex = ("#aa0000", "#007700") if is_light else ("#ff5555", "#55ff55")
+red_hex, green_hex, yellow_hex, magenta_hex = (
+    ("#aa0000", "#007700", "#aaaa00", "#aa00aa") if is_light else
+    ("#ff5555", "#55ff55", "#ffff55", "#ff55ff")
+)
 
-subprocess.run(["git", "config", "--global", "color.diff.old", f"{red_hex} bold"])
-subprocess.run(["git", "config", "--global", "color.diff.new", f"{green_hex} bold"])
-print(f"[mywal] Git diff colors: old={red_hex} new={green_hex}")
+git = lambda *args: subprocess.run(["git", "config", "--global"] + list(args))
+git("color.ui",                                  "true")
+git("color.diff-highlight.oldNormalColor",       f"{red_hex} bold")
+git("color.diff-highlight.oldHighlightColor",    f"{red_hex} bold 52")
+git("color.diff-highlight.newNormalColor",       f"{green_hex} bold")
+git("color.diff-highlight.newHighlightColor",    f"{green_hex} bold 22")
+git("color.diff.meta",                           f"{yellow_hex} bold")
+git("color.diff.frag",                           f"{magenta_hex} bold")
+git("color.diff.func",                           "146 bold")
+git("color.diff.commit",                         f"{yellow_hex} bold")
+git("color.diff.old",                            f"{red_hex} bold")
+git("color.diff.new",                            f"{green_hex} bold")
+git("color.diff.whitespace",                     f"{red_hex} reverse")
+print(f"[mywal] Git diff colors set: old={red_hex} new={green_hex}")
 
 # --- Kitty live color reload (all running instances) ---
 import glob as _glob
