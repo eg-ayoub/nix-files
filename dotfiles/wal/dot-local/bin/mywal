@@ -2,7 +2,27 @@
 
 set -e
 
-wal "$@"
+exec > >(tee -a ~/.mywal.log) 2>&1
+
+# noctalia fires this hook once per screen, use a lockfile to run only once
+LOCKFILE=/tmp/mywal.lock
+if ! mkdir "$LOCKFILE" 2>/dev/null; then
+    exit 0
+fi
+trap 'rmdir "$LOCKFILE"' EXIT
+
+echo "[mywal] $(date '+%Y-%m-%d %H:%M:%S')"
+
+IS_LIGHT=0
+args=()
+for arg in "$@"; do
+    [[ -z "$arg" ]] && continue
+    [[ "$arg" == "-l" ]] && IS_LIGHT=1
+    args+=("$arg")
+done
+export IS_LIGHT
+
+wal "${args[@]}"
 
 python3 - << 'EOF'
 import json
@@ -177,4 +197,27 @@ config_file = os.path.expanduser("~/.config/zellij/config.kdl")
 if os.path.exists(config_file):
     os.utime(config_file)
     print(f"[mywal] Touched {config_file} to trigger zellij reload")
+
+# --- Git diff colors ---
+import subprocess
+
+is_light = os.environ.get("IS_LIGHT", "0") == "1"
+red_hex, green_hex = ("#aa0000", "#007700") if is_light else ("#ff5555", "#55ff55")
+
+subprocess.run(["git", "config", "--global", "color.diff.old", f"{red_hex} bold"])
+subprocess.run(["git", "config", "--global", "color.diff.new", f"{green_hex} bold"])
+print(f"[mywal] Git diff colors: old={red_hex} new={green_hex}")
+
+# --- Kitty live color reload (all running instances) ---
+import glob as _glob
+
+kitty_colors = os.path.expanduser("~/.cache/wal/colors-kitty.conf")
+for sock in _glob.glob("/tmp/kitty-socket-*"):
+    r = subprocess.run(
+        ["kitty", "@", "--to", f"unix:{sock}", "set-colors", "--all", kitty_colors],
+        capture_output=True
+    )
+    status = "ok" if r.returncode == 0 else r.stderr.decode().strip()
+    print(f"[mywal] Kitty {sock}: {status}")
+
 EOF
