@@ -54,7 +54,7 @@ alias -- gfpush='ggpush --force'
 alias -- glc='git log --format='\''%H'\'' -n 1'
 alias -- lssh='TERM=xterm ssh -F ssh_config'
 alias -- lscp='scp -F ssh_config'
-alias -- lv='nvim .'
+alias -- lv='nvim $PWD'
 alias -- v='nvim'
 alias -- fv='fzf --bind '\''enter:become(nvim {})'\'''
 alias -- hgrep="history 0 | rg"
