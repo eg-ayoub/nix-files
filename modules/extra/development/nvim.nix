@@ -1,7 +1,7 @@
 { self, ... }:
 {
   flake.nixosModules.nvim =
-    { ... }:
+    { pkgs, ... }:
     {
       imports = [
         # needed for ripgrep
@@ -13,6 +13,7 @@
           enable = true;
           withPython3 = true;
         };
+        environment.systemPackages = with pkgs;[ tree-sitter ];
       };
     };
 }
