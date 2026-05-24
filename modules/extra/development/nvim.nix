@@ -13,7 +13,7 @@
           enable = true;
           withPython3 = true;
         };
-        environment.systemPackages = with pkgs;[ tree-sitter ];
+        environment.systemPackages = with pkgs; [ tree-sitter ];
       };
     };
 }

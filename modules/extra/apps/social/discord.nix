@@ -10,7 +10,10 @@
         ];
         programs.firejail.wrappedBinaries.legcord = {
           executable = "${pkgs.legcord}/bin/legcord";
-          extraArgs = [ "--noprofile" "--net=wlp9s0" ];
+          extraArgs = [
+            "--noprofile"
+            "--net=wlp9s0"
+          ];
         };
       };
     };
