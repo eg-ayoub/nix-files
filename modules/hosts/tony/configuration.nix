@@ -34,6 +34,7 @@
         # utils
         wine
         terminal-toolbox
+        zellij
 
         # virt
         containers
