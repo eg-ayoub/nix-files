@@ -71,6 +71,7 @@ wtree () {
 [[ -f "$HOME/.zsh_extra" ]] && source "$HOME/.zsh_extra"
 
 # starship
+export STARSHIP_CONFIG="~/.config/starship.toml"
 eval "$(starship init zsh)"
 
 # add local bin to path
