@@ -35,6 +35,7 @@
         wine
         terminal-toolbox
         zellij
+        opencode
 
         # virt
         containers
