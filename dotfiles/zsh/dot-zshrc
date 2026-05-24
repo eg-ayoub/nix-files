@@ -74,5 +74,10 @@ wtree () {
 export STARSHIP_CONFIG="~/.config/starship.toml"
 eval "$(starship init zsh)"
 
+# copilot language server
+if type "copilot-language-server" > /dev/null; then
+  export COPILOT_LS="$(which copilot-language-server)"
+fi
+
 # add local bin to path
 export PATH="$HOME/.local/bin:$PATH"
