@@ -13,6 +13,7 @@
           stow
           ripgrep
           fzf
+          jq
         ];
       };
     };
