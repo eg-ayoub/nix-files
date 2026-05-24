@@ -29,6 +29,7 @@ modules=(
     "variety"
     "zsh"
     "starship"
+    "llama"
 )
 
 # if arguments have been passed, check if they're part of modules,

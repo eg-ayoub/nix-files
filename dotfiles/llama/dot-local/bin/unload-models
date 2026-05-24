@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+API_URL="localhost:8080"
+
+# Get list of loaded models and unload them all
+models=$(curl -s "http://$API_URL/models" | jq -r '.data[] | select(.status.value == "loaded") | .id')
+
+if [ -z "$models" ]; then
+    echo "No loaded models found"
+    exit 0
+fi
+
+echo "Unloading loaded models..."
+
+for model in $models; do
+    echo "  Unloading: $model"
+    curl -s -X POST -H "Content-Type: application/json" \
+        -d "{\"model\": \"$model\"}" \
+        "http://$API_URL/models/unload" > /dev/null
+done
+
+echo "Done"

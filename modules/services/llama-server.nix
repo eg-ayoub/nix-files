@@ -11,6 +11,12 @@
           enable = true;
           package = pkgs.llama-cpp-vulkan;
           modelsDir = models-dir;
+          extraFlags = [
+            "--sleep-idle-seconds"
+            "3600"
+            "--models-max"
+            "2"
+          ];
         };
         systemd.services.llama-cpp = {
           environment = {
