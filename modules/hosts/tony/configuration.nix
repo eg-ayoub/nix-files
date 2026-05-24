@@ -70,6 +70,7 @@
 
         # services
         tailscale
+        llama-server
       ];
 
       hardware.enableAllFirmware = true;
