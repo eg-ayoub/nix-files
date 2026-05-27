@@ -60,11 +60,11 @@ alias -- fv='fzf --bind '\''enter:become(nvim {})'\'''
 alias -- hgrep="history 0 | rg"
 
 wtree () {
-  if [[ $PWD/ != $HOME/repos/* ]]; then; echo "not inside repos" && return 1; fi
+  if [[ $PWD/ != $HOME/Projects/* ]]; then; echo "not inside Projects" && return 1; fi
   if [[ ! -d $PWD/.git ]]; then; echo "not a git repo" && return 1; fi
-  if [[ $PWD/ == $HOME/repos/worktrees/* ]]; then; echo "already in git worktree" && return 1; fi
-  if [[ ! -d $HOME/repos/worktrees/"${PWD#"$HOME"/repos/}" ]]; then; mkdir -p "$HOME/repos/worktrees/${PWD#"$HOME"/repos/}"; fi
-  git worktree add -B "$1" "$HOME/repos/worktrees/${PWD#"$HOME"/repos/}/$1" "$(git_current_branch)"
+  if [[ $PWD/ == $HOME/Projects/worktrees/* ]]; then; echo "already in git worktree" && return 1; fi
+  if [[ ! -d $HOME/Projects/worktrees/"${PWD#"$HOME"/Projects/}" ]]; then; mkdir -p "$HOME/Projects/worktrees/${PWD#"$HOME"/Projects/}"; fi
+  git worktree add -B "$1" "$HOME/Projects/worktrees/${PWD#"$HOME"/Projects/}/$1" "$(git_current_branch)"
 }
 
 # per-machine settings
