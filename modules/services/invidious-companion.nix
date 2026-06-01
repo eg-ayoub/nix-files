@@ -1,7 +1,11 @@
 { self, ... }:
 {
   flake.nixosModules.invidious-companion =
-    { lib, config, ... }:
+    {
+      lib,
+      config,
+      ...
+    }:
     let
       cfg = config.svc.invidious-companion;
     in
@@ -34,6 +38,9 @@
           ];
           autoStart = true;
         };
+        core.users.ayoub.extra-sudo-commands = [
+          "/run/current-system/sw/bin/systemctl restart podman-invidious-companion.service"
+        ];
       };
     };
 }

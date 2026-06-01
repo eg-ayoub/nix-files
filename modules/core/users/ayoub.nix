@@ -9,6 +9,10 @@
     }:
     let
       cfg = config.core.users.ayoub;
+      define-rule = x: {
+        command = x;
+        options = ["NOPASSWD"];
+      };
     in
     {
 
@@ -20,6 +24,11 @@
         extra-groups = lib.mkOption {
           type = lib.types.listOf lib.types.str;
           description = "extra groups to add ayoub user to";
+          default = [ ];
+        };
+        extra-sudo-commands = lib.mkOption {
+          type = lib.types.listOf lib.types.str;
+          description = "extra sudo commands to allow passwordless for this user";
           default = [ ];
         };
       };
@@ -42,6 +51,15 @@
         nix.settings.trusted-users = [
           "root"
           "ayoub"
+        ];
+
+        security.sudo.extraRules = [
+          {
+            users = [ "ayoub" ];
+            host = "ALL";
+            runAs = "ALL:ALL";
+            commands = map define-rule cfg.extra-sudo-commands;
+          }
         ];
       };
     };

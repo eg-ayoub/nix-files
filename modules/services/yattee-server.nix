@@ -41,6 +41,9 @@
           ];
           autoStart = true;
         };
+        core.users.ayoub.extra-sudo-commands = [
+          "/run/current-system/sw/bin/systemctl restart podman-yattee-server.service"
+        ];
       };
     };
 }

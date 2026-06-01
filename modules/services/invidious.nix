@@ -1,7 +1,11 @@
 { ... }:
 {
   flake.nixosModules.invidious =
-    { lib, config, ... }:
+    {
+      lib,
+      config,
+      ...
+    }:
     let
       cfg = config.svc.invidious;
     in
@@ -34,6 +38,9 @@
           };
           extraSettingsFile = "/mnt/drive/invidious/config.json";
         };
+        core.users.ayoub.extra-sudo-commands = [
+          "/run/current-system/sw/bin/systemctl restart invidious.service"
+        ];
       };
     };
 }
