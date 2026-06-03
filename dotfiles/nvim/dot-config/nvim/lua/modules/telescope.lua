@@ -1,5 +1,4 @@
 local telescope = require('telescope')
-telescope.load_extension('git_branch')
 telescope.setup {
   defaults = {
     file_ignore_patterns = {

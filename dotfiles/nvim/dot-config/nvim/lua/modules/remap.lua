@@ -14,8 +14,8 @@ vim.keymap.set('n', '<leader>vh', ts_builtin.help_tags, {})
 -- undotree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
--- fugitive
-vim.keymap.set("n", "<leader>gf", vim.cmd.Git)
+-- terminal
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
 
 -- move up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
