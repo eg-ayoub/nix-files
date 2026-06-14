@@ -14,6 +14,7 @@
           ripgrep
           fzf
           jq
+          libnotify
         ];
       };
     };
