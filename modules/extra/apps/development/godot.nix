@@ -13,14 +13,14 @@
           systemPackages = with pkgs; [
             godot-mono
             gdtoolkit_4
-            androidsdk
-            jdk17
+            # androidsdk
+            # jdk17
           ];
         };
-        systemd.tmpfiles.rules = [
-          "L+ /opt/jdk17 - - - - ${pkgs.jdk17}"
-          "L+ /opt/androidsdk - - - - ${pkgs.androidsdk}/libexec/android-sdk"
-        ];
+        # systemd.tmpfiles.rules = [
+        #   "L+ /opt/jdk17 - - - - ${pkgs.jdk17}"
+        #   "L+ /opt/androidsdk - - - - ${pkgs.androidsdk}/libexec/android-sdk"
+        # ];
       };
     };
 }

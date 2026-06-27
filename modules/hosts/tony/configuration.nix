@@ -66,7 +66,7 @@
         steam
         deluge
         vpn
-        rpcs3
+        # rpcs3
         lutris
         zen-browser
 
