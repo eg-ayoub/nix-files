@@ -69,6 +69,7 @@
         # rpcs3
         lutris
         zen-browser
+        gimp
 
         # services
         tailscale
