@@ -11,8 +11,12 @@
           };
           desktopManager.plasma6.enable = true;
         };
-        environment.systemPackages = with pkgs; [
-          kdePackages.kconfig
+        environment.systemPackages = with pkgs.kdePackages; [
+          kconfig
+          filelight
+          oxygen
+          oxygen-icons
+          oxygen-sounds
         ];
       };
     };
