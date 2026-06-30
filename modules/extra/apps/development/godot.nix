@@ -11,7 +11,8 @@
       config = {
         environment = {
           systemPackages = with pkgs; [
-            godot-mono
+            # godot-mono
+            godotPackages_4_7.godot-mono
             gdtoolkit_4
             # androidsdk
             # jdk17
