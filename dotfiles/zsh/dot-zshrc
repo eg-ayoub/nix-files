@@ -1,6 +1,10 @@
 # create some params
 typeset -U path cdpath fpath manpath
 
+# default editor
+export EDITOR="nvim"
+export VISUAL="nvim"
+
 # andote
 ANTIDOTE_HOME="$HOME/.antidote"
 # first time setup if does not exist

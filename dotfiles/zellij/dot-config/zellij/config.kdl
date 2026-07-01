@@ -561,6 +561,10 @@ theme "wal"
 // can be useful for removing wrappers around commands
 // Note: be sure to escape backslashes and similar characters properly
 // post_command_discovery_hook "echo $RESURRECT_COMMAND | sed <your_regex_here>"
+// Rewrite `edit <path>` (what zellij discovers for running nvim panes) into
+// `nvim <path>` so nvim panes actually respawn on session resurrection instead
+// of coming back as blank terminals. See also $EDITOR set in ~/.zshrc.
+post_command_discovery_hook "echo \"$RESURRECT_COMMAND\" | sed -E 's/^edit[[:space:]]+(.*)$/nvim \\1/'"
 
 // Number of async worker tasks to spawn per active client.
 //
