@@ -62,6 +62,7 @@ alias -- lv='nvim $PWD'
 alias -- v='nvim'
 alias -- fv='fzf --bind '\''enter:become(nvim {})'\'''
 alias -- hgrep="history 0 | rg"
+alias -- gdm='git difftool -t meld -y'
 
 wtree () {
   if [[ $PWD/ != $HOME/Projects/* ]]; then; echo "not inside Projects" && return 1; fi
