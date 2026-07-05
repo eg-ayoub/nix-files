@@ -46,6 +46,10 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 vim.keymap.set("v", "f", vim.lsp.buf.format)
 
+-- lsp hover
+vim.keymap.set("n", "K", function() vim.lsp.buf.hover({border="rounded"}) end)
+vim.keymap.set("n", "<leader>h", function() vim.lsp.buf.signature_help({border="rounded"}) end)
+
 -- quick fix nav
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
