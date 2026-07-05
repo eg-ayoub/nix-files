@@ -6,6 +6,7 @@
       config = {
         environment.systemPackages = with pkgs; [
           gnumake
+          python3
         ];
       };
     };
