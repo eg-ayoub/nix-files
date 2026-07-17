@@ -6,4 +6,3 @@ require('copilot').setup({
     custom_server_filepath = os.getenv("COPILOT_LS"),
   },
 })
-require('copilot_cmp').setup()

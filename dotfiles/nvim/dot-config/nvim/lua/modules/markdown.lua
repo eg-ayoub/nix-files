@@ -1,2 +1,6 @@
 local mk = require('render-markdown')
-mk.setup()
+mk.setup({
+  completions = {
+    blink = { enabled = true },
+  },
+})
