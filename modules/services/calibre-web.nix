@@ -47,7 +47,7 @@
           group = "users";
 
           options = {
-            # calibreLibrary = /mnt/drive/calibre-web;
+            calibreLibrary = "/mnt/drive/Books/";
             enableBookConversion = true;
             enableKepubify = true;
             enableBookUploading = true;
