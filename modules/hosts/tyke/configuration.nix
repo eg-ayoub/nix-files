@@ -52,6 +52,8 @@
         jellyfin
         openssh
         yattee-server
+        searxng
+        mcp-searxng
 
         # temp: install godot for remote work
         godot
