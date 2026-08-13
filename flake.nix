@@ -7,10 +7,10 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
-    nixos-rocksmith = {
-      url = "github:re1n0/nixos-rocksmith";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nixos-rocksmith = {
+    #   url = "github:re1n0/nixos-rocksmith";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs =

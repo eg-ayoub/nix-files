@@ -1,17 +1,17 @@
-{ inputs, ... }:
+{ ... }:
 {
   flake.nixosModules.steam =
     { pkgs, ... }:
     {
-      imports = [
-        inputs.nixos-rocksmith.nixosModules.default
-      ];
+      # imports = [
+      #   inputs.nixos-rocksmith.nixosModules.default
+      # ];
 
       config = {
         programs.steam = {
           enable = true;
           extraCompatPackages = [ pkgs.proton-ge-bin ];
-          rocksmithPatch.enable = true;
+          # rocksmithPatch.enable = true;
           remotePlay.openFirewall = true;
           dedicatedServer.openFirewall = true;
           gamescopeSession.enable = true;
