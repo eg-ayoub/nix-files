@@ -1,0 +1,6 @@
+{
+  "theme": "light",
+  "packages": [
+    "npm:pi-mcp-adapter"
+  ]
+}
