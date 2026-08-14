@@ -11,6 +11,7 @@
     #   url = "github:re1n0/nixos-rocksmith";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+
   };
 
   outputs =

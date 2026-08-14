@@ -36,6 +36,7 @@
         terminal-toolbox
         zellij
         opencode
+        pi
         openrgb
 
         # virt
