@@ -71,6 +71,7 @@
         lutris
         zen-browser
         gimp
+        got-feedback
 
         # services
         tailscale
