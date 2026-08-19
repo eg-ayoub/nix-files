@@ -1,16 +1,14 @@
-{ ... }:
+{ self, ... }:
 {
   flake.nixosModules.plasma6 =
     { pkgs, ... }:
     {
+      imports = [
+        self.nixosModules.sddm
+      ];
+
       config = {
-        services = {
-          displayManager.sddm = {
-            enable = true;
-            wayland.enable = true;
-          };
-          desktopManager.plasma6.enable = true;
-        };
+        services.desktopManager.plasma6.enable = true;
         environment.systemPackages = with pkgs.kdePackages; [
           kconfig
           filelight
