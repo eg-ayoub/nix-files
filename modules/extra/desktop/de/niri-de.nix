@@ -6,6 +6,7 @@
       imports = [
         self.nixosModules.niri
         self.nixosModules.noctalia-shell
+        self.nixosModules.nautilus
       ];
 
       config = {

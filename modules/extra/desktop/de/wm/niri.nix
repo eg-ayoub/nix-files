@@ -5,6 +5,7 @@
     {
       imports = [
         self.nixosModules.sddm
+        self.nixosModules.xwayland
       ];
 
       config = {
