@@ -1,10 +1,13 @@
 { ... }:
 {
   flake.nixosModules.noctalia-shell =
-    { pkgs, ... }:
+    { ... }:
     {
       config = {
-        environment.systemPackages = [ pkgs.noctalia-shell ];
+        programs.noctalia = {
+          enable = true;
+          recommendedServices.enable = true;
+        };
       };
     };
 }
