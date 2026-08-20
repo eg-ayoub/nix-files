@@ -42,6 +42,7 @@
 
         # desktop
         niri-de
+        pywal
 
         # apps
         godot
