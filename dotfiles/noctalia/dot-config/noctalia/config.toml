@@ -1,0 +1,35 @@
+[hooks]
+theme_mode_changed = "mywal -s=m"
+wallpaper_changed = "mywal -s=w"
+
+[theme]
+mode = "auto"
+source = "wallpaper"
+
+[bar.default]
+center = [ "wallpaper", "media", "clock" ]
+end = [ "tray", "notifications", "clipboard", "group:g2", "session" ]
+start = [ "group:g1", "workspaces" ]
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g1"
+    members = [ "control-center", "launcher" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g2"
+    members = [ "network", "bluetooth", "volume", "brightness", "battery" ]
+    opacity = 1.0
+    padding = 6.0
+
+[plugins]
+enabled = [ "rylos/tailnet" ]
