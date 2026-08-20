@@ -13,16 +13,58 @@ trap 'rmdir "$LOCKFILE"' EXIT
 
 echo "[mywal] $(date '+%Y-%m-%d %H:%M:%S')"
 
-IS_LIGHT=0
-args=()
+# Parse -s= argument: w = wallpaper hook, m = theme-mode hook
+SOURCE=""
 for arg in "$@"; do
-    [[ -z "$arg" ]] && continue
-    [[ "$arg" == "-l" ]] && IS_LIGHT=1
-    args+=("$arg")
+    case "$arg" in
+        -s=w) SOURCE="w" ;;
+        -s=m) SOURCE="m" ;;
+    esac
 done
+
+if [[ -z "$SOURCE" ]]; then
+    echo "[mywal] error: expected -s=w (wallpaper) or -s=m (theme mode)" >&2
+    exit 1
+fi
+
+echo "[mywal] source: $SOURCE"
+
+# Resolve wallpaper path: from env when triggered by wallpaper hook, else query noctalia
+if [[ "$SOURCE" == "w" ]]; then
+    WALLPAPER="${NOCTALIA_WALLPAPER_PATH:-}"
+else
+    WALLPAPER="$(noctalia msg wallpaper-get)"
+fi
+
+# Resolve theme mode: from env when triggered by mode hook, else query noctalia
+if [[ "$SOURCE" == "m" ]]; then
+    MODE="${NOCTALIA_THEME_MODE:-}"
+else
+    MODE="$(noctalia msg theme-mode-get)"
+fi
+
+if [[ -z "$WALLPAPER" ]]; then
+    echo "[mywal] error: could not resolve wallpaper path" >&2
+    exit 1
+fi
+
+if [[ -z "$MODE" ]]; then
+    echo "[mywal] error: could not resolve theme mode" >&2
+    exit 1
+fi
+
+echo "[mywal] wallpaper: $WALLPAPER"
+echo "[mywal] mode: $MODE"
+
+WAL_ARGS=(-i "$WALLPAPER")
+IS_LIGHT=0
+if [[ "$MODE" == "light" ]]; then
+    WAL_ARGS+=(-l)
+    IS_LIGHT=1
+fi
 export IS_LIGHT
 
-wal "${args[@]}"
+wal "${WAL_ARGS[@]}"
 
 python3 - << 'EOF'
 import json
