@@ -7,6 +7,7 @@
         self.nixosModules.niri
         self.nixosModules.noctalia-shell
         self.nixosModules.nautilus
+        self.nixosModules.fonts
       ];
 
       config = {
