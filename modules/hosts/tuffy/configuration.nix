@@ -66,6 +66,7 @@
         openssh
       ];
 
+      app.discord.itf = "wlp0s20f3";
       hardware.enableAllFirmware = true;
 
       boot.kernelPackages = pkgs.linuxPackages_latest;
