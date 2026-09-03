@@ -60,6 +60,7 @@
         vpn
         zen-browser
         gimp
+        kdeconnect
 
         # services
         tailscale
