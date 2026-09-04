@@ -31,7 +31,7 @@
       };
 
       fileSystems."/home/ayoub/bigdrive" = {
-        device = "/dev/disk/by-uuid/ceb77c5f-98bb-4104-b63b-96577d3cb54d";
+        device = "/dev/disk/by-uuid/17796bf6-7ecd-4eb1-8ccf-1bec8cd1e8e0";
         fsType = "ext4";
       };
 
