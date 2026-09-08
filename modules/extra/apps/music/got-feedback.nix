@@ -3,7 +3,7 @@
   flake.nixosModules.got-feedback =
     { pkgs, ... }:
     let
-      pname = "feedback";
+      pname = "got-feedback";
       version = "0.3.0";
 
       src = pkgs.fetchurl {
@@ -11,27 +11,43 @@
         hash = "sha256-5VvadJ26XQa+MjgFW8tnmA4Bzjc6ScMUpL8uEeGW7/Y=";
       };
 
-      appimageContents = pkgs.appimageTools.extract { inherit pname version src; };
+      got-feedback = pkgs.appimageTools.wrapType2 (finalAttrs: {
+        pname = pname;
+        version = version;
+        src = src;
 
-      got-feedback = pkgs.appimageTools.wrapType2 {
-        inherit pname version src;
+        extraPkgs = pkgs: [
+          pkgs.gst_all_1.gstreamer
+          pkgs.alsa-lib
+          pkgs.libcanberra
+          pkgs.libpulseaudio
+          pkgs.libx11
+          pkgs.libxext
+          pkgs.libxrender
+          pkgs.libxcursor
+          pkgs.libxinerama
+          pkgs.libxrandr
+          pkgs.libxcomposite
+          pkgs.libxtst
+          pkgs.libxfixes
+          pkgs.libxi
+          pkgs.xdg-utils
+          pkgs.gtk3
+          pkgs.gsettings-desktop-schemas
+          pkgs.hicolor-icon-theme
+          pkgs.glibc
+        ];
 
         extraInstallCommands = ''
-          if [ -f "${appimageContents}/${pname}.desktop" ]; then
-            install -Dm444 "${appimageContents}/${pname}.desktop" -t "$out/share/applications"
-            sed -i "s|Exec=AppRun|Exec=${pname}|g" "$out/share/applications/${pname}.desktop"
-          fi
+          mv $out/bin/got-feedback $out/bin/feedback
 
-          if [ -d "${appimageContents}/usr/share/icons" ]; then
-            cp -r "${appimageContents}/usr/share/icons" "$out/share/"
-          fi
+          install -m 444 -D ${finalAttrs.contents}/feedback.desktop $out/share/applications/feedback.desktop
 
-          for ext in png svg; do
-            if [ -f "${appimageContents}/${pname}.$ext" ]; then
-              install -Dm444 "${appimageContents}/${pname}.$ext" \
-                "$out/share/icons/hicolor/512x512/apps/${pname}.$ext"
-            fi
-          done
+          install -m 444 -D ${finalAttrs.contents}/usr/share/icons/hicolor/512x512/apps/feedback.png \
+            $out/share/icons/hicolor/512x512/apps/feedback.png
+
+          substituteInPlace $out/share/applications/feedback.desktop \
+            --replace-fail 'Exec=AppRun' 'Exec=feedback'
         '';
 
         meta = {
@@ -39,7 +55,7 @@
           homepage = "https://got-feedback.org/";
           platforms = [ "x86_64-linux" ];
         };
-      };
+      });
     in
     {
       config = {
