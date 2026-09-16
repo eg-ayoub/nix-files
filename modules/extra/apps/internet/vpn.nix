@@ -5,8 +5,10 @@
     {
       config = {
         environment.systemPackages = with pkgs; [
-          proton-vpn
+          ivpn
+          ivpn-ui
         ];
+        services.ivpn.enable = true;
       };
     };
 }
