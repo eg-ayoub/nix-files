@@ -45,7 +45,7 @@
         # services
         tailscale
         adguardhome
-        calibre-web
+        #calibre-web
         calibre-docker
         invidious
         invidious-companion
