@@ -17,10 +17,10 @@
           gamescopeSession.enable = true;
           protontricks.enable = true;
         };
-        environment.systemPackages = with pkgs; [
-          goverlay
-          mangohud
-        ];
+        # environment.systemPackages = with pkgs; [
+        #   goverlay
+        #   mangohud
+        # ];
         # environment.sessionVariables = {
         # STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/ayoub/.steam/root/compatibilitytools.d";
         # };
