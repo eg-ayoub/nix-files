@@ -1,6 +1,6 @@
 [hooks]
-theme_mode_changed = "mywal -s=m"
-wallpaper_changed = "mywal -s=w"
+theme_mode_changed = "$HOME/.local/bin/mywal -s=m"
+wallpaper_changed = "$HOME/.local/bin/mywal -s=w"
 
 [theme]
 mode = "auto"
