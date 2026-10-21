@@ -10,6 +10,8 @@
       url = "github:oxcl/nix-flake-helium-browser";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # no nixpkgs.follows: its packages then come pre-built from cache.numtide.com (modules/core/tools/nix.nix)
+    llm-agents.url = "github:numtide/llm-agents.nix";
 
     # nixos-rocksmith = {
     #   url = "github:re1n0/nixos-rocksmith";
