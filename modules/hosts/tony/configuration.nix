@@ -77,7 +77,7 @@
 
         # services
         tailscale
-        llama-server
+        # llama-server
         sunshine
       ];
 
