@@ -72,6 +72,7 @@
         zen-browser
         gimp
         got-feedback
+        strata
 
         # services
         tailscale
