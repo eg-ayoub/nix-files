@@ -73,6 +73,7 @@
         gimp
         got-feedback
         strata
+        jan
 
         # services
         tailscale
