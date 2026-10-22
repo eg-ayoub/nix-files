@@ -54,7 +54,7 @@ if test -n "$KITTY_INSTALLATION_DIR"; then
 fi
 
 # aliases
-alias -- gfpush='ggpush --force'
+alias -- gfpush='ggpush --force-with-lease'
 alias -- glc='git log --format='\''%H'\'' -n 1'
 alias -- lssh='TERM=xterm ssh -F ssh_config'
 alias -- lscp='scp -F ssh_config'
