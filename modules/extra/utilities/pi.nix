@@ -25,7 +25,13 @@
     in
     {
       config = {
-        environment.systemPackages = [ pi ];
+        environment.systemPackages = [
+          pi
+          # pi-godot-helpers: runs the model's shell commands in a bwrap sandbox, and starts llama-server itself
+          # (no service) while it routes review skills with a small decision model (/v1/systemone: llama.cpp >= 0.6.0)
+          pkgs.bubblewrap
+          pkgs.llama-cpp-vulkan
+        ];
       };
     };
 }
