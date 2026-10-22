@@ -5,7 +5,8 @@
       # ryzen 5 9600x
       inputs.nixos-hardware.nixosModules.common-cpu-amd
       inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
-      inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
+      # temporary disable while https://github.com/NixOS/nixpkgs/issues/575192 is fixed
+      # inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
       # 9070xt
       inputs.nixos-hardware.nixosModules.common-gpu-amd
       # ssd
