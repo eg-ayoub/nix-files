@@ -45,7 +45,7 @@
         # services
         tailscale
         adguardhome
-        #calibre-web
+        # calibre-web # disabled cause broken imports
         calibre-docker
         invidious
         invidious-companion
@@ -54,10 +54,6 @@
         yattee-server
         searxng
         mcp-searxng
-
-        # temp: install godot for remote work
-        godot
-
       ];
 
       svc.adguardhome.dns.hosts = [
