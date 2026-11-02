@@ -11,10 +11,34 @@
         hash = "sha256-5VvadJ26XQa+MjgFW8tnmA4Bzjc6ScMUpL8uEeGW7/Y=";
       };
 
-      got-feedback = pkgs.appimageTools.wrapType2 (finalAttrs: {
-        pname = pname;
-        version = version;
-        src = src;
+      # Upstream removed the VST3 bundles from the desktop build; they are
+      # downloaded on-demand per-platform into the writable per-user VST root
+      # (CONFIG_DIR/nam_rig_builder/vst). But the rig_builder plugin resolves
+      # its bundled VST recommendations only against the (read-only) plugin
+      # dir, which has no vst/ tree in packaged builds, so on Linux no gear
+      # ever gets a VST assigned. Patch it to also search the writable root.
+      extractedApp = pkgs.appimageTools.extract {
+        inherit pname version src;
+      };
+
+      appdir =
+        pkgs.runCommand "${pname}-${version}-patched"
+          {
+            nativeBuildInputs = [
+              pkgs.python3
+              pkgs.coreutils
+            ];
+          }
+          ''
+            cp -a "${extractedApp}/." "$out/"
+            cd "$out"
+            chmod +w resources/slopsmith/plugins/rig_builder/routes.py
+            python3 ${./rig-builder-vst-path-fix.py} resources/slopsmith/plugins/rig_builder/routes.py
+          '';
+
+      got-feedback = pkgs.appimageTools.wrapAppImage (finalAttrs: {
+        inherit pname version;
+        contents = appdir;
 
         extraPkgs = pkgs: [
           pkgs.gst_all_1.gstreamer
