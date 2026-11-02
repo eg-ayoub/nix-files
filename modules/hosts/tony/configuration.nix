@@ -70,7 +70,7 @@
         deluge
         vpn
         rpcs3
-        lutris
+        # lutris # broken because of gtk2
         zen-browser
         gimp
         got-feedback
