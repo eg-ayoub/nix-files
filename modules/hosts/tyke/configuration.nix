@@ -54,6 +54,8 @@
         yattee-server
         searxng
         mcp-searxng
+        openwebui
+        n8n
       ];
 
       svc.adguardhome.dns.hosts = [
@@ -63,6 +65,10 @@
       # svc.calibre-docker.https-port = 8184;
       svc.invidious.domain = "tyke";
       svc.openssh.password-auth = true;
+
+      svc.openwebui.host = "100.107.41.45";
+
+      svc.n8n.port = 9119;
 
       hardware.enableAllFirmware = true;
 
