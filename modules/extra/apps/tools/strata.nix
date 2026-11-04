@@ -4,12 +4,12 @@
     { pkgs, ... }:
     let
       pname = "strata";
-      version = "0.2.2";
+      version = "0.2.10";
 
       # the build for the RX 9070 series (gfx1200 / gfx1201): the engine, its ROCm libraries and kernels are inside
       src = pkgs.fetchurl {
-        url = "https://github.com/Niko1221/Strata/releases/download/v${version}/Strata-${version}-linux-amd-rx9070.AppImage";
-        hash = "sha256-TZtLOIRlJUN/O3sXKm95RJnhd0fk4jhg3FvLrdxz83c=";
+        url = "https://github.com/Niko1221/Strata/releases/download/v${version}/Strata-${version}-linux-x86_64.AppImage";
+        hash = "sha256-4KX4QCFIp8BbXqwsIft8fMP7bWOVOAhOX3moMhd76JU";
       };
 
       strata = pkgs.appimageTools.wrapType2 (finalAttrs: {
@@ -21,6 +21,7 @@
         extraPkgs = pkgs: [
           pkgs.numactl
           pkgs.elfutils
+          pkgs.libgpg-error
         ];
 
         # the bundled python looks for the ca certificates where debian/fedora keep them: downloads fail without this
