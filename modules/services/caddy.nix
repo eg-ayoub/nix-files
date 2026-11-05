@@ -1,4 +1,4 @@
-{ ... }:
+{ self, ... }:
 {
   flake.nixosModules.caddy =
     {
@@ -11,6 +11,11 @@
       cfg = config.svc.caddy;
     in
     {
+
+      imports = [
+        self.nixosModules.sops
+      ];
+
       options.svc.caddy = {
         hosts = lib.mkOption {
           type = lib.types.attrs;
@@ -19,6 +24,10 @@
       };
 
       config = {
+        sops.secrets."caddy.env" = {
+          sopsFile = ../../secrets/caddy.env;
+          format = "dotenv";
+        };
         services.caddy = {
           enable = true;
           virtualHosts = cfg.hosts;
@@ -27,6 +36,12 @@
             hash = "sha256-3XnnBdOW8A+LmmcqR94v1ZkyMoMB3EfBWFv0uBzz4cA";
           };
           environmentFile = "/run/secrets/caddy.env";
+          globalConfig = ''
+            acme_dns porkbun {
+              api_key {env.PORKBUN_API_KEY}
+              api_secret_key {env.PORKBUN_API_SECRET_KEY}
+            }
+          '';
         };
       };
     };
