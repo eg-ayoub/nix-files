@@ -68,8 +68,6 @@
 
       svc.openwebui.host = "100.107.41.45";
 
-      svc.n8n.port = 9119;
-
       hardware.enableAllFirmware = true;
 
       boot.kernel.sysctl."kernel.softlock_panic" = "1";
