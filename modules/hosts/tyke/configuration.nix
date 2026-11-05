@@ -66,8 +66,6 @@
       # svc.calibre-docker.https-port = 8184;
       svc.openssh.password-auth = true;
 
-      svc.openwebui.host = "100.107.41.45";
-
       hardware.enableAllFirmware = true;
 
       boot.kernel.sysctl."kernel.softlock_panic" = "1";

@@ -2,14 +2,10 @@
 {
   flake.nixosModules.openwebui =
     {
-      lib,
       pkgs,
-      config,
       ...
     }:
     let
-      cfg = config.svc.openwebui;
-
       # open-webui 0.12.3 (via `posthog`) still expects the mcp 1.x client
       # function name `streamablehttp_client`, while nixpkgs ships mcp 2.x
       # where it was renamed to `streamable_http_client`. That makes nixpkgs
@@ -34,19 +30,6 @@
       };
     in
     {
-      options.svc.openwebui = {
-        host = lib.mkOption {
-          type = lib.types.str;
-          default = "0.0.0.0";
-          description = "host on which to serve open-webui";
-        };
-        port = lib.mkOption {
-          type = lib.types.port;
-          default = 9120;
-          description = "port on which to serve open-webui";
-        };
-      };
-
       config = {
         # scoped to this module: only posthog/mcp (and their dependants) change
         nixpkgs.overlays = [
@@ -64,11 +47,14 @@
 
         services.open-webui = {
           enable = true;
-          host = cfg.host;
-          port = cfg.port;
-          openFirewall = true;
+          host = "127.0.0.1";
+          port = 9120;
           package = pkgs.open-webui;
         };
+
+        svc.caddy.hosts."ai.poire.me".extraConfig = ''
+          reverse_proxy localhost:9120
+        '';
       };
     };
 }
