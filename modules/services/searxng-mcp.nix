@@ -30,7 +30,7 @@
             TZ = "Etc/CET";
             MCP_HTTP_HOST = "0.0.0.0";
             MCP_HTTP_PORT = "${toString cfg.port}";
-            SEARXNG_URL = "http://host.containers.internal:${toString config.svc.searxng.port}";
+            SEARXNG_URL = "http://host.containers.internal:8888";
           };
           ports = [
             "${toString cfg.port}:${toString cfg.port}"

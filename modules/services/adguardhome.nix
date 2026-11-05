@@ -1,4 +1,4 @@
-{ self, ... }:
+{ ... }:
 {
   flake.nixosModules.adguardhome =
     {
@@ -11,10 +11,6 @@
       cfg = config.svc.adguardhome;
     in
     {
-
-      imports = [
-        self.nixosModules.caddy
-      ];
 
       options.svc.adguardhome.dns = {
         hosts = lib.mkOption {

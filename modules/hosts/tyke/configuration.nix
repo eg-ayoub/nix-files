@@ -56,6 +56,7 @@
         mcp-searxng
         openwebui
         n8n
+        caddy
       ];
 
       svc.adguardhome.dns.hosts = [
