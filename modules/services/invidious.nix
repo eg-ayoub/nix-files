@@ -2,35 +2,18 @@
 {
   flake.nixosModules.invidious =
     {
-      lib,
-      config,
       ...
     }:
-    let
-      cfg = config.svc.invidious;
-    in
     {
 
-      options.svc.invidious = {
-        port = lib.mkOption {
-          type = lib.types.port;
-          default = 8090;
-          description = "the port on which to serve invidious";
-        };
-        domain = lib.mkOption {
-          type = lib.types.str;
-          description = "domain name so invidious can craft absolute URLs";
-        };
-      };
-
       config = {
-        networking.firewall.allowedTCPPorts = [ cfg.port ];
         services.invidious = {
           enable = true;
-          domain = cfg.domain;
-          port = cfg.port;
+          address = "127.0.0.1";
+          domain = "invidious.poire.me";
+          port = 8090;
           settings = {
-            external_port = cfg.port;
+            external_port = 443;
             db = {
               user = "invidious";
               dbname = "invidious";
@@ -41,6 +24,9 @@
         core.users.ayoub.extra-sudo-commands = [
           "/run/current-system/sw/bin/systemctl restart invidious.service"
         ];
+        svc.caddy.hosts."invidious.poire.me".extraConfig = ''
+          reverse_proxy localhost:8090
+        '';
       };
     };
 }

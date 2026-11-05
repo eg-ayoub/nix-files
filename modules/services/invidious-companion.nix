@@ -23,8 +23,6 @@
       };
 
       config = {
-        networking.firewall.allowedTCPPorts = [ cfg.port ];
-
         virtualisation.oci-containers.containers.invidious-companion = {
           image = "quay.io/invidious/invidious-companion:latest";
           ports = [
