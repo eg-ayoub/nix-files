@@ -1,4 +1,4 @@
-{ ... }:
+{ self, ... }:
 {
   flake.nixosModules.adguardhome =
     {
@@ -11,6 +11,10 @@
       cfg = config.svc.adguardhome;
     in
     {
+
+      imports = [
+        self.nixosModules.caddy
+      ];
 
       options.svc.adguardhome.dns = {
         hosts = lib.mkOption {
@@ -35,14 +39,16 @@
           settings = {
             dns = {
               bind_hosts = cfg.dns.hosts;
-              # [
-              #   "100.107.41.45"
-              #   "fd7a:115c:a1e0::3b01:2985"
-              # ];
               port = cfg.dns.port;
+            };
+            http = {
+              address = "127.0.0.1:3000";
             };
           };
         };
+        svc.caddy.hosts."adguardhome.poire.me".extraConfig = ''
+          reverse_proxy localhost:3000
+        '';
       };
     };
 }
