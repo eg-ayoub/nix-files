@@ -80,7 +80,6 @@
         # services
         tailscale
         # llama-server
-        # sunshine
       ];
 
       hardware.enableAllFirmware = true;
