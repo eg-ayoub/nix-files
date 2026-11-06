@@ -65,7 +65,6 @@
         "fd7a:115c:a1e0::3b01:2985"
       ];
       # svc.calibre-docker.https-port = 8184;
-      svc.openssh.password-auth = true;
 
       hardware.enableAllFirmware = true;
 

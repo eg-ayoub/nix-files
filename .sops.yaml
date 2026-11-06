@@ -1,7 +1,9 @@
 keys:
   - &admin_tyke age1mxa56tntgqdtqf8zp836s6ywwa6fsyx855kexzggkcknyqwwl47swn0uzt
+  - &admin_lulu age1lgw6uad5cl9wk66xnxqyjm0z2kyje9gnmw8l5quzp8y4mldfgv6qfqkldz
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:
         - *admin_tyke
+        - *admin_lulu
