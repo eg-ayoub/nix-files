@@ -45,6 +45,12 @@
         # services
         tailscale
         openssh
+        searxng
+        mcp-searxng
+        openwebui
+        n8n
+        signal-cli
+        caddy
       ];
 
       hardware.enableRedistributableFirmware = true;

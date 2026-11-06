@@ -51,12 +51,6 @@
         invidious-companion
         jellyfin
         openssh
-        yattee-server
-        searxng
-        mcp-searxng
-        openwebui
-        n8n
-        signal-cli
         caddy
       ];
 
