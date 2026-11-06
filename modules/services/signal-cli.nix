@@ -11,6 +11,16 @@
         #     daemon --http=0.0.0.0:8085
         # (port 7583 in that command is just signal-cli's own control port,
         # always on loopback, nothing to expose)
+        # named system user so the account/state dir can be managed with
+        # `sudo -u signal-cli signal-cli -p /var/lib/signal-cli register ...`
+        # (DynamicUser would get a random uid, impossible to sudo into)
+        users.groups.signal-cli = { };
+        users.users.signal-cli = {
+          isSystemUser = true;
+          group = "signal-cli";
+          shell = "/run/current-system/sw/bin/nologin";
+        };
+
         systemd.services.signal-cli = {
           description = "signal-cli daemon (REST API)";
           after = [ "network.target" ];
@@ -25,10 +35,11 @@
               --http 127.0.0.1:8087
             '';
             Restart = "always";
+            User = "signal-cli";
+            Group = "signal-cli";
 
             # docker `-v signal-cli:/var/lib/signal-cli` -> systemd-managed state dir
             StateDirectory = "signal-cli";
-            DynamicUser = true;
 
             # docker `--tmpfs /tmp:exec`
             PrivateTmp = true;
