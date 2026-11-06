@@ -56,6 +56,7 @@
         mcp-searxng
         openwebui
         n8n
+        signal-cli
         caddy
       ];
 
