@@ -11,6 +11,8 @@
         #     daemon --http=0.0.0.0:8085
         # (port 7583 in that command is just signal-cli's own control port,
         # always on loopback, nothing to expose)
+        # note: signal-cli 0.14.x renamed --config-path/-p to --data-dir/-d
+        # (alias --config/-c); the daemon subcommand still uses --http
         # named system user so the account/state dir can be managed with
         # `sudo -u signal-cli signal-cli -p /var/lib/signal-cli register ...`
         # (DynamicUser would get a random uid, impossible to sudo into)
@@ -30,8 +32,7 @@
             # gets its base URL from the user-configured `signalCliApi` credential,
             # point it at http://localhost:8087
             ExecStart = ''
-              ${lib.getExe pkgs.signal-cli} daemon
-              --config-path /var/lib/signal-cli
+              ${lib.getExe pkgs.signal-cli} --data-dir /var/lib/signal-cli daemon
               --http 127.0.0.1:8087
             '';
             Restart = "always";
