@@ -50,6 +50,7 @@
         openwebui
         n8n
         signal-cli
+        vikunja
         caddy
       ];
 
