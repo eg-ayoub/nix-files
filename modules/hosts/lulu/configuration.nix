@@ -51,6 +51,7 @@
         n8n
         signal-cli
         vikunja
+        tuta-bridge
         caddy
       ];
 
