@@ -10,6 +10,26 @@
     in
     {
       config = {
+        services.postgresql = {
+          enable = true;
+          ensureDatabases = [ "n8n" ];
+          enableTCPIP = true;
+          authentication = lib.mkOverride 10 ''
+            #type database DBUSER auth-method
+            local all      all    trust
+            host  sameuser all    127.0.0.1/32 scram-sha-256
+            host  sameuser all    ::1/128 scram-sha-256
+          '';
+          ensureUsers = [
+            {
+              name = "n8n";
+              ensureDBOwnership = true;
+              ensureClauses = {
+                login = true;
+              };
+            }
+          ];
+        };
         services.n8n = {
           enable = true;
           environment = {
