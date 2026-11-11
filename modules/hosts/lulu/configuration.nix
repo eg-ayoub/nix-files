@@ -46,12 +46,12 @@
         tailscale
         openssh
         searxng
-        mcp-searxng
-        openwebui
-        n8n
-        signal-cli
-        vikunja
-        tuta-bridge
+        # mcp-searxng
+        # openwebui
+        # n8n
+        # signal-cli
+        # vikunja
+        # tuta-bridge
         caddy
       ];
 
