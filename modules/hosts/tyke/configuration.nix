@@ -66,18 +66,19 @@
 
       system.stateVersion = "23.11";
 
-      nixpkgs.config.packageOverrides = pkgs: {
-        vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-      };
-
+      # UHD 630 (Gen 9.5): VA-API through iHD, OpenCL through the legacy compute runtime
       hardware.graphics = {
         enable = true;
         extraPackages = with pkgs; [
           intel-media-driver
-          intel-compute-runtime
-          libva-vdpau-driver
-          libvdpau-va-gl
+          intel-compute-runtime-legacy1
         ];
+      };
+
+      services.jellyfin.hardwareAcceleration = {
+        enable = true;
+        type = "vaapi";
+        device = "/dev/dri/renderD128";
       };
     };
 }
