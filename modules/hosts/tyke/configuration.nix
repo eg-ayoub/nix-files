@@ -58,6 +58,7 @@
         "100.107.41.45"
         "fd7a:115c:a1e0::3b01:2985"
       ];
+      svc.calibre-web.kobo-lan.interface = "enp2s0";
 
       hardware.enableAllFirmware = true;
 
