@@ -80,7 +80,7 @@
       ];
 
       # tony streams games to the Steam Deck
-      programs.steam.remotePlay.openFirewall = true;
+      app.steam.remote-play = true;
 
       hardware.enableAllFirmware = true;
 
