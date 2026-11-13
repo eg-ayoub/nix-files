@@ -19,12 +19,10 @@
               dbname = "invidious";
             };
           };
-          extraSettingsFile = "/mnt/drive/invidious/config.json";
         };
         core.users.ayoub.extra-sudo-commands = [
           "/run/current-system/sw/bin/systemctl restart invidious.service"
         ];
-        systemd.services.invidious.unitConfig.RequiresMountsFor = [ "/mnt/drive/invidious" ];
         svc.caddy.hosts."invidious.poire.me".extraConfig = ''
           reverse_proxy localhost:8090
         '';
