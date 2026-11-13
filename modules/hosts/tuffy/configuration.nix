@@ -58,11 +58,9 @@
         vpn
         zen-browser
         gimp
-        kdeconnect
 
         # services
         tailscale
-        openssh
       ];
 
       app.discord.itf = "wlp0s20f3";
