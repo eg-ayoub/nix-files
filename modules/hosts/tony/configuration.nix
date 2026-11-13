@@ -79,6 +79,9 @@
         # llama-server
       ];
 
+      # tony streams games to the Steam Deck
+      programs.steam.remotePlay.openFirewall = true;
+
       hardware.enableAllFirmware = true;
 
       boot.kernelPackages = pkgs.linuxPackages_latest;

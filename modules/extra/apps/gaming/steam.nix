@@ -12,8 +12,6 @@
           enable = true;
           extraCompatPackages = [ pkgs.proton-ge-bin ];
           # rocksmithPatch.enable = true;
-          remotePlay.openFirewall = true;
-          dedicatedServer.openFirewall = true;
           gamescopeSession.enable = true;
           protontricks.enable = true;
         };
