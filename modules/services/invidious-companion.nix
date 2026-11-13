@@ -26,7 +26,7 @@
         virtualisation.oci-containers.containers.invidious-companion = {
           image = "quay.io/invidious/invidious-companion:latest";
           ports = [
-            "${toString cfg.port}:8282"
+            "127.0.0.1:${toString cfg.port}:8282"
           ];
           volumes = [
             "/mnt/drive/invidious-companion/companioncache:/var/tmp/youtubei.js:rw"

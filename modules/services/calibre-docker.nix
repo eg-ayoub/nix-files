@@ -15,25 +15,14 @@
       ];
 
       options.svc.calibre-docker = {
-        webserve-port = lib.mkOption {
+        port = lib.mkOption {
           type = lib.types.port;
-          default = 8081;
-          description = "port on which ot serve calibre webserve gui";
-        };
-        https-port = lib.mkOption {
-          type = lib.types.port;
-          default = 8181;
-          description = "https port on which to serve calibre https gui";
+          default = 8180;
+          description = "localhost port on which to serve the calibre desktop gui to caddy";
         };
       };
 
       config = {
-
-        networking.firewall.allowedTCPPorts = [
-          cfg.https-port
-          cfg.webserve-port
-        ];
-
         virtualisation.oci-containers.containers.calibre = {
           image = "quay.io/linuxserver.io/calibre:latest";
           environment = {
@@ -41,16 +30,19 @@
             PGID = toString config.users.groups.users.gid;
             TZ = "Etc/CET";
           };
+          # 8080 is the image's plain-http gui, meant to sit behind a reverse proxy
           ports = [
-            "${toString cfg.https-port}:8181"
-            "${toString cfg.webserve-port}:8081"
+            "127.0.0.1:${toString cfg.port}:8080"
           ];
           volumes = [
             "/home/ayoub/cal:/config"
-            "/mnt/drive:/drive"
+            "/mnt/drive/Books:/drive/Books"
           ];
           autoStart = false;
         };
+        svc.caddy.hosts."calibre-desktop.poire.me".extraConfig = ''
+          reverse_proxy localhost:${toString cfg.port}
+        '';
       };
     };
 }
