@@ -27,6 +27,7 @@
         clamav
         polkit
         gpg
+        auto-recovery
 
         # utils
         terminal-toolbox
@@ -61,9 +62,6 @@
       svc.calibre-web.kobo-lan.interface = "enp2s0";
 
       hardware.enableAllFirmware = true;
-
-      boot.kernel.sysctl."kernel.softlock_panic" = "1";
-      boot.kernel.sysctl."kernel.panic" = "60";
 
       networking.hostName = "tyke";
 
