@@ -19,6 +19,12 @@
     in
     {
       config = {
+        # pre-built packages of numtide's llm-agents.nix; trusted only where pi is installed
+        nix.settings.extra-substituters = [ "https://cache.numtide.com" ];
+        nix.settings.extra-trusted-public-keys = [
+          "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+        ];
+
         environment.systemPackages = [
           pi
           # pi-godot-helpers: runs the model's shell commands in a bwrap sandbox, and starts llama-server itself
