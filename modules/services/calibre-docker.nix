@@ -40,6 +40,8 @@
           ];
           autoStart = false;
         };
+        # both write the same calibre library, so never run them at the same time
+        systemd.services.podman-calibre.conflicts = [ "calibre-web.service" ];
         svc.caddy.hosts."calibre-desktop.poire.me".extraConfig = ''
           reverse_proxy localhost:${toString cfg.port}
         '';
