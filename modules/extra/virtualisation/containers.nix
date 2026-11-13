@@ -9,7 +9,6 @@
           podman = {
             enable = true;
             dockerCompat = true;
-            dockerSocket.enable = true;
             autoPrune.enable = true;
           };
           oci-containers.backend = "podman";
@@ -19,11 +18,6 @@
         environment.systemPackages = with pkgs; [
           dive # look into docker image layers
           podman-tui # status of containers in the terminal
-        ];
-
-        core.users.ayoub.extra-groups = [
-          "docker"
-          "podman"
         ];
       };
     };

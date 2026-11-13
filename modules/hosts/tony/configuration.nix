@@ -42,7 +42,6 @@
 
         # virt
         containers
-        libvirt
 
         # dev
         nvim
@@ -56,7 +55,6 @@
 
         # apps
         godot
-        virt-manager
         vial
         nsusb
         kitty

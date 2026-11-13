@@ -33,7 +33,6 @@
 
         # virt
         containers
-        libvirt
 
         # dev
         nvim

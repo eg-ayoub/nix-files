@@ -48,11 +48,6 @@
           shell = pkgs.zsh;
         };
 
-        nix.settings.trusted-users = [
-          "root"
-          "ayoub"
-        ];
-
         security.sudo.extraRules = [
           {
             users = [ "ayoub" ];
