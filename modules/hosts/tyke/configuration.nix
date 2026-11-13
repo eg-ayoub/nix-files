@@ -45,7 +45,7 @@
         # services
         tailscale
         adguardhome
-        # calibre-web # disabled cause broken imports
+        calibre-web
         calibre-docker
         invidious
         invidious-companion

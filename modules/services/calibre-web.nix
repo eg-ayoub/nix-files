@@ -10,20 +10,15 @@
     let
       cfg = config.svc.calibre-web;
       calibre-pkg = pkgs.calibre-web.overridePythonAttrs (oldAttrs: {
-        dependencies = oldAttrs.dependencies ++ [ pkgs.calibre-web.optional-dependencies.kobo ];
+        dependencies = oldAttrs.dependencies ++ pkgs.calibre-web.optional-dependencies.kobo;
       });
     in
     {
       options.svc.calibre-web = {
-        host = lib.mkOption {
-          type = lib.types.str;
-          default = "0.0.0.0";
-          description = "host on which to serve calibre-web";
-        };
         port = lib.mkOption {
           type = lib.types.port;
           default = 8083;
-          description = "port on which to serve calibre-web";
+          description = "localhost port on which to serve calibre-web to caddy";
         };
       };
 
@@ -37,14 +32,9 @@
           package = calibre-pkg;
 
           listen = {
-            ip = cfg.host;
+            ip = "127.0.0.1";
             port = cfg.port;
           };
-
-          openFirewall = true;
-
-          user = "ayoub";
-          group = "users";
 
           options = {
             calibreLibrary = "/mnt/drive/Books/";
@@ -53,6 +43,14 @@
             enableBookUploading = true;
           };
         };
+
+        # books stay owned by ayoub; the shared group gives calibre-web read-write access
+        users.groups.media = { };
+        users.users.calibre-web.extraGroups = [ "media" ];
+
+        svc.caddy.hosts."calibre-web.poire.me".extraConfig = ''
+          reverse_proxy localhost:${toString cfg.port}
+        '';
       };
     };
 }
