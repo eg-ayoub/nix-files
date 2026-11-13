@@ -36,6 +36,9 @@
           ];
           autoStart = true;
         };
+        systemd.services.podman-invidious-companion.unitConfig.RequiresMountsFor = [
+          "/mnt/drive/invidious-companion"
+        ];
         core.users.ayoub.extra-sudo-commands = [
           "/run/current-system/sw/bin/systemctl restart podman-invidious-companion.service"
         ];

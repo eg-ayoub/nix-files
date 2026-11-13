@@ -40,8 +40,11 @@
           ];
           autoStart = false;
         };
-        # both write the same calibre library, so never run them at the same time
-        systemd.services.podman-calibre.conflicts = [ "calibre-web.service" ];
+        systemd.services.podman-calibre = {
+          # both write the same calibre library, so never run them at the same time
+          conflicts = [ "calibre-web.service" ];
+          unitConfig.RequiresMountsFor = [ "/mnt/drive/Books" ];
+        };
         svc.caddy.hosts."calibre-desktop.poire.me".extraConfig = ''
           reverse_proxy localhost:${toString cfg.port}
         '';

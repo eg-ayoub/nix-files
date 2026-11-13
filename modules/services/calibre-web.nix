@@ -61,6 +61,8 @@
           users.groups.media = { };
           users.users.calibre-web.extraGroups = [ "media" ];
 
+          systemd.services.calibre-web.unitConfig.RequiresMountsFor = [ "/mnt/drive/Books" ];
+
           svc.caddy.hosts."calibre-web.poire.me".extraConfig = ''
             reverse_proxy localhost:${toString cfg.port}
           '';

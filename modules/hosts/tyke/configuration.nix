@@ -59,6 +59,7 @@
         "fd7a:115c:a1e0::3b01:2985"
       ];
       svc.calibre-web.kobo-lan.interface = "enp2s0";
+      systemd.services.jellyfin.unitConfig.RequiresMountsFor = [ "/mnt/drive/Videos" ];
 
       hardware.enableAllFirmware = true;
 
