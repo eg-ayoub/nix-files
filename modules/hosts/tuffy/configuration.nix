@@ -22,7 +22,6 @@
         nix
         zsh
         ssh
-        clamav
         polkit
         gpg
 

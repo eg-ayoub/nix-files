@@ -24,7 +24,6 @@
         nix
         zsh
         ssh
-        clamav
         polkit
         gpg
         auto-recovery
