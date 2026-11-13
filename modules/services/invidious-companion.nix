@@ -60,7 +60,10 @@
 
         services.invidious = {
           settings.invidious_companion = [
-            { private_url = "http://localhost:${toString cfg.port}/companion"; }
+            {
+              private_url = "http://localhost:${toString cfg.port}/companion";
+              public_url = "https://${config.services.invidious.domain}/companion";
+            }
           ];
           extraSettingsFile = "/run/credentials/invidious.service/companion-key.json";
         };
@@ -68,6 +71,11 @@
         systemd.services.invidious.serviceConfig.LoadCredential = [
           "companion-key.json:${config.sops.templates."invidious-companion.json".path}"
         ];
+
+        # with public_url set, video streams go from caddy straight to the companion, not through invidious
+        services.caddy.virtualHosts.${config.services.invidious.domain}.extraConfig = ''
+          reverse_proxy /companion/* localhost:${toString cfg.port}
+        '';
 
         core.users.ayoub.extra-sudo-commands = [
           "/run/current-system/sw/bin/systemctl restart podman-invidious-companion.service"

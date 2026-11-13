@@ -14,6 +14,7 @@
           port = 8090;
           settings = {
             external_port = 443;
+            https_only = true;
             db = {
               user = "invidious";
               dbname = "invidious";
