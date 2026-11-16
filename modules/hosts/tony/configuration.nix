@@ -76,7 +76,6 @@
 
         # services
         tailscale
-        # llama-server
       ];
 
       # tony streams games to the Steam Deck
