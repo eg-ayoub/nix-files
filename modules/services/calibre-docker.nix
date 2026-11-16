@@ -28,7 +28,7 @@
           environment = {
             PUID = toString config.users.users.ayoub.uid;
             PGID = toString config.users.groups.users.gid;
-            TZ = "Etc/CET";
+            TZ = config.time.timeZone;
           };
           # 8080 is the image's plain-http gui, meant to sit behind a reverse proxy
           ports = [
