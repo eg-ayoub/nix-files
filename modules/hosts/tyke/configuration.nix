@@ -48,7 +48,6 @@
         calibre-web
         calibre-docker
         invidious
-        invidious-companion
         jellyfin
         openssh
         caddy
