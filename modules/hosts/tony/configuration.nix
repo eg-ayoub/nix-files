@@ -70,7 +70,6 @@
         # lutris # broken because of gtk2
         zen-browser
         gimp
-        got-feedback
         strata
         jan
 
