@@ -1,8 +1,11 @@
-{ ... }:
+{ self, ... }:
 {
   flake.nixosModules.searxng =
     { ... }:
     {
+      imports = [
+        self.nixosModules.sops
+      ];
 
       config = {
         sops.secrets."searxng.env" = {
