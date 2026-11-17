@@ -9,6 +9,7 @@
     }:
     let
       cfg = config.svc.adguardhome;
+      ui-port = 3000;
     in
     {
 
@@ -37,12 +38,12 @@
               port = cfg.dns.port;
             };
             http = {
-              address = "127.0.0.1:3000";
+              address = "127.0.0.1:${toString ui-port}";
             };
           };
         };
         svc.caddy.subdomains.adguardhome.extraConfig = ''
-          reverse_proxy localhost:3000
+          reverse_proxy localhost:${toString ui-port}
         '';
       };
     };

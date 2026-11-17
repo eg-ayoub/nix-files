@@ -31,7 +31,7 @@
           environmentFile = config.sops.secrets."searxng.env".path;
         };
         svc.caddy.subdomains.search.extraConfig = ''
-          reverse_proxy localhost:8888
+          reverse_proxy localhost:${toString config.services.searx.settings.server.port}
         '';
       };
     };
