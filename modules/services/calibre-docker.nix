@@ -35,7 +35,7 @@
             "127.0.0.1:${toString cfg.port}:8080"
           ];
           volumes = [
-            "/home/ayoub/cal:/config"
+            "${config.users.users.ayoub.home}/cal:/config"
             "/mnt/drive/Books:/drive/Books"
           ];
           autoStart = false;
