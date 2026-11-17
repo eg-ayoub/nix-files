@@ -30,7 +30,7 @@
           };
           environmentFile = config.sops.secrets."searxng.env".path;
         };
-        svc.caddy.hosts."search.poire.me".extraConfig = ''
+        svc.caddy.subdomains.search.extraConfig = ''
           reverse_proxy localhost:8888
         '';
       };

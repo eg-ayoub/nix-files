@@ -63,7 +63,7 @@
 
           systemd.services.calibre-web.unitConfig.RequiresMountsFor = [ "/mnt/drive/Books" ];
 
-          svc.caddy.hosts."calibre-web.poire.me".extraConfig = ''
+          svc.caddy.subdomains.calibre-web.extraConfig = ''
             reverse_proxy localhost:${toString cfg.port}
           '';
         }

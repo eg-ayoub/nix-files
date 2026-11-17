@@ -18,7 +18,7 @@
           "render"
         ];
         core.users.ayoub.extra-groups = [ "media" ];
-        svc.caddy.hosts."jellyfin.poire.me".extraConfig = ''
+        svc.caddy.subdomains.jellyfin.extraConfig = ''
           reverse_proxy localhost:8096
         '';
       };

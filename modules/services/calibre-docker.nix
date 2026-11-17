@@ -45,7 +45,7 @@
           conflicts = [ "calibre-web.service" ];
           unitConfig.RequiresMountsFor = [ "/mnt/drive/Books" ];
         };
-        svc.caddy.hosts."calibre-desktop.poire.me".extraConfig = ''
+        svc.caddy.subdomains.calibre-desktop.extraConfig = ''
           reverse_proxy localhost:${toString cfg.port}
         '';
       };

@@ -41,7 +41,7 @@
             };
           };
         };
-        svc.caddy.hosts."adguardhome.poire.me".extraConfig = ''
+        svc.caddy.subdomains.adguardhome.extraConfig = ''
           reverse_proxy localhost:3000
         '';
       };

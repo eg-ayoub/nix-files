@@ -29,7 +29,7 @@
         services.invidious = {
           enable = true;
           address = "127.0.0.1";
-          domain = "invidious.poire.me";
+          domain = "invidious.${config.svc.caddy.domain}";
           port = 8090;
           settings = {
             external_port = 443;
@@ -86,7 +86,7 @@
         ];
 
         # with public_url set, video streams go from caddy straight to the companion, not through invidious
-        svc.caddy.hosts.${inv.domain}.extraConfig = ''
+        svc.caddy.subdomains.invidious.extraConfig = ''
           reverse_proxy /companion/* localhost:${toString cfg.companion-port}
           reverse_proxy localhost:${toString inv.port}
         '';
