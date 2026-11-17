@@ -79,6 +79,7 @@
 
       # tony streams games to the Steam Deck
       app.steam.remote-play = true;
+      app.discord.itf = "wlp9s0";
 
       hardware.enableAllFirmware = true;
 
