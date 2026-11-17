@@ -53,19 +53,21 @@
         ];
 
         # one secret, rendered for both sides so they cannot drift apart
-        sops.secrets.invidious-companion-key = {
-          sopsFile = ../../secrets/invidious.yaml;
-          key = "companion_key";
-        };
-        sops.templates."invidious-companion.env" = {
-          content = ''
-            SERVER_SECRET_KEY=${key}
-          '';
-          restartUnits = [ "podman-invidious-companion.service" ];
-        };
-        sops.templates."invidious-companion.json" = {
-          content = builtins.toJSON { invidious_companion_key = key; };
-          restartUnits = [ "invidious.service" ];
+        sops = {
+          secrets.invidious-companion-key = {
+            sopsFile = ../../secrets/invidious.yaml;
+            key = "companion_key";
+          };
+          templates."invidious-companion.env" = {
+            content = ''
+              SERVER_SECRET_KEY=${key}
+            '';
+            restartUnits = [ "podman-invidious-companion.service" ];
+          };
+          templates."invidious-companion.json" = {
+            content = builtins.toJSON { invidious_companion_key = key; };
+            restartUnits = [ "invidious.service" ];
+          };
         };
 
         virtualisation.oci-containers.containers.invidious-companion = {
