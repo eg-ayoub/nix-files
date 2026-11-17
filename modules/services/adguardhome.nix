@@ -31,7 +31,6 @@
         services.adguardhome = {
           enable = true;
           mutableSettings = true;
-          openFirewall = true;
           settings = {
             dns = {
               bind_hosts = cfg.dns.hosts;
