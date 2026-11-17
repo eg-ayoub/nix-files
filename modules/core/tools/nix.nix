@@ -1,12 +1,8 @@
-{ self, ... }:
+{ ... }:
 {
   flake.nixosModules.nix =
     { ... }:
     {
-      imports = [
-        self.nixosModules.pre-commit
-      ];
-
       config = {
         nixpkgs.config.allowUnfree = true;
 
