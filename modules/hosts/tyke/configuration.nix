@@ -50,6 +50,7 @@
         jellyfin
         openssh
         caddy
+        health
       ];
 
       svc.adguardhome.dns.hosts = [

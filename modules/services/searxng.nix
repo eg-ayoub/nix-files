@@ -33,6 +33,10 @@
         svc.caddy.subdomains.search.extraConfig = ''
           reverse_proxy localhost:${toString config.services.searx.settings.server.port}
         '';
+        core.health.checks.searxng = {
+          unit = "searx.service";
+          url = "https://search.${config.svc.caddy.domain}/healthz";
+        };
       };
     };
 }

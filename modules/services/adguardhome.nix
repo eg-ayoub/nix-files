@@ -4,6 +4,7 @@
     {
       lib,
       config,
+      pkgs,
       ...
     }:
     let
@@ -41,6 +42,16 @@
         svc.caddy.subdomains.adguardhome.extraConfig = ''
           reverse_proxy localhost:${toString ui-port}
         '';
+        core.health.checks.adguardhome = {
+          unit = "adguardhome.service";
+          url = "https://adguardhome.${config.svc.caddy.domain}/";
+          # any reply counts, SERVFAIL included: the resolver answers, whatever the upstreams do (its
+          # upstream timeout is 10 s, hence +time=15)
+          command = lib.concatMapStringsSep "\n" (
+            host:
+            "${pkgs.dnsutils}/bin/dig +time=15 +tries=1 -p ${toString cfg.dns.port} @${host} health-check.invalid > /dev/null"
+          ) cfg.dns.hosts;
+        };
       };
     };
 }

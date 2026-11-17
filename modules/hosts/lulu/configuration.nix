@@ -43,6 +43,7 @@
         openssh
         searxng
         caddy
+        health
       ];
 
       hardware.enableRedistributableFirmware = true;

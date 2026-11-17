@@ -27,6 +27,11 @@
             default = null;
             description = "shell commands that must succeed";
           };
+          unless-active = lib.mkOption {
+            type = lib.types.nullOr lib.types.str;
+            default = null;
+            description = "unit that stands in for this service while it runs; the check passes then";
+          };
         };
       };
 
@@ -49,6 +54,9 @@
         name: c:
         pkgs.writeShellScript "health-${name}" ''
           set -eu
+          ${lib.optionalString (c.unless-active != null) ''
+            if ${systemctl} is-active --quiet ${lib.escapeShellArg c.unless-active}; then exit 0; fi
+          ''}
           ${lib.optionalString (c.unit != null) "${systemctl} is-active --quiet ${lib.escapeShellArg c.unit}"}
           ${lib.optionalString (c.url != null) (fetch c.url)}
           ${lib.optionalString (c.command != null) c.command}

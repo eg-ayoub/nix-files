@@ -1,7 +1,7 @@
 { ... }:
 {
   flake.nixosModules.jellyfin =
-    { ... }:
+    { config, ... }:
     {
       config = {
         services.jellyfin.enable = true;
@@ -16,6 +16,10 @@
         svc.caddy.subdomains.jellyfin.extraConfig = ''
           reverse_proxy localhost:8096
         '';
+        core.health.checks.jellyfin = {
+          unit = "jellyfin.service";
+          url = "https://jellyfin.${config.svc.caddy.domain}/health";
+        };
       };
     };
 }
