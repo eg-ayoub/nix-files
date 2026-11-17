@@ -11,7 +11,7 @@
       cfg = config.core.users.ayoub;
       define-rule = x: {
         command = x;
-        options = ["NOPASSWD"];
+        options = [ "NOPASSWD" ];
       };
     in
     {
@@ -36,8 +36,6 @@
       config = {
         users.users.ayoub = {
           uid = 1000;
-          name = "ayoub";
-          home = "/home/ayoub";
           description = "ol' trickster boi";
           isNormalUser = true;
           extraGroups = [

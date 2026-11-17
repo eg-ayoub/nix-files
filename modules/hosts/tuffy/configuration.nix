@@ -10,7 +10,12 @@
   };
 
   flake.nixosModules.hostTuffy =
-    { config, lib, pkgs, ... }:
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     {
 
       imports = with self.nixosModules; [
@@ -20,7 +25,6 @@
         audio
         locale
         nix
-        zsh
         ssh
         polkit
         gpg

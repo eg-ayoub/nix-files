@@ -2,7 +2,6 @@
 {
   flake.nixosModules.adguardhome =
     {
-      pkgs,
       lib,
       config,
       ...
@@ -26,9 +25,6 @@
       };
 
       config = {
-        environment.systemPackages = [
-          pkgs.adguardhome
-        ];
         services.adguardhome = {
           enable = true;
           mutableSettings = true;

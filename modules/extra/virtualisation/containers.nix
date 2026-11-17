@@ -1,4 +1,4 @@
-{ self, ... }:
+{ ... }:
 {
   flake.nixosModules.containers =
     { pkgs, ... }:
@@ -11,7 +11,6 @@
             dockerCompat = true;
             autoPrune.enable = true;
           };
-          oci-containers.backend = "podman";
         };
 
         # Useful other development tools

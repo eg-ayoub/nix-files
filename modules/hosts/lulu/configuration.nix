@@ -22,7 +22,6 @@
         networking
         locale
         nix
-        zsh
         ssh
         polkit
         gpg

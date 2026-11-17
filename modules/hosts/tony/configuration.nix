@@ -26,7 +26,6 @@
         audio
         locale
         nix
-        zsh
         ssh
         polkit
         gpg

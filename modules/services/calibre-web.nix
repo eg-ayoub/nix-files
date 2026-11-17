@@ -36,10 +36,6 @@
 
       config = lib.mkMerge [
         {
-          environment.systemPackages = [
-            calibre-pkg
-          ];
-
           services.calibre-web = {
             enable = true;
             package = calibre-pkg;
