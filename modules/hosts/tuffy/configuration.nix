@@ -3,19 +3,14 @@
   flake.nixosConfigurations.tuffy = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14
-      inputs.nixos-hardware.nixosModules.common-cpu-intel
-      inputs.nixos-hardware.nixosModules.common-gpu-intel
+      # T14 Intel Gen 2: a Tiger Lake cpu and its gpu; nixos-hardware exports no module for it
+      "${inputs.nixos-hardware}/common/cpu/intel/tiger-lake"
       self.nixosModules.hostTuffy
     ];
   };
 
   flake.nixosModules.hostTuffy =
-    {
-      config,
-      lib,
-      pkgs,
-      ...
-    }:
+    { pkgs, ... }:
     {
 
       imports = with self.nixosModules; [
@@ -75,10 +70,5 @@
       networking.hostName = "tuffy";
 
       system.stateVersion = "26.05";
-
-      # lifted verbatim from
-      # https://github.com/NixOS/nixos-hardware/blob/master/common/gpu/intel/tiger-lake/default.nix
-      boot.kernelParams = lib.mkIf (config.hardware.intelgpu.driver == "i915") [ "i915.enable_guc=3" ];
-      hardware.intelgpu.vaapiDriver = "intel-media-driver";
     };
 }
