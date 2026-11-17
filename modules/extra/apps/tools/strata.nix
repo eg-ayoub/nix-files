@@ -13,9 +13,7 @@
       };
 
       strata = pkgs.appimageTools.wrapType2 (finalAttrs: {
-        pname = pname;
-        version = version;
-        src = src;
+        inherit pname version src;
 
         # the engine leaves libnuma and libelf to the system; the default fhs env has libdrm, zlib and libstdc++ already
         extraPkgs = pkgs: [

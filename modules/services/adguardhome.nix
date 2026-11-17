@@ -2,13 +2,13 @@
 {
   flake.nixosModules.adguardhome =
     {
-      pkgs,
       lib,
       config,
       ...
     }:
     let
       cfg = config.svc.adguardhome;
+      ui-port = 3000;
     in
     {
 
@@ -25,25 +25,21 @@
       };
 
       config = {
-        environment.systemPackages = [
-          pkgs.adguardhome
-        ];
         services.adguardhome = {
           enable = true;
           mutableSettings = true;
-          openFirewall = true;
           settings = {
             dns = {
               bind_hosts = cfg.dns.hosts;
               port = cfg.dns.port;
             };
             http = {
-              address = "127.0.0.1:3000";
+              address = "127.0.0.1:${toString ui-port}";
             };
           };
         };
-        svc.caddy.hosts."adguardhome.poire.me".extraConfig = ''
-          reverse_proxy localhost:3000
+        svc.caddy.subdomains.adguardhome.extraConfig = ''
+          reverse_proxy localhost:${toString ui-port}
         '';
       };
     };

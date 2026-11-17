@@ -39,6 +39,8 @@
       fileSystems."/mnt/drive" = {
         device = "/dev/disk/by-uuid/39a4a878-26f1-4da2-a22d-5bbd861197fe";
         fsType = "ext4";
+        # a dead data drive must not block boot; the services using it declare RequiresMountsFor
+        options = [ "nofail" ];
       };
 
       swapDevices = [

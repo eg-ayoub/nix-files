@@ -22,18 +22,14 @@
         networking
         locale
         nix
-        zsh
         ssh
-        clamav
         polkit
         gpg
+        auto-recovery
 
         # utils
         terminal-toolbox
         zellij
-
-        # virt
-        containers
 
         # dev
         nvim
@@ -46,19 +42,10 @@
         tailscale
         openssh
         searxng
-        # mcp-searxng
-        # openwebui
-        # n8n
-        # signal-cli
-        # vikunja
-        # tuta-bridge
         caddy
       ];
 
       hardware.enableRedistributableFirmware = true;
-
-      boot.kernel.sysctl."kernel.softlock_panic" = "1";
-      boot.kernel.sysctl."kernel.panic" = "60";
 
       networking.hostName = "lulu";
 

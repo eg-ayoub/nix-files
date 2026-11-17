@@ -9,6 +9,13 @@
     }:
     let
       cfg = config.svc.caddy;
+      site = lib.types.submodule {
+        options.extraConfig = lib.mkOption {
+          type = lib.types.lines;
+          default = "";
+          description = "Caddyfile directives for this site";
+        };
+      };
     in
     {
 
@@ -17,9 +24,20 @@
       ];
 
       options.svc.caddy = {
+        domain = lib.mkOption {
+          type = lib.types.str;
+          default = "poire.me";
+          description = "domain under which services are published as subdomains";
+        };
+        subdomains = lib.mkOption {
+          type = lib.types.attrsOf site;
+          default = { };
+          description = "sites served as <name>.<domain>";
+        };
         hosts = lib.mkOption {
-          type = lib.types.attrs;
-          description = "the hosts that caddy will proxy and their configs";
+          type = lib.types.attrsOf site;
+          default = { };
+          description = "sites served under a full address, for those that are not a subdomain";
         };
       };
 
@@ -27,15 +45,21 @@
         sops.secrets."caddy.env" = {
           sopsFile = ../../secrets/caddy.env;
           format = "dotenv";
+          restartUnits = [ "caddy.service" ];
         };
         services.caddy = {
           enable = true;
-          virtualHosts = cfg.hosts;
+          virtualHosts = lib.mkMerge [
+            (lib.mapAttrs' (
+              name: site: lib.nameValuePair "${name}.${cfg.domain}" { inherit (site) extraConfig; }
+            ) cfg.subdomains)
+            (lib.mapAttrs (_: site: { inherit (site) extraConfig; }) cfg.hosts)
+          ];
           package = pkgs.caddy.withPlugins {
             plugins = [ "github.com/caddy-dns/porkbun@v0.3.1" ];
             hash = "sha256-8DrezGjdIUq9tBvbK7UuVDeQPuzUdBsmIkI79YDCTOQ";
           };
-          environmentFile = "/run/secrets/caddy.env";
+          environmentFile = config.sops.secrets."caddy.env".path;
           globalConfig = ''
             acme_dns porkbun {
               api_key {env.PORKBUN_API_KEY}

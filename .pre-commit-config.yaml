@@ -1,9 +1,23 @@
+# the tools come from the pre-commit NixOS module; run `pre-commit install` once per clone
 repos:
   - repo: local
     hooks:
-    - id: nixfmt
-      name: Format NIX files
-      description: This hook runs nixfmt-tree on the project
-      language: unsupported
-      files: '.*.nix'
-      entry: treefmt --quiet
+      - id: nixfmt
+        name: Format Nix files
+        description: Run nixfmt-tree on the staged Nix files
+        language: unsupported
+        files: '\.nix$'
+        entry: treefmt --quiet
+      - id: statix
+        name: Lint Nix files with statix
+        description: Check the whole tree, configured by statix.toml
+        language: unsupported
+        files: '\.nix$'
+        entry: statix check
+        pass_filenames: false
+      - id: deadnix
+        name: Find unused Nix code
+        description: Fail on unused bindings and arguments in the staged Nix files
+        language: unsupported
+        files: '\.nix$'
+        entry: deadnix --fail

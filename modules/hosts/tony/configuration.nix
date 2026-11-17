@@ -26,9 +26,7 @@
         audio
         locale
         nix
-        zsh
         ssh
-        clamav
         polkit
         gpg
 
@@ -42,7 +40,6 @@
 
         # virt
         containers
-        libvirt
 
         # dev
         nvim
@@ -56,7 +53,6 @@
 
         # apps
         godot
-        virt-manager
         vial
         nsusb
         kitty
@@ -70,17 +66,19 @@
         deluge
         vpn
         rpcs3
-        # lutris # broken because of gtk2
+        lutris
         zen-browser
         gimp
-        got-feedback
         strata
         jan
 
         # services
         tailscale
-        # llama-server
       ];
+
+      # tony streams games to the Steam Deck
+      app.steam.remote-play = true;
+      app.discord.itf = "wlp9s0";
 
       hardware.enableAllFirmware = true;
 

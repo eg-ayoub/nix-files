@@ -1,24 +1,19 @@
-{ inputs, ... }:
+{ self, ... }:
 {
   flake.nixosModules.pi =
-    { pkgs, lib, ... }:
+    { pkgs, ... }:
     let
-      # numtide's llm-agents.nix: a newer pi, built like upstream's release binary.
-      # llm-agents is a flake input, so it is resolved here and passed to the
-      # input-free wrapper in ../../../packages/pi.
-      #
-      # pi installs its packages with `npm install --prefix ~/.pi/agent/npm` (and git
-      # packages with git clone), both looked up on PATH; the package's wrapper
-      # only adds ripgrep and fd, so without node on the system every `pi install`
-      # fails with "spawn npm ENOENT". Suffix: tools already on PATH win, these
-      # are the fallback.
-      pi = (import ../../../packages/pi) {
-        inherit pkgs lib;
-        pi-agent = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.pi;
-      };
+      # numtide's pi with node and git added to its PATH (packages/pi, exposed in modules/flake)
+      pi = self.packages.${pkgs.stdenv.hostPlatform.system}.pi;
     in
     {
       config = {
+        # pre-built packages of numtide's llm-agents.nix; trusted only where pi is installed
+        nix.settings.extra-substituters = [ "https://cache.numtide.com" ];
+        nix.settings.extra-trusted-public-keys = [
+          "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+        ];
+
         environment.systemPackages = [
           pi
           # pi-godot-helpers: runs the model's shell commands in a bwrap sandbox, and starts llama-server itself

@@ -8,14 +8,13 @@
           enable = true;
           qemu = {
             package = pkgs.qemu_kvm;
-            runAsRoot = true;
+            runAsRoot = false;
             swtpm.enable = true;
           };
         };
         environment.systemPackages = with pkgs; [
           virtiofsd
         ];
-        core.users.ayoub.extra-groups = [ "libvirtd" ];
       };
     };
 }

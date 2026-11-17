@@ -1,7 +1,12 @@
 { self, ... }:
 {
   flake.nixosModules.discord =
-    { lib, config, pkgs, ... }:
+    {
+      lib,
+      config,
+      pkgs,
+      ...
+    }:
     let
       cfg = config.app.discord;
     in
@@ -11,7 +16,6 @@
       options.app.discord = {
         itf = lib.mkOption {
           type = lib.types.str;
-          default = "wlp9s0";
           description = "itf to force discord traffic through";
         };
       };
@@ -20,6 +24,8 @@
         environment.systemPackages = with pkgs; [
           legcord
         ];
+        # firejail only pins legcord to one interface, not a sandbox (hence --noprofile): left
+        # free, it binds calls to the tailnet interface and they fail with a DTLS error
         programs.firejail.wrappedBinaries.legcord = {
           executable = "${pkgs.legcord}/bin/legcord";
           extraArgs = [
