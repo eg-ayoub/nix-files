@@ -32,9 +32,6 @@
         terminal-toolbox
         zellij
 
-        # virt
-        containers
-
         # dev
         nvim
         language-servers
