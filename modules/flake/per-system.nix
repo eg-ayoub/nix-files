@@ -14,5 +14,8 @@
         inherit (pkgs) lib;
         pi-agent = inputs'.llm-agents.packages.pi;
       };
+
+      # `nix run .#update-images`, also run weekly by lulu's auto-update
+      packages.update-images = import ../../packages/update-images { inherit pkgs; };
     };
 }
