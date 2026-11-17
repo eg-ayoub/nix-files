@@ -67,7 +67,7 @@
         deluge
         vpn
         rpcs3
-        # lutris # broken because of gtk2
+        lutris
         zen-browser
         gimp
         strata
