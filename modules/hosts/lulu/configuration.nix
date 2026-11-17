@@ -43,8 +43,15 @@
         openssh
         searxng
         caddy
-        health
+        auto-update
       ];
+
+      # updates first and once a week moves flake.lock forward, so tyke only deploys a lock lulu
+      # is healthy on
+      core.auto-update = {
+        dates = "03:30";
+        update-lock = true;
+      };
 
       hardware.enableRedistributableFirmware = true;
 

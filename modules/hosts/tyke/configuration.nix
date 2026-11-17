@@ -50,9 +50,10 @@
         jellyfin
         openssh
         caddy
-        health
+        auto-update
       ];
 
+      core.auto-update.dates = "05:00";
       svc.adguardhome.dns.hosts = [
         "100.107.41.45"
         "fd7a:115c:a1e0::3b01:2985"
