@@ -11,7 +11,6 @@
       config = {
         environment = {
           systemPackages = with pkgs; [
-            # godot-mono
             godot-mono
             gdtoolkit_4
           ];
