@@ -12,6 +12,7 @@
     {
       imports = [
         self.nixosModules.containers
+        self.nixosModules.sops
       ];
 
       options.svc.calibre-docker = {
@@ -23,6 +24,12 @@
       };
 
       config = {
+        # CUSTOM_USER and PASSWORD turn on the gui's HTTP basic auth. No restartUnits: a rebuild
+        # would start the stopped container (stopping calibre-web); it reads them at each start.
+        sops.secrets."calibre.env" = {
+          sopsFile = ../../secrets/calibre.env;
+          format = "dotenv";
+        };
         virtualisation.oci-containers.containers.calibre = {
           image = "quay.io/linuxserver.io/calibre:latest";
           environment = {
@@ -38,6 +45,7 @@
             "${config.users.users.ayoub.home}/cal:/config"
             "/mnt/drive/Books:/drive/Books"
           ];
+          environmentFiles = [ config.sops.secrets."calibre.env".path ];
           autoStart = false;
         };
         systemd.services.podman-calibre = {
