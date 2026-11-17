@@ -1,7 +1,7 @@
 { self, ... }:
 {
   flake.nixosModules.searxng =
-    { ... }:
+    { config, ... }:
     {
       imports = [
         self.nixosModules.sops
@@ -11,6 +11,7 @@
         sops.secrets."searxng.env" = {
           sopsFile = ../../secrets/searxng.env;
           format = "dotenv";
+          restartUnits = [ "searx.service" ];
         };
         services.searx = {
           enable = true;
@@ -27,7 +28,7 @@
               ];
             };
           };
-          environmentFile = "/run/secrets/searxng.env";
+          environmentFile = config.sops.secrets."searxng.env".path;
         };
         svc.caddy.hosts."search.poire.me".extraConfig = ''
           reverse_proxy localhost:8888

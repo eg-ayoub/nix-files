@@ -27,6 +27,7 @@
         sops.secrets."caddy.env" = {
           sopsFile = ../../secrets/caddy.env;
           format = "dotenv";
+          restartUnits = [ "caddy.service" ];
         };
         services.caddy = {
           enable = true;
@@ -35,7 +36,7 @@
             plugins = [ "github.com/caddy-dns/porkbun@v0.3.1" ];
             hash = "sha256-8DrezGjdIUq9tBvbK7UuVDeQPuzUdBsmIkI79YDCTOQ";
           };
-          environmentFile = "/run/secrets/caddy.env";
+          environmentFile = config.sops.secrets."caddy.env".path;
           globalConfig = ''
             acme_dns porkbun {
               api_key {env.PORKBUN_API_KEY}
