@@ -11,10 +11,6 @@
       cfg = config.app.steam;
     in
     {
-      # imports = [
-      #   inputs.nixos-rocksmith.nixosModules.default
-      # ];
-
       options.app.steam = {
         remote-play = lib.mkEnableOption "Steam Remote Play hosting, with its firewall ports open";
       };
@@ -24,7 +20,6 @@
           enable = true;
           remotePlay.openFirewall = cfg.remote-play;
           extraCompatPackages = [ pkgs.proton-ge-bin ];
-          # rocksmithPatch.enable = true;
           gamescopeSession.enable = true;
           protontricks.enable = true;
         };
