@@ -31,7 +31,9 @@
           format = "dotenv";
         };
         virtualisation.oci-containers.containers.calibre = {
-          image = "quay.io/linuxserver.io/calibre:latest";
+          # pinned by digest (container-images.json, refreshed by update-images), so a rollback
+          # restores the previous image too
+          image = with (lib.importJSON ./container-images.json).calibre; "${repo}@${digest}";
           environment = {
             PUID = toString config.users.users.ayoub.uid;
             PGID = toString config.users.groups.users.gid;

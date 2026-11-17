@@ -71,7 +71,9 @@
         };
 
         virtualisation.oci-containers.containers.invidious-companion = {
-          image = "quay.io/invidious/invidious-companion:latest";
+          # pinned by digest (container-images.json, refreshed by update-images), so a rollback
+          # restores the previous image too
+          image = with (lib.importJSON ./container-images.json).invidious-companion; "${repo}@${digest}";
           ports = [
             "127.0.0.1:${toString cfg.companion-port}:8282"
           ];
