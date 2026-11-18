@@ -52,6 +52,21 @@
         # favour of the previous generation
         boot.loader.systemd-boot.bootCounting.enable = true;
 
+        # each user sees new events once, at their next login (ssh or console)
+        environment.loginShellInit = ''
+          if [ -r ${state}/events ]; then
+            _seen_file=''${XDG_STATE_HOME:-$HOME/.local/state}/auto-upgrade-seen
+            _seen=$(cat "$_seen_file" 2>/dev/null || echo 0)
+            _total=$(wc -l < ${state}/events)
+            if [ "$_total" -gt "$_seen" ]; then
+              echo "auto-upgrade:"
+              tail -n "$((_total - _seen))" ${state}/events
+              mkdir -p "''${_seen_file%/*}" && echo "$_total" > "$_seen_file"
+            fi
+            unset _seen_file _seen _total
+          fi
+        '';
+
         systemd.services = {
           nixos-upgrade = {
             # what to go back to
