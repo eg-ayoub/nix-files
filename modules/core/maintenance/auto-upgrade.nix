@@ -3,7 +3,10 @@
   flake.nixosModules.auto-upgrade =
     { config, lib, ... }:
     {
-      imports = [ self.nixosModules.health ];
+      imports = with self.nixosModules; [
+        health
+        rollback
+      ];
 
       options.core.auto-upgrade.dates = lib.mkOption {
         type = lib.types.str;
