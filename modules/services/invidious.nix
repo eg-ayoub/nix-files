@@ -71,7 +71,9 @@
         };
 
         virtualisation.oci-containers.containers.invidious-companion = {
-          image = "quay.io/invidious/invidious-companion:latest";
+          # pinned by digest (container-images.json, refreshed by update-images), so a rollback
+          # restores the previous image too
+          image = with (lib.importJSON ./container-images.json).invidious-companion; "${repo}@${digest}";
           ports = [
             "127.0.0.1:${toString cfg.companion-port}:8282"
           ];
@@ -92,6 +94,17 @@
           reverse_proxy /companion/* localhost:${toString cfg.companion-port}
           reverse_proxy localhost:${toString inv.port}
         '';
+        core.health.checks = {
+          # stats are served locally, without a request to YouTube
+          invidious = {
+            unit = "invidious.service";
+            url = "https://${inv.domain}/api/v1/stats";
+          };
+          invidious-companion = {
+            unit = "podman-invidious-companion.service";
+            url = "http://127.0.0.1:${toString cfg.companion-port}/companion/healthz";
+          };
+        };
 
         core.users.ayoub.extra-sudo-commands = [
           "/run/current-system/sw/bin/systemctl restart invidious.service"

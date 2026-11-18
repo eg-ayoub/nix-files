@@ -1,0 +1,12 @@
+{
+  "calibre": {
+    "repo": "quay.io/linuxserver.io/calibre",
+    "tag": "latest",
+    "digest": "sha256:fa5ae5f55859544ec026f82165b01bff913e812c7d67078744fcd119c1531ea3"
+  },
+  "invidious-companion": {
+    "repo": "quay.io/invidious/invidious-companion",
+    "tag": "latest",
+    "digest": "sha256:292d889ff6d4cb31970cd35ea9eea8b249dc8c1dc3c66b3ad1b9c4fd0ffb62d1"
+  }
+}

@@ -20,6 +20,7 @@
         audio
         locale
         nix
+        update-reminder
         ssh
         polkit
         gpg

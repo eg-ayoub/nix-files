@@ -26,6 +26,7 @@
         polkit
         gpg
         auto-recovery
+        auto-upgrade
 
         # utils
         terminal-toolbox
@@ -46,6 +47,8 @@
       ];
 
       hardware.enableRedistributableFirmware = true;
+
+      core.auto-upgrade.dates = "03:30";
 
       networking.hostName = "lulu";
 

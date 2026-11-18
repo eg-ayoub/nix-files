@@ -62,6 +62,12 @@
           svc.caddy.subdomains.calibre-web.extraConfig = ''
             reverse_proxy localhost:${toString cfg.port}
           '';
+          core.health.checks.calibre-web = {
+            unit = "calibre-web.service";
+            url = "https://calibre-web.${config.svc.caddy.domain}/login";
+            # calibre desktop stops calibre-web while it runs (they conflict)
+            unless-active = "podman-calibre.service";
+          };
         }
 
         # the token in /kobo/<token>/… authenticates the e-reader; nothing else is reachable here
