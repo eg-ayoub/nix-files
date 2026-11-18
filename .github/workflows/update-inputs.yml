@@ -1,0 +1,58 @@
+# Every Saturday: update flake.lock and the container image digests, and commit them to main if
+# every host still evaluates. Deploying them is left to the hosts.
+name: update-inputs
+
+on:
+  schedule:
+    - cron: "17 0 * * 6" # Saturdays 00:17 UTC, before the hosts' nightly updates
+  workflow_dispatch:
+  # a dry run, without the push, when the workflow or the image updater changes
+  pull_request:
+    paths:
+      - .github/workflows/update-inputs.yml
+      - packages/update-images/**
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-inputs
+
+defaults:
+  run:
+    shell: bash # adds -o pipefail
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: cachix/install-nix-action@3dc140bfc76c49fbd4dd958429132e3746bcb086 # v31.11.5
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update flake.lock and the container image digests
+        run: |
+          nix flake update 2>&1 | tee "$RUNNER_TEMP/changes"
+          nix run .#update-images | tee -a "$RUNNER_TEMP/changes"
+      - name: Evaluate every host
+        run: nix flake check --no-build
+
+      # as in actions/checkout's README: checkout leaves the token in the git config for the push
+      - name: Commit and push
+        run: |
+          if git diff --quiet; then
+            echo "nothing to update"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit --all --quiet --message "chore(flake): update inputs" \
+            --message "$(grep -v -e '^warning:' -e '^unpacking ' "$RUNNER_TEMP/changes")"
+          git show --stat HEAD
+          if [ "$GITHUB_EVENT_NAME" = pull_request ]; then
+            echo "dry run: not pushed"
+          else
+            git push origin "HEAD:$GITHUB_REF"
+          fi
