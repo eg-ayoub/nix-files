@@ -26,6 +26,7 @@
         polkit
         gpg
         auto-recovery
+        auto-upgrade
 
         # utils
         terminal-toolbox
@@ -60,6 +61,8 @@
       systemd.services.jellyfin.unitConfig.RequiresMountsFor = [ "/mnt/drive/Videos" ];
 
       hardware.enableAllFirmware = true;
+
+      core.auto-upgrade.dates = "05:00";
 
       networking.hostName = "tyke";
 
