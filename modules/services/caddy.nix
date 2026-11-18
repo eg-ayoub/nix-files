@@ -42,6 +42,7 @@
       };
 
       config = {
+        core.health.checks.caddy.unit = "caddy.service";
         sops.secrets."caddy.env" = {
           sopsFile = ../../secrets/caddy.env;
           format = "dotenv";
